@@ -1,10 +1,11 @@
 import React from 'react';
+import Coins from './components/game/Coins'
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      
+     <Coins /> 
     </div>
   );
 }
