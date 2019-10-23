@@ -10,13 +10,15 @@ class BtnRestart extends Component {
 
     render() {
         return (
-            <button
-            id="restartGame"
-            type="button"
-            className="btn"
-            >
-            RESTART
-            </button>
+            <div className="display">
+                <button
+                id="restartGame"
+                type="button"
+                className="btn"
+                >
+                RESTART
+                </button>
+            </div>
         )
     }
 }
