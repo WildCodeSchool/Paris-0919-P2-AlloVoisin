@@ -2,17 +2,16 @@
     width: 200px;
     height:300px;
     background: url('https://www.spriters-resource.com/resources/sheets/54/57094.png') 0 0 no-repeat;
-  
-    transform:scale(0.8);
-    transform: scaleX(-1);
+    transform: scale(-0.9, 0.9);
     position: absolute;
-    top: 300px;
+    top: 285px;
     left:45%;
 }
 
 .villain-animation {
     animation: animate 0.3s;
 }
+
 @keyframes animate {
   0%{
     opacity:1 ;

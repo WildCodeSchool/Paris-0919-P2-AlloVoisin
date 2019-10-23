@@ -3,7 +3,7 @@ import './Hero.css'
 
 export default class Hero extends Component {
     animVillain = () => {
-        const villain = document.querySelector('.villain') ;
+        const villain = document.querySelector('.villain') 
         villain.className="villain-animation villain";
         setTimeout(()=>{villain.className="villain"}, 200);
     }
