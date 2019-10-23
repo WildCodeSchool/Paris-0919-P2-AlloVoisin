@@ -1,0 +1,15 @@
+.hero {
+    width: 150px;
+    height:320px;
+    background: url('https://www.spriters-resource.com/download/54426/') 0 0 no-repeat;
+    position: absolute;
+    top: 300px;
+    left:35%;
+}
+
+.hero:active{
+    background-position: -730px -320px;
+    width: 250px;
+    height: 300px;
+}
+
