@@ -1,11 +1,12 @@
 import React from 'react';
-import Coins from './components/game/Coins'
+
 import './App.css';
+import './components/common/SocialNetwork.css';
 
 const App = () => {
   return (
     <div className="App">
-     <Coins /> 
+
     </div>
   );
 }
