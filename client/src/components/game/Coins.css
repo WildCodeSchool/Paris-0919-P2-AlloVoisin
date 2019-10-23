@@ -8,5 +8,44 @@
 }
 
 .coin-img {
-    width:50px;
+    width: 50px;
+}
+
+
+/* ------------------------------------------------- TABLET AND DESKTOP ----------------------------------*/
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .coin-container {
+        width: 135px;
+    }
+    .coin-img {
+        width: 65px;
+    }
+    .coin-text-counter {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .coin-container {
+        width: 155px;
+    }
+    .coin-img {
+        width: 70px;
+    }
+    .coin-text-counter {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1441px) {
+    .coin-container {
+        width: 175px;
+    }
+    .coin-img {
+        width: 77px;
+    }
+    .coin-text-counter {
+        font-size: 26px;
+    }
 }
