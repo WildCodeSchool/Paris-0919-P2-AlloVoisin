@@ -17,3 +17,15 @@
   padding: 10px;
   list-style: none;
 }
+
+.item-container:nth-of-type(odd){
+  background: url("https://image.shutterstock.com/image-photo/high-definition-star-field-colorful-260nw-1040712502.jpg");
+}
+
+.item-container:nth-of-type(even){
+  background-color: #000;
+}
+
+.background-character:nth-of-type(odd){
+  background: url("https://image.shutterstock.com/image-photo/high-definition-star-field-colorful-260nw-1040712502.jpg");
+}

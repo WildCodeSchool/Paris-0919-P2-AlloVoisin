@@ -6,7 +6,15 @@ ul {
   padding: 0;
 }
 
-li {
+.item-container:nth-of-type(odd){
+  background-color: #1d3051;
+}
+
+.item-container:nth-of-type(even){
+  background-color: #000;
+}
+
+.nav-link {
   list-style-type: none;
   width: 100%;
   padding: 2px 0;
@@ -17,23 +25,23 @@ li {
   justify-content: space-around;
 }
 
-.img-container li {
+.img-container .nav-link {
   cursor: pointer;
 }
 
-.img-weapons {
+#img-weapons {
   background-color: #910000;
 }
 
-.img-skins {
+#img-skins {
   background-color: #1d3051;
 }
 
-.img-characters {
+#img-characters {
   background-color: #d6891f;
 }
 
-.img-skills {
+#img-skills {
   background-color: #000;
 }
 
