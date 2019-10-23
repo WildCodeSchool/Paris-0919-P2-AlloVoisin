@@ -1,0 +1,39 @@
+button {
+    font-family: 'Bowlby One SC', cursive;
+    font-size:35px;
+    border-radius: 10px;
+    background-color: #ea222d;
+    color: #fff;
+    border: none;
+    animation: btnStartAnime 2s infinite linear;
+}
+
+@keyframes btnStartAnime {
+    0% {
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(0deg);
+    }
+    48% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    52% {
+        transform: rotate(5deg);
+    }
+    55% {
+        transform: rotate(0deg);
+    }
+    95% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
