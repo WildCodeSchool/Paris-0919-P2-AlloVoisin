@@ -17,6 +17,10 @@ li {
   justify-content: space-around;
 }
 
+.img-container li {
+  cursor: pointer;
+}
+
 .img-weapons {
   background-color: #910000;
 }

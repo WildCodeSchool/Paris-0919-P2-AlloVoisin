@@ -1,0 +1,19 @@
+.items-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.items-container img {
+  width: 50px;
+}
+
+.item-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  list-style: none;
+}
