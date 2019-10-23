@@ -19,7 +19,7 @@
         left:20%;
     }
 }
-@media screen and (min-width:750px) {
+@media screen and (min-width:700px) {
     .hero {
         left:25%;
     }
