@@ -8,9 +8,11 @@ export default class Game extends Component {
 
     render() {
         return (
-            <div>
-               <Hero />
-               <Villain /> 
+            <div id="game">
+                <div id="backgroundCover">
+                    <Hero />
+                    <Villain /> 
+               </div>
             </div>
         )
     }

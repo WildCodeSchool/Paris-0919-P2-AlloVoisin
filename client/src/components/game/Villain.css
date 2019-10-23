@@ -23,3 +23,9 @@
     opacity:1 ;
   }
 }
+
+@media screen and (min-width:500px) {
+    .villain {
+        left:50%;
+    }
+}

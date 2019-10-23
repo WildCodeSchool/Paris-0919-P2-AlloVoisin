@@ -1,0 +1,14 @@
+#game {
+  width: 100%;
+  height: 800px;
+  background: url("https://trello-attachments.s3.amazonaws.com/5da71c47d0e1d66400a19fb5/768x480/519fe61dab4e461f4293a69d8a9dd566/Marvel-vs.-Capcom-Clash-of-Super-Heroes-Video-Game-1998-Capcom-Blue-Area-of-the-Moon-Stage-Background-Animated-Sprites.gif")
+    no-repeat 50% 0;
+  background-size: auto;
+  background-size: cover;
+}
+
+#backgroundCover {
+    width: 100%;
+    height: 800px;
+    background-color:rgba(0,0,0,0.5);
+}
