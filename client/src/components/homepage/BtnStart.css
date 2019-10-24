@@ -21,9 +21,9 @@ button {
     48% {
         transform: rotate(-5deg);
     }
-    50% {
+    /* 50% {
         transform: rotate(0deg);
-    }
+    } */
     52% {
         transform: rotate(5deg);
     }
