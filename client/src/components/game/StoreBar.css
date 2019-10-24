@@ -1,0 +1,66 @@
+img {
+  width: 25px;
+}
+
+ul {
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+  padding: 2px 0;
+  text-decoration: none;
+  color: initial;
+  justify-content: space-around;
+}
+
+.nav-link p {
+  display: none;
+}
+
+.img-container {
+  display: flex;
+}
+
+.img-container .nav-link {
+  cursor: pointer;
+}
+
+#img-weapons {
+  background-color: #910000;
+}
+
+#img-skins {
+  background-color: #1d3051;
+}
+
+#img-characters {
+  background-color: #d6891f;
+}
+
+#img-skills {
+  background-color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  img {
+    width: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-link p {
+    display: block;
+  }
+
+  img {
+    width: 75px;
+  }
+
+  li {
+    padding: 6px 0;
+  }
+}
