@@ -1,19 +1,21 @@
 
-import React, { Component } from 'react'
-import Hero from './Hero'
-import Villain from './Villain'
+import React, { Component } from 'react';
+import Coins from './Coins';
+import Hero from './Hero';
+import Villain from './Villain';
 import StoreBar from './StoreBar';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Characters from './store/Characters';
 import Skins from './store/Skins';
 import Skills from './store/Skills';
-import './Game.css'
+import './Game.css';
 
 export default class Game extends Component {
     render() {
         return (
             <div id="game">
                 <div id="backgroundCover">
+                    <Coins />
                     <Hero />
                     <Villain /> 
                     <Router>

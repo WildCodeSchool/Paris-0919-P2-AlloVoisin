@@ -5,7 +5,7 @@ const Characters = () => {
   return (
     <div className="items-container">
       <h2>Store</h2>
-      <i className="fas fa-times-circle"></i>
+      <img src="https://image.noelshack.com/fichiers/2019/43/4/1571929738-cross.png" alt="cross"/>
       <ul className="items-list-container">
         <li className="item-container">
           <div className="background-character">

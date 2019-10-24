@@ -17,7 +17,7 @@ export default class Coins extends Component {
 
     addCoins = () => {
         this.setState({
-            coins: this.state.coins + 8500
+            coins: this.state.coins + 186
         });
     }
 
@@ -54,7 +54,7 @@ export default class Coins extends Component {
     render() {
         return ( 
             <div className='coin-container'>
-            <img className = 'coin-img' alt='coin' src='https://icon-library.net/images/coins-icon/coins-icon-22.jpg' />
+            <img className = 'coin-img' alt='coin' src='https://image.noelshack.com/fichiers/2019/43/4/1571929544-coins.png' />
             <p className = 'coin-text-counter'> { this.state.coinsShow } </p> 
             </div>
         )
