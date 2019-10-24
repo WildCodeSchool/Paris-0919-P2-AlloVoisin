@@ -1,41 +1,49 @@
 /* #homepage {
 
 } */
-
+#homepage {
+    background: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F53%2F2d%2F03%2F532d0341186be12412c6a4362cc08710.jpg') 50% 0 no-repeat;
+    background-size:cover;
+    min-height:100vh;
+}
 #top-icons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2vh;
+    padding-top: 2vh;
     align-items: center;
 }
 #top-icons a{
-    padding:1vw;
+    padding:1px;
 }
 
 #ironCompany {
     width: 20vw;
+    border-radius: 50px;
 }
 
 #marvelFight{
-    margin-top: 15vh;
-    margin-bottom:5vh;
-    width: 80vw;
+    width: 20vw;
 }
 
 .social-container a {
-    color:#d6891f;
+    color:#fff;
 }
 
 p {
     margin-top: 5vh;
-    font-family: 'Bowlby One SC', cursive;
+    font-family: 'avengers';
+    color:#fff;
+    position: absolute;
+    bottom: 0;
+    right: 5vh;
 }
 
 
 #game {
     position: fixed;
     top: 0;
+    z-index: 1;
 }
 
 @media screen and (min-width:1000px) {
@@ -46,13 +54,7 @@ p {
         width: 8vw;
     }
     #marvelFight {
-        margin-top:5vh;
-        width:50vw;
-    }
-    p {
-        position: absolute;
-        bottom: 0;
-        right: 5vh;
+        width:20vw;
     }
 
 }

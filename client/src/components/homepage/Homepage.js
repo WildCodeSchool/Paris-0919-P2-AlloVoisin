@@ -21,10 +21,10 @@ export default class Homepage extends Component {
         return (
             <div id="homepage">
                 <div id="top-icons">
-                    <img src={logoIronCompany} alt="Logo Iron Company" id="ironCompany"/>
+                    <img src="https://files.slack.com/files-pri/T6SG2QGG2-FPJRYTD7T/image_d___ios.png" alt="Logo Iron Company" id="ironCompany"/>
+                    <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight"/>
                     <SocialNetwork />
                 </div>
-                <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight"/>
                 <BtnStart showGame={this.showGame}/>
                 {
                    this.state.gameStarted ? <Game /> : <></>

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "avengers";
+  src: url("../src/fonts/AVENGEANCE-HEROIC-AVENGER.ttf") format("truetype");
+}
+
 .App {
   text-align: center;
 }

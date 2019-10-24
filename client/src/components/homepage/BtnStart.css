@@ -1,39 +1,44 @@
 button {
-    font-family: 'Bowlby One SC', cursive;
-    font-size:35px;
-    border-radius: 10px;
-    background-color: #ea222d;
-    color: #fff;
-    border: none;
-    animation: btnStartAnime 2s infinite linear;
+  position: absolute;
+  left: 42vw;
+  top: 50vh;
+  font-family: "avengers";
+  font-size: 32px;
+  border-radius: 17px;
+  background-color: #79797966;
+  color: #fff;
+  border: 2px solid black;
+  animation: btnStartAnime 2s infinite linear;
+  height: 50px;
+  padding: 12px 33px;
 }
 
 @keyframes btnStartAnime {
-    0% {
-        transform: rotate(0deg);
-    }
-    5% {
-        transform: rotate(0deg);
-    }
-    45% {
-        transform: rotate(0deg);
-    }
-    48% {
-        transform: rotate(-5deg);
-    }
-    /* 50% {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(0deg);
+  }
+  48% {
+    transform: rotate(-5deg);
+  }
+  /* 50% {
         transform: rotate(0deg);
     } */
-    52% {
-        transform: rotate(5deg);
-    }
-    55% {
-        transform: rotate(0deg);
-    }
-    95% {
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(0deg);
-    }
+  52% {
+    transform: rotate(5deg);
+  }
+  55% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
