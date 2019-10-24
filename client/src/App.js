@@ -8,5 +8,5 @@ const App = () => {
       <Homepage />
     </div>
   );
-
+}
 export default App;

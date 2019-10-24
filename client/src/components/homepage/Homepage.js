@@ -29,7 +29,7 @@ export default class Homepage extends Component {
                 {
                    this.state.gameStarted ? <Game /> : <></>
                 }
-                <p>Rules</p>
+                <p className="HomepageRules">Rules</p>
             </div>
 
 
