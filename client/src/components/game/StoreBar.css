@@ -17,6 +17,16 @@ ul {
   justify-content: space-around;
 }
 
+.store-bar-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.img-container p{
+  color: white;
+}
+
 .nav-link p {
   display: none;
 }
@@ -25,6 +35,9 @@ ul {
   display: flex;
 }
 
+.img-container img {
+  filter: invert(1);
+}
 .img-container .nav-link {
   cursor: pointer;
 }
