@@ -10,13 +10,13 @@
     position: absolute;
     top: 0;
     z-index: 999;
-
     left: -52vw;
     top: 40vw;
 }
 
 .show {
     left: 0vw;
+    position: initial;
 }
 
 .icon {
