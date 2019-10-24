@@ -5,7 +5,7 @@ export default class BtnStart extends Component {
     render() {
         return (
             <div>
-                <button>Start Game</button>
+                <button onClick={this.props.showGame}>Start Game</button>
             </div>
         )
     }

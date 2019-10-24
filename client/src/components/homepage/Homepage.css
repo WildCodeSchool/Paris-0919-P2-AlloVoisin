@@ -23,6 +23,10 @@
     width: 80vw;
 }
 
+.social-container a {
+    color:#d6891f;
+}
+
 p {
     margin-top: 5vh;
     font-family: 'Bowlby One SC', cursive;
