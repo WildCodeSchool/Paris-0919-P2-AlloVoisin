@@ -1,0 +1,16 @@
+.display {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+.btn {
+    background: black;
+    border: 1px solid purple;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    margin-right: 50px;
+  }
