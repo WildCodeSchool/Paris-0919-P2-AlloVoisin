@@ -3,6 +3,7 @@ import React from "react";
 const Skins = () => {
   return (
     <div className="items-container">
+    <h2>Store</h2>
       <ul className="items-list-container">
         <li className="item-container">
           <img

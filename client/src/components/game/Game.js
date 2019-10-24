@@ -17,9 +17,7 @@ const Game = () => {
       <Route path='/store/skins' component={Skins}/>
       <Route path='/store/skills' component={Skills}/>
       <StoreBar />
-    </Router>
-      {/* <Store /> */}
-      
+    </Router>      
     </div>
 
   )

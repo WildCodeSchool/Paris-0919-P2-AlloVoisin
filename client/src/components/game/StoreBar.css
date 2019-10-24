@@ -6,23 +6,23 @@ ul {
   padding: 0;
 }
 
-.item-container:nth-of-type(odd){
-  background-color: #1d3051;
-}
-
-.item-container:nth-of-type(even){
-  background-color: #000;
-}
-
 .nav-link {
+  display: flex;
+  align-items: center;
   list-style-type: none;
   width: 100%;
   padding: 2px 0;
+  text-decoration: none;
+  color: initial;
+  justify-content: space-around;
+}
+
+.nav-link p {
+  display: none;
 }
 
 .img-container {
   display: flex;
-  justify-content: space-around;
 }
 
 .img-container .nav-link {
@@ -45,16 +45,21 @@ ul {
   background-color: #000;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
   img {
     width: 50px;
   }
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
+  .nav-link p {
+    display: block;
+  }
+
   img {
     width: 75px;
   }
+
   li {
     padding: 6px 0;
   }
