@@ -1,0 +1,60 @@
+/* #homepage {
+
+} */
+#homepage {
+    background: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F53%2F2d%2F03%2F532d0341186be12412c6a4362cc08710.jpg') 50% 0 no-repeat;
+    background-size:cover;
+    min-height:100vh;
+}
+#top-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2vh;
+    align-items: center;
+}
+#top-icons a{
+    padding:1px;
+}
+
+#ironCompany {
+    width: 20vw;
+    border-radius: 50px;
+}
+
+#marvelFight{
+    width: 20vw;
+}
+
+.social-container a {
+    color:#fff;
+}
+
+p {
+    margin-top: 5vh;
+    font-family: 'avengers';
+    color:#fff;
+    position: absolute;
+    bottom: 0;
+    right: 5vh;
+}
+
+
+#game {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+@media screen and (min-width:1000px) {
+    #top-icons{
+        padding: 5vh;
+    }
+    #ironCompany {
+        width: 8vw;
+    }
+    #marvelFight {
+        width:20vw;
+    }
+
+}
