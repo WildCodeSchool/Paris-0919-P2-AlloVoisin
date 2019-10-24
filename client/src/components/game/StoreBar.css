@@ -21,6 +21,7 @@ ul {
   position: fixed;
   bottom: 0;
   width: 100%;
+  border-top: solid 8px rgba(255, 0, 0, 0.561);
 }
 
 .img-container p{

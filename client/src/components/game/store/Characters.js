@@ -5,6 +5,7 @@ const Characters = () => {
   return (
     <div className="items-container">
       <h2>Store</h2>
+      <i className="fas fa-times-circle"></i>
       <ul className="items-list-container">
         <li className="item-container">
           <div className="background-character">
@@ -14,7 +15,7 @@ const Characters = () => {
             />
           </div>
           <p>Thor</p>
-          <button>Hire</button>
+          <button className="Store-button">Hire</button>
         </li>
         <li className="item-container">
           <div className="background-character">
@@ -24,7 +25,7 @@ const Characters = () => {
             />
           </div>
           <p>Spider Man</p>
-          <button>Hire</button>
+          <button className="Store-button">Hire</button>
         </li>
         <li className="item-container">
           <div className="background-character">
@@ -34,7 +35,7 @@ const Characters = () => {
             />
           </div>
           <p>Ms. Marvel</p>
-          <button>Hire</button>
+          <button className="Store-button">Hire</button>
         </li>
         <li className="item-container">
           <div className="background-character">
@@ -44,7 +45,7 @@ const Characters = () => {
             />
           </div>
           <p>Hulk</p>
-          <button>Hire</button>
+          <button className="Store-button">Hire</button>
         </li>
         <li className="item-container">
           <div className="background-character">
@@ -54,7 +55,7 @@ const Characters = () => {
             />
           </div>
           <p>Black Widow</p>
-          <button>Hire</button>
+          <button className="Store-button">Hire</button>
         </li>
       </ul>
     </div>
