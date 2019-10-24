@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
+
 .container {
     position: relative;
 }
@@ -8,7 +10,7 @@
     position: absolute;
     top: 0;
     z-index: 999;
-    background: rgba(94, 1, 201, 0.979);
+
     left: -52vw;
     top: 40vw;
 }
@@ -20,7 +22,7 @@
 .icon {
     padding: 6px;
     margin: 13px;
-    width: 7%;
+    width: 10%;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -45,6 +47,8 @@
 
 .menu-list {
     background: rgba(182, 10, 10, 0.979);
+    font-family: 'Faster One', cursive;
+    font-size: 1.5em;;
     list-style: none;
    
 }
