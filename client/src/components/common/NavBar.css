@@ -1,0 +1,50 @@
+.container {
+    position: relative;
+}
+
+.nav {
+    width: 50vw;
+    box-shadow: 1px 1px #888;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    background: #ffff;
+    left: -52vw;
+    top: 40vw;
+}
+
+.show {
+    left: 0vw;
+}
+
+.icon {
+    padding: 0;
+    margin: 0;
+    width: 30%;
+    border-radius: 50%;
+}
+
+.menu-button {
+    position: relative;
+    z-index: 999;
+    cursor: pointer;
+    
+}
+
+.menu-items {
+    padding: 0;
+    margin: 0;
+
+}
+
+.menu-list {
+    list-style: none;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #555;
+    display: flex;
+    padding: 10px 16px;
+    border: 1px solid #555;
+}
