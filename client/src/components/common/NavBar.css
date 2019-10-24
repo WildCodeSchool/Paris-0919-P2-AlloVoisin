@@ -8,7 +8,7 @@
     position: absolute;
     top: 0;
     z-index: 999;
-    background: #ffff;
+    background: rgba(94, 1, 201, 0.979);
     left: -52vw;
     top: 40vw;
 }
@@ -18,10 +18,15 @@
 }
 
 .icon {
-    padding: 0;
-    margin: 0;
-    width: 30%;
+    padding: 6px;
+    margin: 13px;
+    width: 7%;
     border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    
 }
 
 .menu-button {
@@ -32,18 +37,21 @@
 }
 
 .menu-items {
-    padding: 0;
-    margin: 0;
-
+    height: 0px;
+    width: 150px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .menu-list {
+    background: rgba(182, 10, 10, 0.979);
     list-style: none;
+   
 }
 
 .menu-link {
     text-decoration: none;
-    color: #555;
+    color: rgb(0, 0, 0);
     display: flex;
     padding: 10px 16px;
     border: 1px solid #555;
