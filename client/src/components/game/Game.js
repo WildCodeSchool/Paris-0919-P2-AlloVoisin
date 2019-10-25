@@ -8,6 +8,7 @@ import Characters from "./store/Characters";
 import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from './HealthBar';
+import NavBar from '../common/NavBar';
 import "./Game.css";
 
 export default class Game extends Component {
@@ -40,6 +41,7 @@ export default class Game extends Component {
       <div id="game">
           <HealthBar />
           <Coins />
+          <NavBar />
           <Hero />
           <Villain />
           {this.state.storeCharaters ? <Characters /> : <></>}

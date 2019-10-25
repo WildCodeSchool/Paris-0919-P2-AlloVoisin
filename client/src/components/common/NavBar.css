@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
 
 .container {
-    position: relative;
+    position: absolute;
+    text-align: left;
+    width:100%;
+    top:0;
 }
 
 .nav {
@@ -34,7 +37,7 @@
     size: initial;
     padding: 6px;
     margin: 13px;
-    width: 10%;
+    width: 8%;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -47,11 +50,11 @@
 
 
   .menu-button img:hover  {
-    width: 150px; /* on affiche l'image au carré */
-    height: 150px;
+    /* width: 150px; /* on affiche l'image au carré */
+    /* height: 150px; */
     border-radius: 50%;  /* on arrondit l'image */
-    -webkit-transform: rotate(1440deg); /* rotation de l'image */
-    transform: rotate(1440deg);
+    -webkit-transform: rotate(720deg); /* rotation de l'image */
+    transform: rotate(720deg);
     -webkit-transition: all 2s ease;
     transition: all 2s ease;
   }
@@ -73,8 +76,8 @@
 }
 
 .menu-list {
-    background: rgba(182, 10, 10, 0.979);
-    font-family: 'Faster One', cursive;
+    background: rgba(0, 0, 0, 0.36);
+    /* font-family: 'Faster One', cursive; */
     font-size: 1.5em;;
     list-style: none;
    
@@ -82,7 +85,7 @@
 
 .menu-link {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     display: flex;
     padding: 10px 16px;
     border: 1px solid #555;
