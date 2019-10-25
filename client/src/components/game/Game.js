@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
 import StoreBar from "./StoreBar";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Characters from "./store/Characters";
 import Skins from "./store/Skins";
 import Skills from "./store/Skills";
+import HealthBar from './HealthBar';
 import "./Game.css";
 
 export default class Game extends Component {
@@ -38,6 +39,7 @@ export default class Game extends Component {
     return (
       <div id="game">
         <div id="backgroundCover">
+          <HealthBar />
           <Coins />
           <Hero />
           <Villain />

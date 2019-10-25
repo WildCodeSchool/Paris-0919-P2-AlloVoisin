@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Game from '../game/Game'
 import BtnStart from './BtnStart'
 import SocialNetwork from '../common/SocialNetwork'
-// import logoIronCompany from '../../img/logoIronCompany.jpg'
 import logoMarvelFight from '../../img/logoMarvelFight.png'
 import './Homepage.css'
 
