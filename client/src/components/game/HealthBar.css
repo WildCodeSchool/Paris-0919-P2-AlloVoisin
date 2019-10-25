@@ -1,0 +1,29 @@
+.health-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.health-container {
+    height: 20px;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 auto;
+
+}
+
+#health {
+    border-radius: 10px;
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 20px;
+    background-color: rgb(253, 187, 6);
+    animation: decrease 5s linear infinite;
+}
+
+@keyframes decrease {
+    0% {width: 100%}
+    100% {width: 0%}
+}

@@ -1,17 +1,12 @@
 import React from 'react';
-import SocialNetwork from "./components/common/SocialNetwork";
+import Homepage from "./components/homepage/Homepage";
 import './App.css';
-import './components/common/SocialNetwork.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-<<<<<<< HEAD
-=======
-    <SocialNetwork />
->>>>>>> 05bc935895609641d1085092fd8dac3a8f1b5647
+      <Homepage />
     </div>
   );
 }
-
 export default App;
