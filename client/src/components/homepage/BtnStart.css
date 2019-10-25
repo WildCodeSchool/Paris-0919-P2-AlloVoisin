@@ -1,16 +1,19 @@
 button {
-  position: absolute;
-  left: 42vw;
-  top: 50vh;
   font-family: "avengers";
   font-size: 32px;
   border-radius: 17px;
   background-color: #79797966;
   color: #fff;
   border: 2px solid black;
-  animation: btnStartAnime 2s infinite linear;
   height: 50px;
   padding: 12px 33px;
+}
+
+.start-btn {
+  position: absolute;
+  left: 42vw;
+  top: 50vh;
+  animation: btnStartAnime 2s infinite linear;
 }
 
 @keyframes btnStartAnime {

@@ -18,7 +18,4 @@ const SocialNetwork = () =>{
     )
 }
 
-
-
-
 export default SocialNetwork;
