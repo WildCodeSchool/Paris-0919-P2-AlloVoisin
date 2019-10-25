@@ -12,16 +12,16 @@ const SocialNetwork = () => {
   return (
     <div className="social-container">
       <a href="http://facebook.com" target="_blank">
-        <FontAwesomeIcon icon={faFacebook} size="2x" className="social-icon" />
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
       </a>
       <a href="http://instagram.com" target="_blank">
-        <FontAwesomeIcon icon={faInstagram} size="2x" className="social-icon" />
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
       </a>
       <a href="http://youtube.com" target="_blank">
-        <FontAwesomeIcon icon={faYoutube} size="2x" className="social-icon" />
+        <FontAwesomeIcon icon={faYoutube} size="2x" />
       </a>
       <a href="http://linkedin.com" target="_blank">
-        <FontAwesomeIcon icon={faLinkedin} size="2x" className="social-icon" />
+        <FontAwesomeIcon icon={faLinkedin} size="2x" />
       </a>
     </div>
   );
