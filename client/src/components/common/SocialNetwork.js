@@ -25,5 +25,3 @@ const SocialNetwork = () => {
     </div>
   );
 };
-
-export default SocialNetwork;
