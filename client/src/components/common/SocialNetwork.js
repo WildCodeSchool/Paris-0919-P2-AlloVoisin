@@ -6,6 +6,7 @@ import {
   faYoutube,
   faLinkedin
 } from "@fortawesome/free-brands-svg-icons";
+import "./SocialNetwork.css";
 
 const SocialNetwork = () => {
   return (
@@ -25,3 +26,5 @@ const SocialNetwork = () => {
     </div>
   );
 };
+
+export default SocialNetwork;
