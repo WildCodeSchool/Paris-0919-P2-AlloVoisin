@@ -17,6 +17,17 @@ ul {
   justify-content: space-around;
 }
 
+.store-bar-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 8px rgba(255, 0, 0, 0.561);
+}
+
+.img-container p{
+  color: white;
+}
+
 .nav-link p {
   display: none;
 }
@@ -25,24 +36,11 @@ ul {
   display: flex;
 }
 
+.img-container img {
+  filter: invert(1);
+}
 .img-container .nav-link {
   cursor: pointer;
-}
-
-#img-weapons {
-  background-color: #910000;
-}
-
-#img-skins {
-  background-color: #1d3051;
-}
-
-#img-characters {
-  background-color: #d6891f;
-}
-
-#img-skills {
-  background-color: #000;
 }
 
 @media screen and (min-width: 768px) {
