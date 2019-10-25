@@ -20,3 +20,18 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.Store-button {
+  position : relative;
+  font-family: "avengers";
+  font-size: 32px;
+  border-radius: 17px;
+  background-color:
+  #79797966;
+  color:
+  #fff;
+  border: 2px solid
+  black;
+  animation: btnStartAnime 2s infinite linear;
+  height: 50px;
+  padding: 12px 33px;
+  }
