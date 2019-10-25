@@ -38,7 +38,6 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-        <div id="backgroundCover">
           <HealthBar />
           <Coins />
           <Hero />
@@ -54,7 +53,6 @@ export default class Game extends Component {
                       <Route path='/store/skills' component={Skills}/>
                     
                     </Router>       */}
-        </div>
       </div>
     );
   }
