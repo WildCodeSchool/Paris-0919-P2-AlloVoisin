@@ -1,0 +1,8 @@
+{
+  "short_name": "Marvel Fight",
+  "name": "Project 2 WCC: Marvel Fight",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
