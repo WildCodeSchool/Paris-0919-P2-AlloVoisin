@@ -12,7 +12,7 @@ button {
 .start-btn {
   position: absolute;
   left: 42vw;
-  bottom: 10vh;
+  bottom: 5vh;
   animation: btnStartAnime 2s infinite linear;
 }
 
