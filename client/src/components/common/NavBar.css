@@ -3,7 +3,7 @@
 .container {
     position: absolute;
     text-align: left;
-    width:100%;
+    width:18vh;
     top:0;
 }
 
@@ -40,8 +40,8 @@
 .icon {
     size: initial;
     padding: 6px;
-    margin: 13px;
-    width: 8%;
+    margin: 0;
+    width: 100%;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
