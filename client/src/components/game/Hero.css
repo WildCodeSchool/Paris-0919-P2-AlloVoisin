@@ -72,3 +72,10 @@
         left:38%;
     }
 }
+
+
+@media screen and (max-height:590px) {
+    .hero {
+      top: 100px;
+    }
+  }

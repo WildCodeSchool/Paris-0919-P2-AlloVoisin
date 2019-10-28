@@ -30,3 +30,10 @@
         left:50%;
     }
 }
+
+
+@media screen and (max-height:590px) {
+  .villain {
+    top: 90px;
+  }
+}

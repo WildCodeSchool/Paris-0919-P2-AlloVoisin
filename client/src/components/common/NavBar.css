@@ -3,7 +3,7 @@
 .container {
     position: absolute;
     text-align: left;
-    width:18vh;
+    width:12vw;
     top:0;
 }
 
@@ -93,4 +93,10 @@
     display: flex;
     padding: 10px 16px;
     border: 1px solid #555;
+}
+
+@media screen and (min-width: 900px){
+    .container {
+        width: 9vw;
+    }
 }
