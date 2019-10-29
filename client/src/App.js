@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import Homepage from "./components/homepage/Homepage";
 
 const App = () => {
@@ -8,5 +8,5 @@ const App = () => {
       <Homepage />
     </div>
   );
-}
+};
 export default App;
