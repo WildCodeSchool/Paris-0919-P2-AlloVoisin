@@ -4,12 +4,13 @@
     background: url('https://www.spriters-resource.com/resources/sheets/54/57094.png') 0 0 no-repeat;
     transform: scale(-0.9, 0.9);
     position: absolute;
-    top: 285px;
+    top: 240px;
     left:45%;
 }
 
 .villain-animation {
     animation: animate 0.3s;
+    filter: invert(1);
 }
 
 @keyframes animate {
@@ -28,4 +29,11 @@
     .villain {
         left:50%;
     }
+}
+
+
+@media screen and (max-height:590px) {
+  .villain {
+    top: 90px;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPlayer from 'react-player'
 import Game from '../game/Game'
 import BtnStart from './BtnStart'
 import SocialNetwork from '../common/SocialNetwork'
@@ -7,11 +8,13 @@ import './Homepage.css'
 
 export default class Homepage extends Component {
     state = {
-        gameStarted: false
+        gameStarted: false,
+        playing : true
     }
 
     showGame = () => {
         this.setState({
+            playing : !this.state.playing,
             gameStarted: !this.state.gameStarted
         });
     }
@@ -29,9 +32,8 @@ export default class Homepage extends Component {
                    this.state.gameStarted ? <Game /> : <></>
                 }
                 <p className="HomepageRules">Rules</p>
+                <ReactPlayer url='https://www.youtube.com/embed/4vfGifZY85M' playing={this.state.playing} width='0' height='0'/>
             </div>
-
-
         )
     }
 }

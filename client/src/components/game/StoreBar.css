@@ -22,6 +22,7 @@ ul {
   bottom: 0;
   width: 100%;
   border-top: solid 8px rgba(255, 0, 0, 0.561);
+  background-color: rgba(0, 0, 0, 0.36);
 }
 
 .img-container p{
@@ -60,5 +61,7 @@ ul {
 
   li {
     padding: 6px 0;
+    margin-left: 5vh;
+    margin-right: 5vh;
   }
 }

@@ -8,7 +8,9 @@ import Characters from "./store/Characters";
 import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from './HealthBar';
+import NavBar from '../common/NavBar';
 import "./Game.css";
+import BtnRestart from "./BtnRestart";
 
 export default class Game extends Component {
   state = {
@@ -38,14 +40,15 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-        <div id="backgroundCover">
           <HealthBar />
+          <BtnRestart />
           <Coins />
+          <NavBar />
           <Hero />
           <Villain />
-          {this.state.storeCharaters ? <Characters /> : <></>}
-          {this.state.storeSkins ? <Skins /> : <></>}
-          {this.state.storSkills ? <Skills /> : <></>}
+          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
+          {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
+          {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
           <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
 
           {/* <Router>
@@ -54,7 +57,6 @@ export default class Game extends Component {
                       <Route path='/store/skills' component={Skills}/>
                     
                     </Router>       */}
-        </div>
       </div>
     );
   }
