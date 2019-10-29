@@ -50,7 +50,7 @@ export default class Game extends Component {
           {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
           {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
           <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
-
+            
           {/* <Router>
                       <Route path='/store/characters' component={Characters}/>
                       <Route path='/store/skins' component={Skins}/>
