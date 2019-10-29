@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPlayer from 'react-player'
 import Game from '../game/Game'
 import BtnStart from './BtnStart'
 import SocialNetwork from '../common/SocialNetwork'
@@ -7,11 +8,13 @@ import './Homepage.css'
 
 export default class Homepage extends Component {
     state = {
-        gameStarted: false
+        gameStarted: false,
+        playing : true
     }
 
     showGame = () => {
         this.setState({
+            playing : !this.state.playing,
             gameStarted: !this.state.gameStarted
         });
     }
@@ -20,7 +23,8 @@ export default class Homepage extends Component {
         return (
             <div id="homepage">
                 <div id="top-icons">
-                    <img src="https://files.slack.com/files-pri/T6SG2QGG2-FPJRYTD7T/image_d___ios.png" alt="Logo Iron Company" id="ironCompany"/>
+                    <img src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
+" alt="Logo Iron Company" id="ironCompany"/>
                     <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight"/>
                     <SocialNetwork />
                 </div>
@@ -29,9 +33,8 @@ export default class Homepage extends Component {
                    this.state.gameStarted ? <Game /> : <></>
                 }
                 <p className="HomepageRules">Rules</p>
+                <ReactPlayer url='https://www.youtube.com/embed/4vfGifZY85M' playing={this.state.playing} width='0' height='0'/>
             </div>
-
-
         )
     }
 }

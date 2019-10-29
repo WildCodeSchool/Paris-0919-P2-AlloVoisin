@@ -18,7 +18,7 @@ class NavBar extends Component {
         return(
             <div className="container">
                 <div className="menu-button" onClick={this.handleMenuButtonClick}>
-                    <img className="icon" src="https://media.cdnandroid.com/33/88/9e/9e/imagen-hero-vision-iron-man-ar-experience-0thumb.jpg" alt="ironman"/>
+                    <img className="icon" src="https://files.slack.com/files-pri/T6SG2QGG2-FPJRYTD7T/image_d___ios.png" alt="ironman"/>
                 </div>
 
                    <nav  className={this.state.isSidebarOpen ? 'nav show' : 'nav'}>
