@@ -23,7 +23,8 @@ export default class Homepage extends Component {
         return (
             <div id="homepage">
                 <div id="top-icons">
-                    <img src="https://files.slack.com/files-pri/T6SG2QGG2-FPJRYTD7T/image_d___ios.png" alt="Logo Iron Company" id="ironCompany"/>
+                    <img src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
+" alt="Logo Iron Company" id="ironCompany"/>
                     <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight"/>
                     <SocialNetwork />
                 </div>
