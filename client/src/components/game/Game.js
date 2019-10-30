@@ -40,11 +40,11 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-          <HealthBar />
+          <HealthBar health={this.props.health}/>
           <BtnRestart />
-          <Coins />
+          <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
           <NavBar />
-          <Hero />
+          <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
           <Villain />
           {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
           {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}

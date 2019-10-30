@@ -3,6 +3,10 @@ import './Hero.css'
 
 export default class Hero extends Component {
     animPerso = () => {
+        this.props.removeHealth();
+
+        this.props.addCoins(10);
+
         const villain = document.querySelector('.villain') 
         villain.className="villain-animation villain";
         setTimeout(()=>{villain.className="villain"}, 200);
