@@ -5,44 +5,35 @@ import './Coins.css';
 
 export default class Coins extends Component {
     state = {
-        coins: 0,
         coinsShow: 0
     }
 
     componentDidMount() {
-        setInterval(this.addCoins, 2000);
-        setInterval(this.coinsShowFunc, 2000);
-    }
-
-
-    addCoins = () => {
-        this.setState({
-            coins: this.state.coins + 186
-        });
+        setInterval(this.coinsShowFunc, 100);
     }
 
 
 
     coinsShowFunc = () => {
-        if (this.state.coins < 1000) {
+        if (this.props.coins < 1000) {
             this.setState({
-                coinsShow: this.state.coins
+                coinsShow: this.props.coins
             });
-        } else if (this.state.coins < 1000000) {
+        } else if (this.props.coins < 1000000) {
             this.setState({
-                coinsShow: (this.state.coins / 1000).toFixed(2) + 'K'
+                coinsShow: (this.props.coins / 1000).toFixed(2) + 'K'
             });
-        } else if (this.state.coins < 1000000000) {
+        } else if (this.props.coins < 1000000000) {
             this.setState({
-                coinsShow: (this.state.coins / 1000000).toFixed(2) + 'M'
+                coinsShow: (this.props.coins / 1000000).toFixed(2) + 'M'
             });
-        } else if (this.state.coins < 1000000000000) {
+        } else if (this.props.coins < 1000000000000) {
             this.setState({
-                coinsShow: (this.state.coins / 1000000000).toFixed(2) + 'B'
+                coinsShow: (this.props.coins / 1000000000).toFixed(2) + 'B'
             });
         } else {
             this.setState({
-                coinsShow: (this.state.coins / 1000000000000).toFixed(2) + 'T'
+                coinsShow: (this.props.coins / 1000000000000).toFixed(2) + 'T'
             });
         }
     }
