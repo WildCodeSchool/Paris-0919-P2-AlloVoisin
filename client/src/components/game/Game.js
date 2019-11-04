@@ -40,7 +40,7 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-          <HealthBar health={this.props.health}/>
+          <HealthBar health={this.props.health} healthDivisor={this.props.healthDivisor}/>
           <BtnRestart />
           <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
           <NavBar />
