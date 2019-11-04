@@ -11,7 +11,7 @@ export default class Homepage extends Component {
         gameStarted: false,
         playing : true,
         coins: 0,
-        health: 100
+        health: 150
     }
 
     showGame = () => {
