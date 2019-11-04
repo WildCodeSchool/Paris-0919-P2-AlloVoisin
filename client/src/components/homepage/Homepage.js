@@ -47,8 +47,7 @@ export default class Homepage extends Component {
       <div id="homepage">
         <div id="top-icons">
           <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
-"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
             alt="Logo Iron Company"
             id="ironCompany"
           />
