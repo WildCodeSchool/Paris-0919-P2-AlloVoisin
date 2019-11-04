@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const charactersRoutes = require("./api/routes/store");
+const charactersRoutes = require("./api/routes/store/characters");
+const skinsRoutes = require("./api/routes/store/skins");
 
 mongoose.connect("mongodb://127.0.0.1:27017/marvel-fight-api", {
   useNewUrlParser: true,
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/store/characters", charactersRoutes);
+app.use("/store/skins", skinsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
