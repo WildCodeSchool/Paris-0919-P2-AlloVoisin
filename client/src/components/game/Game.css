@@ -8,17 +8,12 @@
   font-family: "avengers";
 }
 
-#backgroundCover {
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .items-container {
   position: fixed;
   z-index: 1;
   background-color: rgba(98, 97, 97, 0.86);
   width: 100vw;
+  height:65vh;
 }
 
 .items-list-container {
@@ -26,5 +21,14 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
+  overflow-y: auto;
+  height: 50vh;
+}
+
+.cross {
+  cursor:pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
