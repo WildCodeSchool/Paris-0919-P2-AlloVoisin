@@ -1,0 +1,69 @@
+[
+    {
+        "idLevel": 1,
+        "name": "Thanos",
+        "image": "../img/Thanos.png",
+        "damages": 100  
+    },
+    {
+        "idLevel": 2,
+        "name": "Venom",
+        "image": "../../img/Venom.png",
+        "damages": 110
+    },
+    {
+        "idLevel": 3,
+        "name": "Blob",
+        "image": "../img/blob.png",
+        "damages": 120 
+    },
+    {
+        "idLevel": 4,
+        "name": "Morgan le Fay",
+        "image": "../img/MorganleFay.png", 
+        "damages": 130 
+    },
+    {
+        "idLevel": 5,
+        "name": "Sugar-Man",
+        "image": "../img/SugarMan.png",
+        "damages": 140 
+    },
+    {
+        "idLevel": 6,
+        "name": "Skadi",
+        "image": "../img/Skadi.png",
+        "damages": 150
+    },
+    {
+        "idLevel": 7,
+        "name": "Nitro",
+        "image": "../img/Nitro.png",
+        "damages": 160
+    },
+    {
+        "idLevel": 8,
+        "name": "Surtur",
+        "image": "../img/Sutur.png",
+        "damages": 170
+    },
+    {
+        "idLevel": 9,
+        "name": "Nimrod",
+        "image": "../img/Nimrod.png",
+        "damages": 180
+    },
+    {
+        "idLevel": 10,
+        "name": "Dr Octopus",
+        "image": "../img/DrOctopus.png",
+        "damages": 190 
+    },
+    {
+        "idLevel": 11,
+        "name": "Ironclad",
+        "image": "../img/IronClad.png",
+        "damages": 200
+
+    }
+]
