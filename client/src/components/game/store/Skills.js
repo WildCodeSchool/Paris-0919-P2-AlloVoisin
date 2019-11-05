@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./Skills.css";
 
 class Skills extends Component {
@@ -9,7 +9,7 @@ class Skills extends Component {
         <img
           src="https://image.noelshack.com/fichiers/2019/43/4/1571929738-cross.png"
           alt="cross"
-          class="cross"
+          className="cross"
           onClick={this.props.showStoreSkills}
         />
       </div>
