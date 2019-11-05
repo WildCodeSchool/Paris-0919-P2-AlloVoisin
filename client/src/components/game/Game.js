@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
@@ -39,11 +39,18 @@ export default class Game extends Component {
 
   render() {
     return (
+      
       <div id="game">
           <HealthBar health={this.props.health}/>
           <BtnRestart />
           <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
+          <Router>
           <NavBar />
+          <Switch>
+            <Route path="/game" component={Game} />
+            <Route path="/about" component={About} />
+          </Switch>
+          </Router>
           <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
           <Villain />
           {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
@@ -58,6 +65,7 @@ export default class Game extends Component {
                     
                     </Router>       */}
       </div>
+      
     );
   }
 }
