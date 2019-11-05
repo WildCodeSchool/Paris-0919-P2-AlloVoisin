@@ -4,7 +4,7 @@
         "name": "Thanos",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572944880-thanos.png",
         "damages": 100,
-        "elseDivisor": 1,
+        "healthDivisor": 1,
         "coinAward": 20
     },
     {
@@ -12,7 +12,7 @@
         "name": "Venom",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572946163-venom.png",
         "damages": 110,
-        "elseDivisor": 1.1,
+        "healthDivisor": 1.1,
         "coinAward": 50
     },
     {
@@ -20,7 +20,7 @@
         "name": "Blob",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572945161-blob.png",
         "damages": 120,
-        "elseDivisor": 1.2, 
+        "healthDivisor": 1.2, 
         "coinAward": 100
     },
     {
@@ -28,7 +28,7 @@
         "name": "Morgan le Fay",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572945161-morganlefay.png", 
         "damages": 130,
-        "elseDivisor": 1.3,
+        "healthDivisor": 1.3,
         "coinAward": 150
     },
     {
@@ -36,7 +36,7 @@
         "name": "Sugar-Man",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572944879-sugarman.png",
         "damages": 140,
-        "elseDivisor": 1.4,
+        "healthDivisor": 1.4,
         "coinAward": 200 
     },
     {
@@ -44,7 +44,7 @@
         "name": "Skadi",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572944880-skadi.png",
         "damages": 150,
-        "elseDivisor": 1.5,
+        "healthDivisor": 1.5,
         "coinAward": 300
     },
     {
@@ -52,7 +52,7 @@
         "name": "Nitro",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572944880-nitro.png",
         "damages": 160,
-        "elseDivisor": 1.6,
+        "healthDivisor": 1.6,
         "coinAward": 500
     },
     {
@@ -60,7 +60,7 @@
         "name": "Surtur",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572944880-sutur.png",
         "damages": 170,
-        "elseDivisor": 1.7,
+        "healthDivisor": 1.7,
         "coinAward": 1000 
     },
     {
@@ -68,7 +68,7 @@
         "name": "Nimrod",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572945440-nimrod.png",
         "damages": 180,
-        "elseDivisor": 1.8,
+        "healthDivisor": 1.8,
         "coinaward": 1500 
         
     },
@@ -77,7 +77,7 @@
         "name": "Dr Octopus",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572945161-droctopus.png",
         "damages": 190,
-        "elseDivisor": 1.9,
+        "healthDivisor": 1.9,
         "coinAward": 2000 
     },
     {
@@ -85,7 +85,7 @@
         "name": "Ironclad",
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572945161-ironclad.png",
         "damages": 200,
-        "elseDivisor": 2,
+        "healthDivisor": 2,
         "coinAward": 3000
 
     }
