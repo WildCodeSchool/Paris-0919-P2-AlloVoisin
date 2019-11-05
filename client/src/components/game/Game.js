@@ -9,6 +9,7 @@ import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from "./HealthBar";
 import NavBar from "../common/NavBar";
+import Timer from "../game/Timer"
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
 import villains from "../game/villains.json";
@@ -28,7 +29,8 @@ export default class Game extends Component {
     },
     storeCharaters: false,
     storeSkins: false,
-    storeSkills: false
+    storeSkills: false,
+    timer: 30,
   };
 
   addCoins = nbCoins => {
@@ -63,6 +65,16 @@ export default class Game extends Component {
     });
   };
 
+  decrement = () => {
+    if (this.state.timer > 0) {
+        this.setState({timer : this.state.timer -1})
+    }
+}
+
+Timer = () => {
+   setInterval(this.decrement, 1000)
+}
+
   // Ip address 192.168.1.223
   componentDidMount = () => {
     axios
@@ -96,7 +108,10 @@ export default class Game extends Component {
       healthDivisor: villains[0].healthDivisor,
       villainImg: villains[0].image
     });
+
+    this.Timer()
   };
+
 
   componentDidUpdate = () => {
     if (this.state.health === 0) {
@@ -105,7 +120,8 @@ export default class Game extends Component {
         level: this.state.level + 1,
         health: villains[this.state.level].damages,
         healthDivisor: villains[this.state.level].healthDivisor,
-        villainImg: villains[this.state.level].image
+        villainImg: villains[this.state.level].image,
+        timer : 30
       });
       this.addCoins(villains[this.state.level].coinAward)
     }
@@ -117,11 +133,13 @@ export default class Game extends Component {
         <HealthBar
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
+          timer={this.state.timer}
         />
         <BtnRestart />
         <Coins coins={this.state.coins} addCoins={this.addCoins} />
         <NavBar />
         <Hero
+          removeHealth={this.removeHealth}
           removeHealth={this.removeHealth} 
           addCoins={this.addCoins}
         />
