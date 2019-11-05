@@ -13,6 +13,7 @@
         "image": "https://image.noelshack.com/fichiers/2019/45/2/1572946163-venom.png",
         "damages": 110,
         "healthDivisor": 1.1,
+
         "coinAward": 50
     },
     {

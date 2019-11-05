@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
@@ -7,13 +6,12 @@ import StoreBar from "./StoreBar";
 import Characters from "./store/Characters";
 import Skins from "./store/Skins";
 import Skills from "./store/Skills";
-import HealthBar from "./HealthBar";
-import NavBar from "../common/NavBar";
+import HealthBar from './HealthBar';
+import NavBar from '../common/NavBar';
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
-// import villains from "../game/villains.json";
-
 import axios from "axios";
+
 
 export default class Game extends Component {
   state = {
@@ -148,6 +146,7 @@ Timer = () => {
 
   render() {
     return (
+      
       <div id="game">
         <HealthBar
           health={this.state.health}
@@ -192,7 +191,9 @@ Timer = () => {
           showStoreSkins={this.showStoreSkins}
           showStoreSkills={this.showStoreSkills}
         />
+
       </div>
+      
     );
   }
 }
