@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
+
+.container {
+    position: absolute;
+    text-align: left;
+    width:12vw;
+    top:0;
+}
+
+.nav {
+    width: 50vw;
+    box-shadow: 1px 1px rgb(0, 0, 0);
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    left: -52vw;
+    top: 40vw;
+}
+
+.show {
+    left: 0vw;
+    position: initial;
+}
+
+
+.nav a:hover { 
+    background-image:url(http://www.20cents-video.com/userdata/animated-gif/library/feux5n10.gif);
+    background-repeat:no-repeat;
+    /* background-size:cover; */
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    }
+
+    .nav a:hover:before { 
+    content:" » ";
+    }
+
+
+
+.icon {
+    size: initial;
+    padding: 6px;
+    margin: 0;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    -webkit-filter: grayscale(0) blur(0px);
+    filter: grayscale(0) blur(0px);
+
+}
+
+
+  .menu-button img:hover  {
+    /* width: 150px; /* on affiche l'image au carré */
+    /* height: 150px; */
+    border-radius: 50%;  /* on arrondit l'image */
+    -webkit-transform: rotate(720deg); /* rotation de l'image */
+    transform: rotate(720deg);
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+  }
+
+
+.menu-button {
+   
+    position: relative;
+    z-index: 999;
+    cursor: pointer;
+    
+}
+
+.menu-items {
+    height: 0px;
+    width: 150px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu-list {
+    background: rgba(0, 0, 0, 0.36);
+    /* font-family: 'Faster One', cursive; */
+    font-size: 1.5em;;
+    list-style: none;
+   
+}
+
+.menu-link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px 16px;
+    border: 1px solid #555;
+}
+
+@media screen and (min-width: 900px){
+    .container {
+        width: 9vw;
+    }
+}
