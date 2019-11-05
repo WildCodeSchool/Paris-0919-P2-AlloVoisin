@@ -11,7 +11,7 @@ const Characters = ({ showStoreCharacters, characters }) => {
         <img
           src="https://image.noelshack.com/fichiers/2019/43/4/1571929738-cross.png"
           alt="cross"
-          class="cross"
+          className="cross"
           onClick={showStoreCharacters}
         />
         <ul className="items-list-container">
