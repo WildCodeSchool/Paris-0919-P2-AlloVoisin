@@ -18,7 +18,11 @@ export default class Homepage extends Component {
     health: 0,
     healthDivisor : 0,
     level : 0,
-    villainImg : ""
+    villainImg : "",
+    store: {
+      characters: null,
+      skins: null
+    }
   };
 
   showGame = () => {
@@ -43,10 +47,30 @@ export default class Homepage extends Component {
   };
 
   componentDidMount = () => {
-    // axios
-    //   .get("191.168.:5000/store/characters")
-    //   .then(data => console.log(data))
-    //   .catch(error => console.log(error));
+       axios
+      .get("http://localhost:5000/store/characters")
+      .then(characters =>
+        this.setState({
+          store: {
+            ...this.state.store,
+            characters: characters.data
+          }
+        })
+      )
+      .catch(error => console.log(error));
+    
+    axios
+      .get("http://localhost:5000/store/skins")
+      .then(skins =>
+        this.setState({
+          store: {
+            ...this.state.store,
+            skins: skins.data
+          }
+        })
+      )
+      .catch(error => console.log(error));
+    
     this.setState({
         level: villains[0].idLevel,
         health: villains[0].damages,
@@ -54,6 +78,7 @@ export default class Homepage extends Component {
         villainImg : villains[0].image
     })
   }
+  
   componentDidUpdate = () => {
         if(this.state.health === 0) {
             this.setState({
@@ -64,6 +89,7 @@ export default class Homepage extends Component {
             })
             
         }
+
   }
 
   render() {
@@ -71,8 +97,7 @@ export default class Homepage extends Component {
       <div id="homepage">
         <div id="top-icons">
           <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
-"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
             alt="Logo Iron Company"
             id="ironCompany"
           />
@@ -89,6 +114,8 @@ export default class Homepage extends Component {
             removeHealth={this.removeHealth}
             villainImg={this.state.villainImg}
             level={this.state.level}
+            characters={this.state.store.characters}
+            skins={this.state.store.skins}
           />
         ) : (
           <></>
