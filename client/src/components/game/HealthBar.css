@@ -8,6 +8,7 @@
     height: 20px;
     width: 50%;
     border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     margin: 0 auto;
 
@@ -23,6 +24,10 @@
     /* animation: decrease 5s linear infinite; */
 }
 
+.damage{
+    overflow:hidden;
+    max-width:100%;
+}
 /* @keyframes decrease {
     0% {width: 100%}
     100% {width: 0%}

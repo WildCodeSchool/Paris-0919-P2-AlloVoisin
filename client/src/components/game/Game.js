@@ -40,48 +40,17 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-        <HealthBar health={this.props.health} />
-        <BtnRestart />
-        <Coins coins={this.props.coins} addCoins={this.props.addCoins} />
-        <NavBar />
-        <Hero
-          removeHealth={this.props.removeHealth}
-          addCoins={this.props.addCoins}
-        />
-        <Villain />
-        {this.state.storeCharaters ? (
-          <Characters
-            characters={this.props.characters}
-            showStoreCharacters={this.showStoreCharacters}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.storeSkins ? (
-          <Skins
-            skins={this.props.skins}
-            showStoreSkins={this.showStoreSkins}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.storSkills ? (
-          <Skills showStoreSkills={this.showStoreSkills} />
-        ) : (
-          <></>
-        )}
-        <StoreBar
-          showStoreCharacters={this.showStoreCharacters}
-          showStoreSkins={this.showStoreSkins}
-          showStoreSkills={this.showStoreSkills}
-        />
 
-        {/* <Router>
-                      <Route path='/store/characters' component={Characters}/>
-                      <Route path='/store/skins' component={Skins}/>
-                      <Route path='/store/skills' component={Skills}/>
-                    
-                    </Router>       */}
+          <HealthBar health={this.props.health} healthDivisor={this.props.healthDivisor}/>
+          <BtnRestart />
+          <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
+          <NavBar />
+          <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
+          <Villain  villainImg={this.props.villainImg} level={this.props.level}/>
+          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
+          {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
+          {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
+          <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
       </div>
     );
   }

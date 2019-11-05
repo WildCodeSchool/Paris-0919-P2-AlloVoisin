@@ -38,11 +38,11 @@ export default class Hero extends Component {
     }, 350);
   };
 
-  render() {
-    return (
-      <div className="hero" onClick={this.animPerso}>
-        <div className="laser" alt="laser"></div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="hero" onClick={this.animPerso} >
+                <div className='laser' alt="laser"></div>
+            </div>
+        )
+    }
 }
