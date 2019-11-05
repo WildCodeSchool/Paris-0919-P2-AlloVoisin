@@ -4,7 +4,7 @@ import './QuoteCard.css';
 class QuoteCard extends React.Component {
   constructor(props) {
     super(props);
-    thisi.state = {
+    this.state = {
       favorite: false,
     };
   }
