@@ -107,6 +107,7 @@ export default class Game extends Component {
         healthDivisor: villains[this.state.level].healthDivisor,
         villainImg: villains[this.state.level].image
       });
+      this.addCoins(villains[this.state.level].coinAward)
     }
   };
 
