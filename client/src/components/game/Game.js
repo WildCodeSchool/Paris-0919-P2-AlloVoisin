@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
@@ -9,8 +8,10 @@ import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from './HealthBar';
 import NavBar from '../common/NavBar';
+import About from '../about/About'
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
+import Homepage from "../homepage/Homepage";
 
 export default class Game extends Component {
   state = {
@@ -44,13 +45,8 @@ export default class Game extends Component {
           <HealthBar health={this.props.health}/>
           <BtnRestart />
           <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
-          <Router>
+          
           <NavBar />
-          <Switch>
-            <Route path="/game" component={Game} />
-            <Route path="/about" component={About} />
-          </Switch>
-          </Router>
           <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
           <Villain />
           {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}

@@ -10,7 +10,6 @@ import axios from "axios";
 
 export default class Homepage extends Component {
   state = {
-    gameStarted: false,
     playing: true,
     coins: 0,
     health: 100
@@ -19,8 +18,8 @@ export default class Homepage extends Component {
   showGame = () => {
     this.setState({
       playing: !this.state.playing,
-      gameStarted: !this.state.gameStarted
     });
+    this.props.chargeGame();
   };
 
   addCoins = nbCoins => {
@@ -55,8 +54,9 @@ export default class Homepage extends Component {
           <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" />
           <SocialNetwork />
         </div>
+       
         <BtnStart showGame={this.showGame} />
-        {this.state.gameStarted ? (
+        {this.props.gameStarted ? (
           <Game
             coins={this.state.coins}
             addCoins={this.addCoins}
@@ -67,6 +67,7 @@ export default class Homepage extends Component {
           <></>
         )}
         <p className="HomepageRules">Rules</p>
+
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
           playing={this.state.playing}
