@@ -5,7 +5,8 @@ export default class HealthBar extends Component {
 
 
     render() {
-        const health = {width:`${this.props.health}%`}
+
+        let health = {width:`${this.props.health/this.props.healthDivisor}%`}
         return (
             <div className="health-bar">
                 <p className="style">Level 1</p>
