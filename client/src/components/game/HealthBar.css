@@ -14,6 +14,12 @@
 
 }
 
+.style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #health {
     border-radius: 10px;
     display: flex;
