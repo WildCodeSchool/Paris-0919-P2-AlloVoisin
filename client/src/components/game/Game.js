@@ -9,6 +9,7 @@ import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from "./HealthBar";
 import NavBar from "../common/NavBar";
+import Timer from "../game/Timer"
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
 
@@ -16,7 +17,7 @@ export default class Game extends Component {
   state = {
     storeCharaters: false,
     storeSkins: false,
-    storeSkills: false
+    storeSkills: false,
   };
 
   showStoreCharacters = () => {
@@ -40,7 +41,7 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-
+          <Timer />
           <HealthBar health={this.props.health} healthDivisor={this.props.healthDivisor}/>
           <BtnRestart />
           <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
