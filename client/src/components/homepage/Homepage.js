@@ -8,17 +8,15 @@ import logoMarvelFight from "../../img/logoMarvelFight.png";
 import villains from "../game/villains.json";
 import "./Homepage.css";
 
-
-
 export default class Homepage extends Component {
   state = {
     gameStarted: false,
     playing: true,
     coins: 0,
     health: 0,
-    healthDivisor : 0,
-    level : 0,
-    villainImg : "",
+    healthDivisor: 0,
+    level: 0,
+    villainImg: "",
     store: {
       characters: null,
       skins: null
@@ -40,25 +38,25 @@ export default class Homepage extends Component {
 
   removeHealth = () => {
     if (this.state.health > 0) {
-        this.setState({
-            health: this.state.health - 1
-        });
+      this.setState({
+        health: this.state.health - 1
+      });
     }
   };
-
+  // Ip address 192.168.1.223
   componentDidMount = () => {
-       axios
+    axios
       .get("http://localhost:5000/store/characters")
-      .then(characters =>
+      .then(characters => {
         this.setState({
           store: {
             ...this.state.store,
             characters: characters.data
           }
-        })
-      )
+        });
+      })
       .catch(error => console.log(error));
-    
+
     axios
       .get("http://localhost:5000/store/skins")
       .then(skins =>
@@ -70,27 +68,27 @@ export default class Homepage extends Component {
         })
       )
       .catch(error => console.log(error));
-    
-    this.setState({
-        level: villains[0].idLevel,
-        health: villains[0].damages,
-        healthDivisor : villains[0].healthDivisor,
-        villainImg : villains[0].image
-    })
-  }
-  
-  componentDidUpdate = () => {
-        if(this.state.health === 0) {
-            this.setState({
-                level : this.state.level+1,
-                health:  villains[this.state.level].damages,
-                healthDivisor : villains[this.state.level].healthDivisor,
-                villainImg : villains[this.state.level].image
-            })
-            
-        }
 
-  }
+    this.setState({
+      ...this.state,
+      level: villains[0].idLevel,
+      health: villains[0].damages,
+      healthDivisor: villains[0].healthDivisor,
+      villainImg: villains[0].image
+    });
+  };
+
+  componentDidUpdate = () => {
+    if (this.state.health === 0) {
+      this.setState({
+        ...this.state,
+        level: this.state.level + 1,
+        health: villains[this.state.level].damages,
+        healthDivisor: villains[this.state.level].healthDivisor,
+        villainImg: villains[this.state.level].image
+      });
+    }
+  };
 
   render() {
     return (
