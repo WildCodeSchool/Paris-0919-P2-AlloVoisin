@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
@@ -6,12 +7,13 @@ import StoreBar from "./StoreBar";
 import Characters from "./store/Characters";
 import Skins from "./store/Skins";
 import Skills from "./store/Skills";
-import HealthBar from './HealthBar';
-import NavBar from '../common/NavBar';
+import HealthBar from "./HealthBar";
+import NavBar from "../common/NavBar";
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
-import axios from "axios";
+// import villains from "../game/villains.json";
 
+import axios from "axios";
 
 export default class Game extends Component {
   state = {
@@ -128,7 +130,7 @@ Timer = () => {
 
   // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
-    if (this.state.health === 0 && this.state.level != 0) {
+    if (this.state.health === 0 && this.state.level !=0) {
       axios
       .get("http://192.168.1.223:5000/villains")
       .then(villains => (this.setState({
@@ -146,7 +148,6 @@ Timer = () => {
 
   render() {
     return (
-      
       <div id="game">
         <HealthBar
           health={this.state.health}
@@ -191,9 +192,7 @@ Timer = () => {
           showStoreSkins={this.showStoreSkins}
           showStoreSkills={this.showStoreSkills}
         />
-
       </div>
-      
     );
   }
 }
