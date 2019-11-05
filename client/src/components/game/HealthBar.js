@@ -10,7 +10,7 @@ export default class HealthBar extends Component {
         let health = {width:`${this.props.health/this.props.healthDivisor}%`}
         return (
             <div className="health-bar">
-                <p className="style">Level 1<Timer  timer={this.props.timer}/></p>
+                <p className="style">Level {this.props.level}<Timer  timer={this.props.timer}/></p>
                 <div className="health-container">
                     <div id="health" className="damage" style={health}></div>
                 </div>

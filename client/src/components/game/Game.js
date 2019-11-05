@@ -9,10 +9,9 @@ import Skins from "./store/Skins";
 import Skills from "./store/Skills";
 import HealthBar from "./HealthBar";
 import NavBar from "../common/NavBar";
-import Timer from "../game/Timer"
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
-import villains from "../game/villains.json";
+// import villains from "../game/villains.json";
 
 import axios from "axios";
 
@@ -101,29 +100,49 @@ Timer = () => {
       )
       .catch(error => console.log(error));
 
-    this.setState({
+      axios
+      .get("http://192.168.1.223:5000/villains")
+      .then(villains => (this.setState({
       ...this.state,
-      level: villains[0].idLevel,
-      health: villains[0].damages,
-      healthDivisor: villains[0].healthDivisor,
-      villainImg: villains[0].image
-    });
+      level: villains.data[0].idLevel,
+      health: villains.data[0].damages,
+      healthDivisor: villains.data[0].healthDivisor,
+      villainImg: villains.data[0].image
+    })))
 
     this.Timer()
   };
 
 
+  // componentDidUpdate = () => {
+  //   if (this.state.health === 0) {
+  //     this.setState({
+  //       ...this.state,
+  //       level: this.state.level + 1,
+  //       health: villains[this.state.level].damages,
+  //       healthDivisor: villains[this.state.level].healthDivisor,
+  //       villainImg: villains[this.state.level].image,
+  //       timer : 30
+  //     });
+  //     this.addCoins(villains[this.state.level].coinAward)
+  //   }
+  // };
+
+  // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
-    if (this.state.health === 0) {
-      this.setState({
+    if (this.state.health === 0 && this.state.level != 0) {
+      axios
+      .get("http://192.168.1.223:5000/villains")
+      .then(villains => (this.setState({
         ...this.state,
         level: this.state.level + 1,
-        health: villains[this.state.level].damages,
-        healthDivisor: villains[this.state.level].healthDivisor,
-        villainImg: villains[this.state.level].image,
+        health: villains.data[this.state.level].damages,
+        healthDivisor: villains.data[this.state.level].healthDivisor,
+        villainImg: villains.data[this.state.level].image,
         timer : 30
-      });
-      this.addCoins(villains[this.state.level].coinAward)
+      }),
+      this.addCoins(villains.data[this.state.level].coinAward)
+      ))
     }
   };
 
@@ -134,16 +153,19 @@ Timer = () => {
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
           timer={this.state.timer}
+          level={this.state.level}
         />
         <BtnRestart />
         <Coins coins={this.state.coins} addCoins={this.addCoins} />
         <NavBar />
         <Hero
           removeHealth={this.removeHealth}
-          removeHealth={this.removeHealth} 
           addCoins={this.addCoins}
         />
+        {this.state.level === 0 ? <></> :
         <Villain villainImg={this.state.villainImg} level={this.state.level} />
+        
+        }
         {this.state.storeCharaters ? (
           <Characters
             characters={this.state.store.characters}
