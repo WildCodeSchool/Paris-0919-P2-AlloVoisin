@@ -29,7 +29,6 @@ export default class Villain extends Component {
             case 10 : url = DrOctopus; break;
             case 11 : url = IronClad; break;
             default: url = Thanos; break; 
-            
         }
         img.style.backgroundImage = `url(${url})`
     }

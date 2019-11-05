@@ -48,7 +48,7 @@ export default class Homepage extends Component {
 
   componentDidMount = () => {
        axios
-      .get("http://localhost:5000/store/characters")
+      .get("http://192.168.1.223:5000/store/characters")
       .then(characters =>
         this.setState({
           store: {
@@ -60,7 +60,7 @@ export default class Homepage extends Component {
       .catch(error => console.log(error));
     
     axios
-      .get("http://localhost:5000/store/skins")
+      .get("http://192.168.1.223:5000/store/skins")
       .then(skins =>
         this.setState({
           store: {

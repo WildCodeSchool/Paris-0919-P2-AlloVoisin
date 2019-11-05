@@ -47,8 +47,8 @@ export default class Game extends Component {
           <NavBar />
           <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
           <Villain  villainImg={this.props.villainImg} level={this.props.level}/>
-          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
-          {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
+          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters} characters={this.props.characters}/> : <></>}
+          {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins} skins={this.props.skins}/> : <></>}
           {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
           <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
       </div>
