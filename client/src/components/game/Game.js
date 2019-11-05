@@ -14,14 +14,14 @@ import BtnRestart from "./BtnRestart";
 
 export default class Game extends Component {
   state = {
-    storeCharaters: false,
+    storeCharacters: false,
     storeSkins: false,
     storeSkills: false
   };
 
   showStoreCharacters = () => {
     this.setState({
-      storeCharaters: !this.state.storeCharaters
+      storeCharacters: !this.state.storeCharacters
     });
   };
 
@@ -46,7 +46,7 @@ export default class Game extends Component {
           <NavBar />
           <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
           <Villain />
-          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
+          {this.state.storeCharacters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
           {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
           {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
           <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
