@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const Character = require("../models/character");
+const Character = require("../../models/character");
 
 router.get("/", async (req, res) => {
   try {

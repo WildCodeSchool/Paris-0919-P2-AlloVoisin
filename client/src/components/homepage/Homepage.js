@@ -13,7 +13,11 @@ export default class Homepage extends Component {
     gameStarted: false,
     playing: true,
     coins: 0,
-    health: 100
+    health: 100,
+    store: {
+      characters: null,
+      skins: null
+    }
   };
 
   showGame = () => {
@@ -38,7 +42,25 @@ export default class Homepage extends Component {
   componentDidMount() {
     axios
       .get("http://localhost:5000/store/characters")
-      .then(data => console.log(data))
+      .then(characters =>
+        this.setState({
+          store: {
+            ...this.state.store,
+            characters: characters.data
+          }
+        })
+      )
+      .catch(error => console.log(error));
+    axios
+      .get("http://localhost:5000/store/skins")
+      .then(skins =>
+        this.setState({
+          store: {
+            ...this.state.store,
+            skins: skins.data
+          }
+        })
+      )
       .catch(error => console.log(error));
   }
 
@@ -47,8 +69,7 @@ export default class Homepage extends Component {
       <div id="homepage">
         <div id="top-icons">
           <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
-"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
             alt="Logo Iron Company"
             id="ironCompany"
           />
@@ -62,6 +83,8 @@ export default class Homepage extends Component {
             addCoins={this.addCoins}
             health={this.state.health}
             removeHealth={this.removeHealth}
+            characters={this.state.store.characters}
+            skins={this.state.store.skins}
           />
         ) : (
           <></>
