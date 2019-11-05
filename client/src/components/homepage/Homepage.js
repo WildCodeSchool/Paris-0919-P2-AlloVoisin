@@ -9,8 +9,6 @@ import "./Homepage.css";
 export default class Homepage extends Component {
   state = {
     playing: true,
-    coins: 0,
-    health: 100
   };
 
   showGame = () => {
@@ -37,9 +35,7 @@ export default class Homepage extends Component {
 
         {this.props.gameStarted ? (
           <Game
-            coins={this.state.coins}
             addCoins={this.addCoins}
-            health={this.state.health}
             removeHealth={this.removeHealth}
           />
         ) : (
