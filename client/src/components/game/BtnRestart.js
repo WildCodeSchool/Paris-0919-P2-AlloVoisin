@@ -11,7 +11,7 @@ class BtnRestart extends Component {
     render() {
         return (
             <div className="display">
-                <button
+                 <button onClick={this.props.restartGame}
                 id="restartGame"
                 type="button"
                 className="btn"
