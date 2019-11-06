@@ -7,11 +7,8 @@ import logoMarvelFight from "../../img/logoMarvelFight.png";
 import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
 
-import axios from "axios";
-
 export default class Homepage extends Component {
   state = {
-    gameStarted: false,
     playing: true,
     coins: 0,
     health: 100,
@@ -21,20 +18,8 @@ export default class Homepage extends Component {
   showGame = () => {
     this.setState({
       playing: !this.state.playing,
-      gameStarted: !this.state.gameStarted
     });
-  };
-
-  addCoins = nbCoins => {
-    this.setState({
-      coins: this.state.coins + nbCoins
-    });
-  };
-
-  removeHealth = () => {
-    this.setState({
-      health: this.state.health - 1
-    });
+    this.props.chargeGame();
   };
 
   componentDidMount() {
@@ -50,25 +35,25 @@ this.setState({
 });  
  };
 
+
   render() {
     return (
       <div id="homepage">
         <div id="top-icons">
           <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
-"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
             alt="Logo Iron Company"
             id="ironCompany"
           />
           <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" />
           <SocialNetwork />
         </div>
+       
         <BtnStart showGame={this.showGame} />
-        {this.state.gameStarted ? (
+
+        {this.props.gameStarted ? (
           <Game
-            coins={this.state.coins}
             addCoins={this.addCoins}
-            health={this.state.health}
             removeHealth={this.removeHealth}
           />
         ) : (
@@ -88,6 +73,7 @@ this.setState({
 : null  
 }  
 </div>  
+        <p className="HomepageRules">Rules</p>
 
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"

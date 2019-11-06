@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './NavBar.css';
+import { Link } from 'react-router-dom';
 //import { is } from '@babel/types';
 //import { isTemplateElement } from '@babel/types';
 
@@ -23,15 +24,19 @@ class NavBar extends Component {
 
                    <nav  className={this.state.isSidebarOpen ? 'nav show' : 'nav'}>
                             <ul className="menu-items">
+                                <Link to='/'>
                                     <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">Game</a>
+                                        <span className="menu-link" >Game</span>
                                     </li>
+                                    </Link>
                                     <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">Rules</a>
+                                        <span className="menu-link" >Rules</span>
                                     </li>
+                                    <Link to='/about'>
                                     <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">About</a>
+                                        <span className="menu-link" >About</span>
                                     </li>
+                                    </Link>
                             </ul>
                      </nav>
             </div>
