@@ -15,6 +15,7 @@ class BtnRestart extends Component {
                 id="restartGame"
                 type="button"
                 className="btn"
+                onClick={this.props.resetGame}
                 >
                 RESTART
                 </button>

@@ -6,11 +6,11 @@ class Timer extends Component {
     render() {
        
         return (
-            <div>
-                <div className="timer">
-                {this.props.timer} &nbsp;&nbsp;&nbsp;sec
-                </div>
-            </div>
+            <>
+                <span className="timer">
+                {this.props.timer} &nbsp;&nbsp;sec
+                </span>
+            </>
         )
     }
 }

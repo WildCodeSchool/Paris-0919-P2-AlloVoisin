@@ -22,6 +22,7 @@ export default class Game extends Component {
     healthDivisor: 0,
     level: 0,
     villainImg: "",
+    background: "",
     store: {
       characters: null,
       skins: null
@@ -74,6 +75,15 @@ Timer = () => {
    setInterval(this.decrement, 1000)
 }
 
+resetGame = () => {
+  this.setState({
+    ...this.state,
+    level: 1,
+    coins: 0,
+    timer: 30,
+  })
+}
+
   // Ip address 192.168.1.223
   componentDidMount = () => {
     axios
@@ -107,10 +117,12 @@ Timer = () => {
       level: villains.data[0].idLevel,
       health: villains.data[0].damages,
       healthDivisor: villains.data[0].healthDivisor,
-      villainImg: villains.data[0].image
-    })))
-
+      villainImg: villains.data[0].image,
+    }),
+    document.getElementById('game').style.backgroundImage= `url(${villains.data[0].bgSrc})`))
     this.Timer()
+    if(this.state.background){
+    }
   };
 
 
@@ -130,7 +142,7 @@ Timer = () => {
 
   // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
-    if (this.state.health === 0 && this.state.level !=0) {
+    if (this.state.health === 0 && this.state.level !==0) {
       axios
       .get("http://192.168.1.223:5000/villains")
       .then(villains => (this.setState({
@@ -139,10 +151,11 @@ Timer = () => {
         health: villains.data[this.state.level].damages,
         healthDivisor: villains.data[this.state.level].healthDivisor,
         villainImg: villains.data[this.state.level].image,
+        background: villains.data[this.state.level].bgSrc,
         timer : 30
       }),
-      this.addCoins(villains.data[this.state.level].coinAward)
-      ))
+      this.addCoins(villains.data[this.state.level].coinAward),
+      document.getElementById('game').style.backgroundImage= `url(${villains.data[this.state.level].bgSrc})`))
     }
   };
 
@@ -155,7 +168,7 @@ Timer = () => {
           timer={this.state.timer}
           level={this.state.level}
         />
-        <BtnRestart />
+        <BtnRestart resetGame={this.resetGame}/>
         <Coins coins={this.state.coins} addCoins={this.addCoins} />
         <NavBar />
         <Hero
