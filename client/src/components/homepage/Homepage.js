@@ -4,13 +4,15 @@ import Game from "../game/Game";
 import BtnStart from "./BtnStart";
 import SocialNetwork from "../common/SocialNetwork";
 import logoMarvelFight from "../../img/logoMarvelFight.png";
+import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
 
 export default class Homepage extends Component {
   state = {
     playing: true,
     coins: 0,
-    health: 100
+    health: 100,
+    showPopup: false
   };
 
   showGame = () => {
@@ -19,6 +21,14 @@ export default class Homepage extends Component {
     });
     this.props.chargeGame();
   };
+
+
+   togglePopup =() =>{  
+this.setState({  
+     showPopup: !this.state.showPopup  
+});  
+ };
+
 
   render() {
     return (
@@ -37,16 +47,27 @@ export default class Homepage extends Component {
 
         {this.props.gameStarted ? (
           <Game
-            coins={this.state.coins}
             addCoins={this.addCoins}
-            health={this.state.health}
             removeHealth={this.removeHealth}
           />
         ) : (
           <></>
         )}
 
-        <p className="HomepageRules">Rules</p>
+        <div>  
+  
+<p className="HomepageRules" onClick={this.togglePopup.bind(this)}>Rules</p>  
+
+{this.state.showPopup ?  
+<Rules  
+          text='Rules of the game'  
+         
+          closePopup={this.togglePopup.bind(this)}  
+/>  
+: null  
+}  
+</div>  
+        <p className="HomepageRules" onClick={this.togglePopup}>Rules</p>
 
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
