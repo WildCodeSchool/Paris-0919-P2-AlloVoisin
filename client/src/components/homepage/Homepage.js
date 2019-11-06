@@ -4,11 +4,15 @@ import Game from "../game/Game";
 import BtnStart from "./BtnStart";
 import SocialNetwork from "../common/SocialNetwork";
 import logoMarvelFight from "../../img/logoMarvelFight.png";
+import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
 
 export default class Homepage extends Component {
   state = {
     playing: true,
+    coins: 0,
+    health: 100,
+    showPopup: false
   };
 
   showGame = () => {
@@ -17,6 +21,20 @@ export default class Homepage extends Component {
     });
     this.props.chargeGame();
   };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/store/characters")
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+  }
+
+   togglePopup() {  
+this.setState({  
+     showPopup: !this.state.showPopup  
+});  
+ };
+
 
   render() {
     return (
@@ -42,6 +60,19 @@ export default class Homepage extends Component {
           <></>
         )}
 
+        <div>  
+  
+<p className="HomepageRules" onClick={this.togglePopup.bind(this)}>Rules</p>  
+
+{this.state.showPopup ?  
+<Rules  
+          text='Rules of the game'  
+         
+          closePopup={this.togglePopup.bind(this)}  
+/>  
+: null  
+}  
+</div>  
         <p className="HomepageRules">Rules</p>
 
         <ReactPlayer
