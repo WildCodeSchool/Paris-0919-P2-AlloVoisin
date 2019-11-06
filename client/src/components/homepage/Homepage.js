@@ -6,8 +6,6 @@ import SocialNetwork from "../common/SocialNetwork";
 import logoMarvelFight from "../../img/logoMarvelFight.png";
 import "./Homepage.css";
 
-import axios from "axios";
-
 export default class Homepage extends Component {
   state = {
     playing: true,
@@ -22,32 +20,12 @@ export default class Homepage extends Component {
     this.props.chargeGame();
   };
 
-  addCoins = nbCoins => {
-    this.setState({
-      coins: this.state.coins + nbCoins
-    });
-  };
-
-  removeHealth = () => {
-    this.setState({
-      health: this.state.health - 1
-    });
-  };
-
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/store/characters")
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
-  }
-
   render() {
     return (
       <div id="homepage">
         <div id="top-icons">
           <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png
-"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
             alt="Logo Iron Company"
             id="ironCompany"
           />
@@ -56,6 +34,7 @@ export default class Homepage extends Component {
         </div>
        
         <BtnStart showGame={this.showGame} />
+
         {this.props.gameStarted ? (
           <Game
             coins={this.state.coins}
@@ -66,6 +45,7 @@ export default class Homepage extends Component {
         ) : (
           <></>
         )}
+
         <p className="HomepageRules">Rules</p>
 
         <ReactPlayer
