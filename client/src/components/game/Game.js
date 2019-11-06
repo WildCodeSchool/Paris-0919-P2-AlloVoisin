@@ -29,7 +29,7 @@ export default class Game extends Component {
     storeCharaters: false,
     storeSkins: false,
     storeSkills: false,
-    timer: 30,
+    timer: 0,
     villains: ["1","2"]
   };
 
@@ -123,7 +123,7 @@ resetGame = () => {
       health: villains.data[0].damages,
       healthDivisor: villains.data[0].healthDivisor,
       villainImg: villains.data[0].image,
-
+      timer: 30
     }),
     document.getElementById('game').style.backgroundImage= `url(${villains.data[0].bgSrc})`))
     this.Timer()
