@@ -13,7 +13,7 @@
   z-index: 1;
   background-color: rgba(98, 97, 97, 0.86);
   width: 100vw;
-  height:65vh;
+  height: 65vh;
 }
 
 .items-list-container {
@@ -26,9 +26,58 @@
 }
 
 .cross {
-  cursor:pointer;
+  cursor: pointer;
   position: absolute;
   top: 0;
   right: 0;
 }
 
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  font-size: 5vw;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading::after {
+  content: "...";
+  animation: loading 5s infinite linear;
+  overflow: hidden;
+  position: fixed;
+  left: 61.8vw;
+}
+
+@keyframes loading {
+  0% {
+    width: 0vw;
+  }
+  24% {
+    width: 0vw;
+  }
+  25% {
+    width: 1.05vw;
+  }
+  49% {
+    width: 1.05vw;
+  }
+  50% {
+    width: 2.03vw;
+  }
+  74% {
+    width: 2.03vw;
+  }
+  75% {
+    width: 3.05vw;
+  }
+  99% {
+    width: 3.05vw;
+  }
+  100% {
+    width: 0vw;
+  }
+}
