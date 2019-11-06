@@ -81,7 +81,8 @@ this.setState({
 
 {this.state.showPopup ?  
 <Rules  
-          text='Click "Close Button" to hide popup'  
+          text='Rules of the game'  
+         
           closePopup={this.togglePopup.bind(this)}  
 />  
 : null  

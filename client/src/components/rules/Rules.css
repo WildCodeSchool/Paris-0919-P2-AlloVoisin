@@ -17,5 +17,15 @@
     bottom: 25%;  
     margin: auto;  
     border-radius: 20px;  
-    background: white;  
+    background: rgba(255, 255, 255, 0.829); 
+    font-family: 'avengers'; 
+  }
+
+  #rules-title {
+      font-size: 7vh;
+      color: #4180da;
+  }
+
+  .rules-game {
+      font-size: 4vh;
   }
