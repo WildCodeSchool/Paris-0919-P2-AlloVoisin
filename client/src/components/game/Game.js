@@ -22,7 +22,6 @@ export default class Game extends Component {
     healthDivisor: 0,
     level: 0,
     villainImg: "",
-    background: "",
     store: {
       characters: null,
       skins: null
@@ -31,6 +30,7 @@ export default class Game extends Component {
     storeSkins: false,
     storeSkills: false,
     timer: 30,
+    villains: ["1","2"]
   };
 
   addCoins = nbCoins => {
@@ -79,9 +79,13 @@ resetGame = () => {
   this.setState({
     ...this.state,
     level: 1,
+    health: this.state.villains[0].damages,
+    healthDivisor: this.state.villains[0].healthDivisor,
+    villainImg: this.state.villains[0].image,
     coins: 0,
     timer: 30,
   })
+  document.getElementById('game').style.backgroundImage= `url(${this.state.villains[0].bgSrc})`
 }
 
   // Ip address 192.168.1.223
@@ -114,10 +118,12 @@ resetGame = () => {
       .get("http://192.168.1.223:5000/villains")
       .then(villains => (this.setState({
       ...this.state,
+      villains: villains.data, 
       level: villains.data[0].idLevel,
       health: villains.data[0].damages,
       healthDivisor: villains.data[0].healthDivisor,
       villainImg: villains.data[0].image,
+
     }),
     document.getElementById('game').style.backgroundImage= `url(${villains.data[0].bgSrc})`))
     this.Timer()
@@ -126,40 +132,24 @@ resetGame = () => {
   };
 
 
-  // componentDidUpdate = () => {
-  //   if (this.state.health === 0) {
-  //     this.setState({
-  //       ...this.state,
-  //       level: this.state.level + 1,
-  //       health: villains[this.state.level].damages,
-  //       healthDivisor: villains[this.state.level].healthDivisor,
-  //       villainImg: villains[this.state.level].image,
-  //       timer : 30
-  //     });
-  //     this.addCoins(villains[this.state.level].coinAward)
-  //   }
-  // };
-
   // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
     if (this.state.health === 0 && this.state.level !==0) {
-      axios
-      .get("http://192.168.1.223:5000/villains")
-      .then(villains => (this.setState({
+    this.setState({
         ...this.state,
         level: this.state.level + 1,
-        health: villains.data[this.state.level].damages,
-        healthDivisor: villains.data[this.state.level].healthDivisor,
-        villainImg: villains.data[this.state.level].image,
-        background: villains.data[this.state.level].bgSrc,
+        health: this.state.villains[this.state.level].damages,
+        healthDivisor: this.state.villains[this.state.level].healthDivisor,
+        villainImg: this.state.villains[this.state.level].image,
         timer : 30
-      }),
-      this.addCoins(villains.data[this.state.level].coinAward),
-      document.getElementById('game').style.backgroundImage= `url(${villains.data[this.state.level].bgSrc})`))
+      })
+      this.addCoins(this.state.villains[this.state.level].coinAward)
+      document.getElementById('game').style.backgroundImage= `url(${this.state.villains[this.state.level].bgSrc})`
     }
   };
 
   render() {
+    console.log(this.state.villains)
     return (
       <div id="game">
        {this.state.level === 0 ? <div className="loading">Loading Game</div> : <></>} 
