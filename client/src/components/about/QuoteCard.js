@@ -13,7 +13,7 @@ class QuoteCard extends React.Component {
       <figure className="QuoteCard">
         <img src={this.props.image} alt={this.props.character} />
         <figcaption>
-          <blockquote>{this.props.quote}</blockquote>
+        
           <p>
             <cite>{this.props.character}</cite>
             <span
@@ -26,6 +26,7 @@ class QuoteCard extends React.Component {
               &#9733;
             </span>
           </p>
+          <blockquote>{this.props.quote}</blockquote>
         </figcaption>
       </figure>
     );

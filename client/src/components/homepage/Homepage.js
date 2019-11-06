@@ -23,7 +23,7 @@ export default class Homepage extends Component {
   };
 
 
-   togglePopup() {  
+   togglePopup =() =>{  
 this.setState({  
      showPopup: !this.state.showPopup  
 });  
@@ -67,7 +67,7 @@ this.setState({
 : null  
 }  
 </div>  
-        <p className="HomepageRules">Rules</p>
+        <p className="HomepageRules" onClick={this.togglePopup}>Rules</p>
 
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
