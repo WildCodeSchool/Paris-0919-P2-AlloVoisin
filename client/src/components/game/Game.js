@@ -162,6 +162,8 @@ resetGame = () => {
   render() {
     return (
       <div id="game">
+       {this.state.level === 0 ? <div className="loading">Loading Game</div> : <></>} 
+
         <HealthBar
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
@@ -175,10 +177,10 @@ resetGame = () => {
           removeHealth={this.removeHealth}
           addCoins={this.addCoins}
         />
-        {this.state.level === 0 ? <></> :
+      
         <Villain villainImg={this.state.villainImg} level={this.state.level} />
         
-        }
+
         {this.state.storeCharaters ? (
           <Characters
             characters={this.state.store.characters}
