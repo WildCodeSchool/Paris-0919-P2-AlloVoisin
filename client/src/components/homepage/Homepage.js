@@ -6,6 +6,7 @@ import SocialNetwork from "../common/SocialNetwork";
 import logoMarvelFight from "../../img/logoMarvelFight.png";
 import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
+import axios from 'axios';
 
 export default class Homepage extends Component {
   state = {
