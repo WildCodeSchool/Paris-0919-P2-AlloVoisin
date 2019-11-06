@@ -26,6 +26,10 @@ const Villain = mongoose.model("Villain", {
   coinAward: {
     type: Number,
     required: true
+  },
+  bgSrc: {
+    type: String,
+    trim: true
   }
 });
 

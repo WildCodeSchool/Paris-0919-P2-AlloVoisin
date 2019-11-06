@@ -42,7 +42,8 @@ router.patch("/:id", async (req, res) => {
     "image",
     "damages",
     "healthDivisor",
-    "coinAward"
+    "coinAward",
+    "bgSrc"
   ];
   const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)
@@ -53,13 +54,14 @@ router.patch("/:id", async (req, res) => {
     });
   }
   try {
-    const villain = await Villain.findOneAndUpdate(req.params.id, req.body, {
+    const villain = await Villain.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     });
     if (!villain) {
       res.status(404).send();
     }
+    res.status(200).send(villain);
   } catch (error) {
     res.status(404).send(error);
   }
@@ -67,7 +69,7 @@ router.patch("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const villain = await Villain.findOneAndDelete(req.params.id);
+    const villain = await Villain.findByIdAndDelete(req.params.id);
     if (!villain) {
       res.status(404).send();
     }
