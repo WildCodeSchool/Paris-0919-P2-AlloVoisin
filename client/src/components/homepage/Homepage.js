@@ -6,7 +6,6 @@ import SocialNetwork from "../common/SocialNetwork";
 import logoMarvelFight from "../../img/logoMarvelFight.png";
 import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
-import axios from 'axios';
 
 export default class Homepage extends Component {
   state = {
@@ -23,12 +22,6 @@ export default class Homepage extends Component {
     this.props.chargeGame();
   };
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/store/characters")
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
-  }
 
    togglePopup() {  
 this.setState({  
