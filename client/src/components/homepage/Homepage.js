@@ -22,15 +22,6 @@ export default class Homepage extends Component {
     this.props.chargeGame();
   };
 
-<<<<<<< HEAD
-  // componentDidMount() {
-  //   axios
-  //     .get("http://localhost:5000/store/characters")
-  //     .then(data => console.log(data))
-  //     .catch(error => console.log(error));
-  // }
-=======
->>>>>>> 51ec5e96b22a6c7e20c539564d99102e15e57b49
 
    togglePopup =() =>{  
 this.setState({  
