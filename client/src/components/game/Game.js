@@ -31,6 +31,11 @@ export default class Game extends Component {
     storeSkills: false,
     timer: 0,
     villains: ["1","2"],
+    blackWidowStoreCharacter: false,
+    hulkStoreCharacter: false,
+    thorStoreCharacter: false,
+    msMarvelStoreCharacter: false,
+    spidermanStoreCharacter: false
   };
 
   addCoins = nbCoins => {
@@ -86,6 +91,15 @@ resetGame = () => {
     timer: 30,
   })
   document.getElementById('game').style.backgroundImage= `url(${this.state.villains[0].bgSrc})`
+}
+
+buyCharacter = (character) => {
+  if (character === "Black-widow") {
+    this.setState({ blackWidowStoreCharacter : true})
+  }
+  else if (character === "thor") {
+    this.setState({ thorStoreCharacter : true})
+  }
 }
 
   // Ip address 192.168.1.223
@@ -175,6 +189,8 @@ resetGame = () => {
           <Characters
             characters={this.state.store.characters}
             showStoreCharacters={this.showStoreCharacters}
+            buyCharacter={this.buyCharacter}
+            blackWidowStoreCharacter={this.state.blackWidowStoreCharacter}
           />
         ) : (
           <></>
