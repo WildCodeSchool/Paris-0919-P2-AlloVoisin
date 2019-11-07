@@ -13,11 +13,8 @@ export default class Item extends Component {
         <img src={this.props.imgSrc} alt={this.props.name} />
       </div>
       <p>{this.props.name}</p>
-      {(this.props.blackWidowStoreCharacter === false && this.props.name === "Black-widow") ?
+      
       <button className="Store-button" onClick={this.click}>Hire</button>
-      :
-      <button className="Store-button" >Bought</button>
-      }
     </li>
     )
   }

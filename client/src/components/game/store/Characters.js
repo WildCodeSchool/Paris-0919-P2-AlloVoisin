@@ -25,6 +25,7 @@ class Characters extends Component  {
                 name={character.name}
                 imgSrc={character.imgSrc}
                 buyCharacter={this.props.buyCharacter}
+                
               />
             );
           })}
