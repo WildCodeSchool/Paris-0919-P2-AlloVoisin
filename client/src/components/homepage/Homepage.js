@@ -17,18 +17,16 @@ export default class Homepage extends Component {
 
   showGame = () => {
     this.setState({
-      playing: !this.state.playing,
+      playing: !this.state.playing
     });
     this.props.chargeGame();
   };
 
-
-   togglePopup =() =>{  
-this.setState({  
-     showPopup: !this.state.showPopup  
-});  
- };
-
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };
 
   render() {
     return (
@@ -42,32 +40,30 @@ this.setState({
           <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" />
           <SocialNetwork />
         </div>
-       
+
         <BtnStart showGame={this.showGame} />
 
         {this.props.gameStarted ? (
-          <Game
-            addCoins={this.addCoins}
-            removeHealth={this.removeHealth}
-          />
+          <Game addCoins={this.addCoins} removeHealth={this.removeHealth} />
         ) : (
           <></>
         )}
 
-        <div>  
-  
-<p className="HomepageRules" onClick={this.togglePopup.bind(this)}>Rules</p>  
+        <div>
+          <p className="HomepageRules" onClick={this.togglePopup.bind(this)}>
+            Rules
+          </p>
 
-{this.state.showPopup ?  
-<Rules  
-          text='Rules of the game'  
-         
-          closePopup={this.togglePopup.bind(this)}  
-/>  
-: null  
-}  
-</div>  
-        <p className="HomepageRules" onClick={this.togglePopup}>Rules</p>
+          {this.state.showPopup ? (
+            <Rules
+              text="Rules of the game"
+              closePopup={this.togglePopup.bind(this)}
+            />
+          ) : null}
+        </div>
+        <p className="HomepageRules" onClick={this.togglePopup}>
+          Rules
+        </p>
 
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
