@@ -56,7 +56,7 @@ this.setState({
 
         <div>  
   
-<p className="HomepageRules" onClick={this.togglePopup.bind(this)}>Rules</p>  
+
 
 {this.state.showPopup ?  
 <Rules  
