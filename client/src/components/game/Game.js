@@ -30,7 +30,7 @@ export default class Game extends Component {
     storeSkins: false,
     storeSkills: false,
     timer: 0,
-    villains: ["1","2"]
+    villains: ["1","2"],
   };
 
   addCoins = nbCoins => {
