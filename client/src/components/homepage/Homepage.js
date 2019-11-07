@@ -22,14 +22,17 @@ export default class Homepage extends Component {
     this.props.chargeGame();
   };
 
+<<<<<<< HEAD
   // componentDidMount() {
   //   axios
   //     .get("http://localhost:5000/store/characters")
   //     .then(data => console.log(data))
   //     .catch(error => console.log(error));
   // }
+=======
+>>>>>>> 51ec5e96b22a6c7e20c539564d99102e15e57b49
 
-   togglePopup() {  
+   togglePopup =() =>{  
 this.setState({  
      showPopup: !this.state.showPopup  
 });  
@@ -62,7 +65,6 @@ this.setState({
 
         <div>  
   
-<p className="HomepageRules" onClick={this.togglePopup.bind(this)}>Rules</p>  
 
 {this.state.showPopup ?  
 <Rules  
@@ -73,7 +75,7 @@ this.setState({
 : null  
 }  
 </div>  
-        <p className="HomepageRules">Rules</p>
+        <p className="HomepageRules" onClick={this.togglePopup}>Rules</p>
 
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
