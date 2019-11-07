@@ -20,6 +20,7 @@ const Skins = ({ showStoreSkins, skins }) => {
                 type="skin"
                 name={skin.name}
                 imgSrc={skin.imgSrc}
+                price={100}
               />
             );
           })}

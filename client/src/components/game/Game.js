@@ -12,6 +12,7 @@ import NavBar from "../common/NavBar";
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
 // import villains from "../game/villains.json";
+import GameOver from "./GameOver";
 
 import axios from "axios";
 
@@ -92,6 +93,10 @@ export default class Game extends Component {
     ).style.backgroundImage = `url(${this.state.villains[0].bgSrc})`;
   };
 
+  // displayGameOver = () => {
+  //   setTimeout(<GameOver />, 4000);
+  // };
+
   // Ip address 192.168.1.223
   componentDidMount = () => {
     axios
@@ -138,6 +143,13 @@ export default class Game extends Component {
 
   // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
+    if (this.state.timer === 0 && this.state.health > 0) {
+      this.setState({
+        isGameOver: true,
+        timer: 30
+      });
+      clearInterval(this.gameTimer);
+    }
     if (this.state.health === 0 && this.state.level !== 0) {
       this.setState({
         ...this.state,
@@ -159,11 +171,6 @@ export default class Game extends Component {
   };
 
   render() {
-    if (this.state.timer === 0 && this.state.health > 0) {
-      this.setState({
-        isGameOver: true
-      });
-    }
     return (
       <div id="game">
         {this.state.level === 0 ? (
@@ -171,7 +178,7 @@ export default class Game extends Component {
         ) : (
           <></>
         )}
-
+        {/* {this.state.isGameOver ? this.displayGameOver : <></>} */}
         <HealthBar
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
@@ -186,6 +193,7 @@ export default class Game extends Component {
         <Villain villainImg={this.state.villainImg} level={this.state.level} />
         {this.state.storeCharaters ? (
           <Characters
+            coins={this.state.coins}
             characters={this.state.store.characters}
             showStoreCharacters={this.showStoreCharacters}
           />
@@ -194,6 +202,7 @@ export default class Game extends Component {
         )}
         {this.state.storeSkins ? (
           <Skins
+            coins={this.state.coins}
             skins={this.state.store.skins}
             showStoreSkins={this.showStoreSkins}
           />

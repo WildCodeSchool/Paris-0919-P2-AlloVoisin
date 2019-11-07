@@ -3,7 +3,7 @@ import "./Characters.css";
 
 import Item from "./Item";
 
-const Characters = ({ showStoreCharacters, characters }) => {
+const Characters = ({ coins, showStoreCharacters, characters }) => {
   return (
     characters && (
       <div className="items-container">
@@ -18,10 +18,12 @@ const Characters = ({ showStoreCharacters, characters }) => {
           {characters.map(character => {
             return (
               <Item
+                coins={coins}
                 key={character._id}
                 type="character"
                 name={character.name}
                 imgSrc={character.imgSrc}
+                price={100}
               />
             );
           })}
