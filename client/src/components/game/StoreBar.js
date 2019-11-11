@@ -3,14 +3,14 @@ import React from "react";
 import "./StoreBar.css";
 import { NavLink } from "react-router-dom";
 
-const StoreBar = () => {
+const StoreBar = ({ handleClick }) => {
   return (
     <div className="store-bar-container">
       <ul className="img-container">
         <NavLink
           className="nav-link"
           id="img-skins"
-          // onClick={this.props.showStoreSkins}
+          onClick={handleClick}
           to="/game/store/skins"
         >
           <img
@@ -22,7 +22,7 @@ const StoreBar = () => {
         <NavLink
           className="nav-link"
           id="img-characters"
-          // onClick={this.props.showStoreCharacters}
+          onClick={handleClick}
           to="/game/store/characters"
         >
           <img
@@ -34,7 +34,7 @@ const StoreBar = () => {
         <NavLink
           className="nav-link"
           id="img-skills"
-          // onClick={this.props.showStoreSkills}
+          onClick={handleClick}
           to="/game/store/skins"
         >
           <img

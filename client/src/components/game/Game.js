@@ -1,24 +1,21 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Coins from "./Coins";
 import Hero from "./Hero";
 import Villain from "./Villain";
 import StoreBar from "./StoreBar";
-import Characters from "./store/Characters";
-import Skins from "./store/Skins";
-import Skills from "./store/Skills";
 import HealthBar from "./HealthBar";
 import NavBar from "../common/NavBar";
 import "./Game.css";
 import BtnRestart from "./BtnRestart";
-// import villains from "../game/villains.json";
 import GameOver from "./GameOver";
+import Store from "./store/Store";
 
 import axios from "axios";
-
+import { Route } from "react-router-dom";
 export default class Game extends Component {
   state = {
     isGameOver: false,
+    isStoreOpen: false,
     coins: 0,
     health: 0,
     healthDivisor: 0,
@@ -28,9 +25,6 @@ export default class Game extends Component {
       characters: null,
       skins: null
     },
-    storeCharaters: false,
-    storeSkins: false,
-    storeSkills: false,
     timer: 2,
     villains: ["1", "2"]
   };
@@ -47,6 +41,12 @@ export default class Game extends Component {
         health: this.state.health - 1
       });
     }
+  };
+
+  toggleIsStoreOpen = () => {
+    this.setState({
+      isStoreOpen: !this.state.isStoreOpen
+    });
   };
 
   showStoreCharacters = () => {
@@ -169,7 +169,6 @@ export default class Game extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div id="game">
         {this.state.level === 0 ? (
@@ -184,39 +183,22 @@ export default class Game extends Component {
           timer={this.state.timer}
           level={this.state.level}
         />
-        <BtnRestart resetGame={this.resetGame} />
         <Coins coins={this.state.coins} addCoins={this.addCoins} />
+        <BtnRestart resetGame={this.resetGame} />
         <NavBar />
         <Hero removeHealth={this.removeHealth} addCoins={this.addCoins} />
-
         <Villain villainImg={this.state.villainImg} level={this.state.level} />
-        {this.state.storeCharaters ? (
-          <Characters
-            coins={this.state.coins}
-            characters={this.state.store.characters}
-            showStoreCharacters={this.showStoreCharacters}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.storeSkins ? (
-          <Skins
-            coins={this.state.coins}
-            skins={this.state.store.skins}
-            showStoreSkins={this.showStoreSkins}
-          />
-        ) : (
-          <></>
-        )}
-        {this.state.storeSkills ? (
-          <Skills showStoreSkills={this.showStoreSkills} />
-        ) : (
-          <></>
-        )}
-        <StoreBar
-          showStoreCharacters={this.showStoreCharacters}
-          showStoreSkins={this.showStoreSkins}
-          showStoreSkills={this.showStoreSkills}
+        <StoreBar handleClick={this.toggleIsStoreOpen} />
+        <Route
+          path="/game/store/:section"
+          render={props => (
+            <Store
+              section={props.match.params.section}
+              store={this.state.store}
+              coins={this.state.coins}
+              handleExitStore={this.toggleIsStoreOpen}
+            />
+          )}
         />
       </div>
     );
