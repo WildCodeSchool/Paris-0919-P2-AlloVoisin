@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
-import Game from "../game/Game";
 import BtnStart from "./BtnStart";
-import SocialNetwork from "../common/SocialNetwork";
-import logoMarvelFight from "../../img/logoMarvelFight.png";
+import Header from "./Header";
 import Rules from "../../components/rules/Rules";
 import "./Homepage.css";
 
@@ -21,34 +19,14 @@ export default class Homepage extends Component {
   render() {
     return (
       <div id="homepage">
-        <div id="top-icons">
-          <img
-            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
-            alt="Logo Iron Company"
-            id="ironCompany"
-          />
-          <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" />
-          <SocialNetwork />
-        </div>
-
+        <Header />
         <BtnStart showGame={this.showGame} />
-
-        <div>
-          <p className="HomepageRules" onClick={this.togglePopup.bind(this)}>
-            Rules
-          </p>
-
-          {this.state.showPopup ? (
-            <Rules
-              text="Rules of the game"
-              closePopup={this.togglePopup.bind(this)}
-            />
-          ) : null}
-        </div>
         <p className="HomepageRules" onClick={this.togglePopup}>
           Rules
         </p>
-
+        {this.state.showPopup ? (
+          <Rules text="Rules of the game" closePopup={this.togglePopup} />
+        ) : null}
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
           playing={this.state.playing}
