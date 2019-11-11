@@ -28,14 +28,16 @@ class NavBar extends Component {
 
         <nav className={this.state.isSidebarOpen ? "nav show" : "nav"}>
           <ul className="menu-items">
+            <Link to="/">
+              <li className="menu-list">
+                <span className="menu-link">Homepage</span>
+              </li>
+            </Link>
             <Link to="/game">
               <li className="menu-list">
                 <span className="menu-link">Game</span>
               </li>
             </Link>
-            <li className="menu-list">
-              <span className="menu-link">Rules</span>
-            </li>
             <Link to="/about">
               <li className="menu-list">
                 <span className="menu-link">About</span>
