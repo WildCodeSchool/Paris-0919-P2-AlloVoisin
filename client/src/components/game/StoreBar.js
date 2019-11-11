@@ -11,7 +11,7 @@ class StoreBar extends React.Component {
           <NavLink
             className="nav-link"
             id="img-skins"
-            onClick={this.props.showStoreSkins}
+            // onClick={this.props.showStoreSkins}
             to="/game/store/skins"
           >
             <img
@@ -23,7 +23,7 @@ class StoreBar extends React.Component {
           <NavLink
             className="nav-link"
             id="img-characters"
-            onClick={this.props.showStoreCharacters}
+            // onClick={this.props.showStoreCharacters}
             to="/game/store/characters"
           >
             <img
@@ -35,7 +35,7 @@ class StoreBar extends React.Component {
           <NavLink
             className="nav-link"
             id="img-skills"
-            onClick={this.props.showStoreSkills}
+            // onClick={this.props.showStoreSkills}
             to="/game/store/skins"
           >
             <img
