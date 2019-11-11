@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Homepage from "./components/homepage/Homepage";
+import Game from "./components/game/Game";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "../src/components/about/About";
 
@@ -18,12 +19,10 @@ export default class App extends Component {
       <div>
         <Router>
           <div className="App">
-            <Homepage />
-
             <Switch>
               <Route
-                path="/"
                 exact
+                path="/"
                 render={props => (
                   <Homepage
                     {...props}
@@ -32,6 +31,7 @@ export default class App extends Component {
                   />
                 )}
               />
+              <Route exact path="/game" component={Game} />
               <Route path="/about" component={About} />
             </Switch>
           </div>

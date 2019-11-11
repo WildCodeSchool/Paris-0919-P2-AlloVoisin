@@ -1,3 +1,7 @@
 .game-over {
   position: absolute;
+  top: 50;
+  left: 50;
+  font-size: 8em;
+  z-index: 4;
 }
