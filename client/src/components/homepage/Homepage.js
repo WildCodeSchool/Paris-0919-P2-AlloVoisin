@@ -9,17 +9,7 @@ import "./Homepage.css";
 
 export default class Homepage extends Component {
   state = {
-    playing: true,
-    coins: 0,
-    health: 100,
     showPopup: false
-  };
-
-  showGame = () => {
-    this.setState({
-      playing: !this.state.playing
-    });
-    this.props.chargeGame();
   };
 
   togglePopup = () => {
@@ -42,12 +32,6 @@ export default class Homepage extends Component {
         </div>
 
         <BtnStart showGame={this.showGame} />
-
-        {this.props.gameStarted ? (
-          <Game addCoins={this.addCoins} removeHealth={this.removeHealth} />
-        ) : (
-          <></>
-        )}
 
         <div>
           <p className="HomepageRules" onClick={this.togglePopup.bind(this)}>
