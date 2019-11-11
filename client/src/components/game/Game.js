@@ -31,7 +31,7 @@ export default class Game extends Component {
     storeCharaters: false,
     storeSkins: false,
     storeSkills: false,
-    timer: 30,
+    timer: 2,
     villains: ["1", "2"]
   };
 
@@ -78,6 +78,7 @@ export default class Game extends Component {
   };
 
   resetGame = () => {
+    clearInterval(this.gameTimer);
     this.setState({
       ...this.state,
       isGameOver: false,
@@ -88,14 +89,11 @@ export default class Game extends Component {
       coins: 0,
       timer: 30
     });
+    this.setTimer();
     document.getElementById(
       "game"
     ).style.backgroundImage = `url(${this.state.villains[0].bgSrc})`;
   };
-
-  // displayGameOver = () => {
-  //   setTimeout(<GameOver />, 4000);
-  // };
 
   // Ip address 192.168.1.223
   componentDidMount = () => {
@@ -144,11 +142,11 @@ export default class Game extends Component {
   // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
     if (this.state.timer === 0 && this.state.health > 0) {
+      clearInterval(this.gameTimer);
       this.setState({
         isGameOver: true,
-        timer: 30
+        timer: null
       });
-      clearInterval(this.gameTimer);
     }
     if (this.state.health === 0 && this.state.level !== 0) {
       this.setState({
@@ -178,7 +176,7 @@ export default class Game extends Component {
         ) : (
           <></>
         )}
-        {/* {this.state.isGameOver ? this.displayGameOver : <></>} */}
+        {this.state.isGameOver ? <GameOver /> : <></>}
         <HealthBar
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
