@@ -25,6 +25,7 @@ export default class Game extends Component {
       characters: null,
       skins: null
     },
+    villains: null,
     timer: 30
   };
 
@@ -76,49 +77,40 @@ export default class Game extends Component {
     this.setTimer();
   };
 
-  // Ip address 192.168.1.223
-  fetchCharacters = url => {
-    axios
-      .get(`${url}/store/characters`)
-      .then(characters => {
-        this.setState({
-          store: {
-            ...this.state.store,
-            characters: characters.data
-          }
-        });
+  handleDataResponse = res => {
+    const characters = res[0].data;
+    const skins = res[1].data;
+    const villains = res[2].data;
+    this.setState({
+      store: {
+        ...this.state.store,
+        characters,
+        skins
+      },
+      villains,
+      level: villains[0].idLevel,
+      health: villains[0].damages,
+      healthDivisor: villains[0].healthDivisor,
+      villainImg: villains[0].image
+    });
+    document.getElementById(
+      "game"
+    ).style.backgroundImage = `url(${villains[0].bgSrc})`;
+  };
+
+  fetchGameData = url => {
+    const urlCharacters = `${url}/store/characters`;
+    const urlSkins = `${url}/store/skins`;
+    const urlVillains = `${url}/villains`;
+    Promise.all([
+      axios.get(urlCharacters),
+      axios.get(urlSkins),
+      axios.get(urlVillains)
+    ])
+      .then(res => {
+        this.handleDataResponse(res);
       })
       .catch(error => console.log(error));
-  };
-
-  fetchSkins = url => {
-    axios
-      .get(`${url}/store/skins`)
-      .then(skins =>
-        this.setState({
-          store: {
-            ...this.state.store,
-            skins: skins.data
-          }
-        })
-      )
-      .catch(error => console.log(error));
-  };
-
-  fetchVillains = url => {
-    axios.get(`${url}/villains`).then(villains => {
-      this.setState({
-        ...this.state,
-        villains: villains.data,
-        level: villains.data[0].idLevel,
-        health: villains.data[0].damages,
-        healthDivisor: villains.data[0].healthDivisor,
-        villainImg: villains.data[0].image
-      });
-      document.getElementById(
-        "game"
-      ).style.backgroundImage = `url(${villains.data[0].bgSrc})`;
-    });
   };
 
   checkIfGameOver = () => {
@@ -148,14 +140,12 @@ export default class Game extends Component {
     }
   };
 
+  // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchCharacters(LOCALHOST);
-    this.fetchVillains(LOCALHOST);
-    this.fetchSkins(LOCALHOST);
+    this.fetchGameData(LOCALHOST);
     this.setTimer();
   };
 
-  // componentDidUpdate variant for when we will have a server running 24/7
   componentDidUpdate = () => {
     this.checkIfGameOver();
     this.checkIfWin();
