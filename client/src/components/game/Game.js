@@ -142,7 +142,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(LOCALHOST);
+    this.fetchGameData(IP);
     this.setTimer();
   };
 
