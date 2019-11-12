@@ -23,10 +23,15 @@ export default class Game extends Component {
     villainImg: "",
     store: {
       characters: null,
-      skins: null
+      skins: null,
     },
     villains: null,
-    timer: 30
+    timer: 30,
+    'Black-widow': false,
+    'Thor': false,
+    'Spider-man': false,
+    'Hulk': false,
+    'Ms Marvel': false,
   };
 
   addCoins = nbCoins => {
@@ -34,6 +39,40 @@ export default class Game extends Component {
       coins: this.state.coins + nbCoins
     });
   };
+
+  removeCoins = nbCoins => {
+    this.setState({
+      coins: this.state.coins - nbCoins
+    });
+  }
+
+  characterIsBought = character => {
+    if (character === 'Black-widow') {
+      this.setState({
+        'Black-widow' : true
+      })
+    }
+    if (character === 'Thor') {
+      this.setState({
+        'Thor' : true
+      })
+    }
+    if (character === 'Spider-man') {
+      this.setState({
+        'Spider-man' : true
+      })
+    }
+    if (character === 'Hulk') {
+      this.setState({
+        'Hulk' : true
+      })
+    }
+    if (character === 'Ms Marvel') {
+      this.setState({
+        'Ms Marvel' : true
+      })
+    }
+  }
 
   removeHealth = () => {
     if (this.state.health > 0) {
@@ -184,6 +223,13 @@ export default class Game extends Component {
               store={this.state.store}
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
+              removeCoins={this.removeCoins}
+              characterIsBought={this.characterIsBought}
+              blackWidow={this.state["Black-widow"]}
+              thor={this.state["Thor"]}
+              spiderMan={this.state["Spider-man"]}
+              hulk={this.state["Hulk"]}
+              msMarvel={this.state["Ms Marvel"]}
             />
           )}
         />
