@@ -29,10 +29,47 @@ export default class Game extends Component {
     timer: 30
   };
 
+  handleBuyItem = id => {
+    const item = this.state.store.characters.filter(
+      character => character._id === id
+    );
+    if (item && item[0].isAvailable) {
+      item[0].isBought = true;
+      item[0].isAvailable = false;
+      this.setState({
+        store: {
+          ...this.state.store,
+          characters: [...this.state.store.characters]
+        }
+      });
+    }
+  };
+
+  checkIfAvailable = () => {
+    const charactersAvailable = this.state.store.characters.filter(
+      character => this.state.coins >= character.price
+    );
+    if (charactersAvailable.length > 0) {
+      const newCharacter = charactersAvailable.map(character => {
+        return {
+          ...character,
+          isAvailable: true
+        };
+      });
+      this.setState({
+        store: {
+          ...this.state.store,
+          characters: newCharacter
+        }
+      });
+    }
+  };
+
   addCoins = nbCoins => {
     this.setState({
       coins: this.state.coins + nbCoins
     });
+    this.checkIfAvailable();
   };
 
   removeHealth = () => {
@@ -142,7 +179,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(IP);
+    this.fetchGameData(LOCALHOST);
     this.setTimer();
   };
 
@@ -160,7 +197,7 @@ export default class Game extends Component {
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
-        {this.state.isGameOver ? <GameOver /> : <></>}
+        {/* {this.state.isGameOver ? <GameOver /> : <></>} */}
         <Header
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
@@ -185,6 +222,7 @@ export default class Game extends Component {
               store={this.state.store}
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
+              handleClick={this.handleBuyItem}
             />
           )}
         />

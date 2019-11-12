@@ -3,8 +3,7 @@ import "./Store.css";
 import ExitCross from "../../common/ExitCross";
 import Item from "./Item";
 
-const Store = ({ store, coins, section, handleExitStore }) => {
-  console.log(store[section]);
+const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
   return (
     store && (
       <div className="items-container">
@@ -16,10 +15,13 @@ const Store = ({ store, coins, section, handleExitStore }) => {
               <Item
                 coins={coins}
                 key={item._id}
+                id={item._id}
                 type={section}
                 name={item.name}
                 imgSrc={item.imgSrc}
-                price={100}
+                isAvailable={item.isAvailable}
+                isBought={item.isBought}
+                handleClick={handleClick}
               />
             );
           })}
