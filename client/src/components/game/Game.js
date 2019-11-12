@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import Coins from "./Coins";
-import Hero from "./Hero";
-import Villain from "./Villain";
-import StoreBar from "./StoreBar";
-import HealthBar from "./HealthBar";
-import NavBar from "../common/NavBar";
-import "./Game.css";
-import BtnRestart from "./BtnRestart";
+import Header from "./header/Header";
+import Fighters from "./fighters/Fighters";
+import StoreBar from "./store/StoreBar";
 import GameOver from "./GameOver";
 import Store from "./store/Store";
+import "./Game.css";
 
 import axios from "axios";
 import { Route } from "react-router-dom";
+
+const LOCALHOST = "http://localhost:5000";
+const IP = "http://192.168.1.223:5000";
 export default class Game extends Component {
   state = {
     isGameOver: false,
@@ -49,32 +48,14 @@ export default class Game extends Component {
     });
   };
 
-  showStoreCharacters = () => {
-    this.setState({
-      storeCharaters: !this.state.storeCharaters
-    });
-  };
-
-  showStoreSkins = () => {
-    this.setState({
-      storeSkins: !this.state.storeSkins
-    });
-  };
-
-  showStoreSkills = () => {
-    this.setState({
-      storeSkills: !this.state.storeSkills
-    });
-  };
-
-  decrement = () => {
+  decrementTimer = () => {
     if (this.state.timer > 0) {
       this.setState({ timer: this.state.timer - 1 });
     }
   };
 
   setTimer = () => {
-    this.gameTimer = setInterval(this.decrement, 1000);
+    this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
 
   resetGame = () => {
@@ -89,16 +70,16 @@ export default class Game extends Component {
       coins: 0,
       timer: 30
     });
-    this.setTimer();
     document.getElementById(
       "game"
     ).style.backgroundImage = `url(${this.state.villains[0].bgSrc})`;
+    this.setTimer();
   };
 
   // Ip address 192.168.1.223
-  componentDidMount = () => {
+  fetchCharacters = url => {
     axios
-      .get("http://localhost:5000/store/characters")
+      .get(`${url}/store/characters`)
       .then(characters => {
         this.setState({
           store: {
@@ -108,9 +89,11 @@ export default class Game extends Component {
         });
       })
       .catch(error => console.log(error));
+  };
 
+  fetchSkins = url => {
     axios
-      .get("http://localhost:5000/store/skins")
+      .get(`${url}/store/skins`)
       .then(skins =>
         this.setState({
           store: {
@@ -120,27 +103,25 @@ export default class Game extends Component {
         })
       )
       .catch(error => console.log(error));
-
-    axios.get("http://localhost:5000/villains").then(
-      villains => (
-        this.setState({
-          ...this.state,
-          villains: villains.data,
-          level: villains.data[0].idLevel,
-          health: villains.data[0].damages,
-          healthDivisor: villains.data[0].healthDivisor,
-          villainImg: villains.data[0].image
-        }),
-        (document.getElementById(
-          "game"
-        ).style.backgroundImage = `url(${villains.data[0].bgSrc})`)
-      )
-    );
-    this.setTimer();
   };
 
-  // componentDidUpdate variant for when we will have a server running 24/7
-  componentDidUpdate = () => {
+  fetchVillains = url => {
+    axios.get(`${url}/villains`).then(villains => {
+      this.setState({
+        ...this.state,
+        villains: villains.data,
+        level: villains.data[0].idLevel,
+        health: villains.data[0].damages,
+        healthDivisor: villains.data[0].healthDivisor,
+        villainImg: villains.data[0].image
+      });
+      document.getElementById(
+        "game"
+      ).style.backgroundImage = `url(${villains.data[0].bgSrc})`;
+    });
+  };
+
+  checkIfGameOver = () => {
     if (this.state.timer === 0 && this.state.health > 0) {
       clearInterval(this.gameTimer);
       this.setState({
@@ -148,6 +129,9 @@ export default class Game extends Component {
         timer: null
       });
     }
+  };
+
+  checkIfWin = () => {
     if (this.state.health === 0 && this.state.level !== 0) {
       this.setState({
         ...this.state,
@@ -164,6 +148,19 @@ export default class Game extends Component {
     }
   };
 
+  componentDidMount = () => {
+    this.fetchCharacters(LOCALHOST);
+    this.fetchVillains(LOCALHOST);
+    this.fetchSkins(LOCALHOST);
+    this.setTimer();
+  };
+
+  // componentDidUpdate variant for when we will have a server running 24/7
+  componentDidUpdate = () => {
+    this.checkIfGameOver();
+    this.checkIfWin();
+  };
+
   componentWillUnmount = () => {
     clearInterval(this.gameTimer);
   };
@@ -177,17 +174,21 @@ export default class Game extends Component {
           <></>
         )}
         {this.state.isGameOver ? <GameOver /> : <></>}
-        <HealthBar
+        <Header
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
           timer={this.state.timer}
           level={this.state.level}
+          coins={this.state.coins}
+          addCoins={this.addCoins}
+          resetGame={this.resetGame}
         />
-        <Coins coins={this.state.coins} addCoins={this.addCoins} />
-        <BtnRestart resetGame={this.resetGame} />
-        <NavBar />
-        <Hero removeHealth={this.removeHealth} addCoins={this.addCoins} />
-        <Villain villainImg={this.state.villainImg} level={this.state.level} />
+        <Fighters
+          removeHealth={this.removeHealth}
+          addCoins={this.addCoins}
+          villainImg={this.state.villainImg}
+          level={this.state.level}
+        />
         <StoreBar handleClick={this.toggleIsStoreOpen} />
         <Route
           path="/game/store/:section"
