@@ -22,16 +22,20 @@
     position: initial;
 }
 
+.nav a {
+    text-decoration: none;
+}
 
-.nav a:hover { 
+.nav span:hover { 
     background-image:url(http://www.20cents-video.com/userdata/animated-gif/library/feux5n10.gif);
     background-repeat:no-repeat;
     /* background-size:cover; */
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: black;
+    cursor:pointer;
     }
 
-    .nav a:hover:before { 
+    .nav span:hover:before { 
     content:" » ";
     }
 
