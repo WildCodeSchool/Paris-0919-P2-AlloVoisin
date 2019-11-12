@@ -26,7 +26,7 @@ export default class Game extends Component {
       skins: null
     },
     villains: null,
-    timer: 30
+    timer: 2
   };
 
   addCoins = nbCoins => {

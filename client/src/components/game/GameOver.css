@@ -1,7 +1,9 @@
-.game-over {
+.gameover-container {
   position: absolute;
-  top: 50;
-  left: 50;
-  font-size: 8em;
-  z-index: 4;
+  z-index: 5;
+  background-color: #000;
+  top: 200;
+  left: 200;
+  width: 50%;
+  height: 50%;
 }
