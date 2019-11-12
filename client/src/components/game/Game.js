@@ -156,6 +156,7 @@ export default class Game extends Component {
   };
 
   render() {
+    console.log(this.state.store);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}

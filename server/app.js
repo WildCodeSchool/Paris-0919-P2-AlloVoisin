@@ -10,7 +10,7 @@ const villainsRoutes = require("./api/routes/villains");
 mongoose.connect("mongodb://127.0.0.1:27017/marvel-fight-api", {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}); // connect to mongodbAtlas db
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
