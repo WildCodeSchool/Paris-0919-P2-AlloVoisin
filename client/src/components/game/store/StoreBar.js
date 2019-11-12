@@ -1,42 +1,51 @@
 import React from "react";
 // import {NavLink} from 'react-router-dom';
 import "./StoreBar.css";
+import { NavLink } from "react-router-dom";
 
-class StoreBar extends React.Component {
-
-  // const handleClick = () => {
-    
-  // };
-  render() {
+const StoreBar = ({ handleClick }) => {
   return (
     <div className="store-bar-container">
       <ul className="img-container">
-      
-        <div className="nav-link" id="img-skins"  onClick={this.props.showStoreSkins}>
+        <NavLink
+          className="nav-link"
+          id="img-skins"
+          onClick={handleClick}
+          to="/game/store/skins"
+        >
           <img
             src="https://image.noelshack.com/fichiers/2019/43/4/1571922941-skins.png"
             alt="skin"
           />
           <p>Skins</p>
-        </div>
-        <div className="nav-link" id="img-characters" onClick={this.props.showStoreCharacters}>
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          id="img-characters"
+          onClick={handleClick}
+          to="/game/store/characters"
+        >
           <img
             src="https://image.noelshack.com/fichiers/2019/43/4/1571922941-characters.png"
             alt="character"
           />
           <p>Characters</p>
-        </div>
-        <div className="nav-link" id="img-skills" onClick={this.props.showStoreSkills}>
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          id="img-skills"
+          onClick={handleClick}
+          to="/game/store/skins"
+        >
           <img
             src="https://image.noelshack.com/fichiers/2019/43/4/1571922941-skills.png"
             alt="skill"
           />
           <p>Skills</p>
-        </div>
+        </NavLink>
       </ul>
     </div>
   );
-  }
 };
 
 export default StoreBar;
