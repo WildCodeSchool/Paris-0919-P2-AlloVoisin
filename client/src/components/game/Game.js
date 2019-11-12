@@ -3,6 +3,7 @@ import Header from "./header/Header";
 import Fighters from "./fighters/Fighters";
 import StoreBar from "./store/StoreBar";
 import GameOver from "./GameOver";
+import Loading from "../common/Loading";
 import Store from "./store/Store";
 import "./Game.css";
 
@@ -24,8 +25,7 @@ export default class Game extends Component {
       characters: null,
       skins: null
     },
-    timer: 2,
-    villains: ["1", "2"]
+    timer: 30
   };
 
   addCoins = nbCoins => {
@@ -168,11 +168,7 @@ export default class Game extends Component {
   render() {
     return (
       <div id="game">
-        {this.state.level === 0 ? (
-          <div className="loading">Loading Game</div>
-        ) : (
-          <></>
-        )}
+        {this.state.level === 0 ? <Loading /> : <></>}
         {this.state.isGameOver ? <GameOver /> : <></>}
         <Header
           health={this.state.health}
