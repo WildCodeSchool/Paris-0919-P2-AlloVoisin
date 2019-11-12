@@ -5,7 +5,6 @@ button {
   background-color: #939393;
   color: #fff;
   border: 2px solid black;
-  height: 50px;
   padding: 12px 33px;
 }
 
@@ -14,6 +13,14 @@ button {
   left: 42vw;
   bottom: 5vh;
   animation: btnStartAnime 2s infinite linear;
+  font-family: "avengers";
+  font-size: 32px;
+  border-radius: 17px;
+  background-color: #939393;
+  color: #fff;
+  border: 2px solid black;
+  padding: 12px 33px;
+  text-decoration: none;
 }
 
 @keyframes btnStartAnime {
