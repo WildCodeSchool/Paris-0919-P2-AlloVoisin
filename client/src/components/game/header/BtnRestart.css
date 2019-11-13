@@ -2,14 +2,17 @@
   position: absolute;
   right: 0;
   top: 5vh;
+   z-index: 999;
 }
 
 .btn {
-  background: #6cd0f2;
+  background: #000;
   border-radius: 5px;
   color: #fff;
-  padding: 12px 15px;
+  padding: 12px 15px 12px 10px;
   font-size: 0.8em;
   margin-right: 2vw;
-  height: 5vh;
+  height: 32px;
+  border: 1px solid white;
+ 
 }

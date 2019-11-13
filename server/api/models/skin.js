@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Character = mongoose.model("Character", {
+const Skin = mongoose.model("Skin", {
   name: {
     type: String,
     required: true,
@@ -17,11 +17,13 @@ const Character = mongoose.model("Character", {
     default: 100
   },
   isBought: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   isAvailable: {
-    type: Boolean
+    type: Boolean,
+    default: false
   }
 });
 
-module.exports = Character;
+module.exports = Skin;

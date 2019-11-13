@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
-const Character = require("../models/character");
+const Character = require("../../models/character");
 
 router.get("/", async (req, res) => {
   try {
@@ -37,8 +36,10 @@ router.post("/", async (req, res) => {
 });
 
 router.patch("/:id", async (req, res) => {
+  console.log(req.params.id);
+
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["name", "imgSrc"];
+  const allowedUpdates = ["name", "imgSrc", "isBought", "isAvailable"];
   const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)
   );
@@ -48,7 +49,7 @@ router.patch("/:id", async (req, res) => {
     });
   }
   try {
-    const character = await Character.findOneAndUpdate(
+    const character = await Character.findByIdAndUpdate(
       req.params.id,
       req.body,
       {

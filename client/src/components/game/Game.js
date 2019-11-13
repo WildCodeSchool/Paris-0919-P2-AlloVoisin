@@ -1,67 +1,340 @@
 import React, { Component } from "react";
-import Coins from "./Coins";
-import Hero from "./Hero";
-import Villain from "./Villain";
-import StoreBar from "./StoreBar";
-import Characters from "./store/Characters";
-import Skins from "./store/Skins";
-import Skills from "./store/Skills";
-import HealthBar from './HealthBar';
-import NavBar from '../common/NavBar';
-import About from '../about/About'
+import Header from "./header/Header";
+import Fighters from "./fighters/Fighters";
+import StoreBar from "./store/StoreBar";
+import GameOver from "./GameOver";
+import Loading from "../common/Loading";
+import Store from "./store/Store";
 import "./Game.css";
-import BtnRestart from "./BtnRestart";
-import Homepage from "../homepage/Homepage";
 
+import axios from "axios";
+import { Route } from "react-router-dom";
+
+const LOCALHOST = "http://localhost:5000";
+const IP = "http://192.168.1.223:5000";
 export default class Game extends Component {
   state = {
-    storeCharaters: false,
-    storeSkins: false,
-    storeSkills: false
+    isGameOver: false,
+    isStoreOpen: false,
+    isStart: true,
+    coins: 0,
+    health: 0,
+    healthDivisor: 0,
+    level: 0,
+    villainImg: "",
+    store: {
+      characters: null,
+      skins: null,
+    },
+    villains: null,
+    timer: 30,
+    'Black-widow': false,
+    'Thor': false,
+    'Spider-man': false,
+    'Hulk': false,
+    'Ms Marvel': false,
+    gamePaused: false,
+    seconds: 1 //this.props.seconds
   };
 
-  showStoreCharacters = () => {
+  handleBuyItem = (id, items) => {
+    const newItems = items.map(item => {
+      if (item._id === id && !item.isBought && item.isAvailable) {
+        return {
+          ...item,
+          isBought: true,
+          isAvailable: false
+        };
+      } else {
+        return item;
+      }
+    });
+    return newItems;
+  };
+
+  handleClickStoreBtn = id => {
+    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
+    const newSkins = this.handleBuyItem(id, this.state.store.skins);
     this.setState({
-      storeCharaters: !this.state.storeCharaters
+      store: {
+        skins: newSkins,
+        characters: newCharacters
+      }
     });
   };
 
-  showStoreSkins = () => {
+  checkIfAvailableItems = items => {
+    const newItems = items.map(item => {
+      if (this.state.coins >= item.price) {
+        return {
+          ...item,
+          isAvailable: true
+        };
+      } else {
+        return item;
+      }
+    });
+    return newItems;
+  };
+
+  updateIsAvailable = () => {
+    const updatedCharacters = this.checkIfAvailableItems(
+      this.state.store.characters
+    );
+    const updatedSkins = this.checkIfAvailableItems(this.state.store.skins);
     this.setState({
-      storeSkins: !this.state.storeSkins
+      store: {
+        skins: updatedSkins,
+        characters: updatedCharacters
+      }
     });
   };
 
-  showStoreSkills = () => {
+  addCoins = nbCoins => {
     this.setState({
-      storeSkills: !this.state.storeSkills
+      coins: this.state.coins + nbCoins
     });
+    this.updateIsAvailable();
+  };
+
+  removeCoins = nbCoins => {
+    this.setState({
+      coins: this.state.coins - nbCoins
+    });
+  }
+
+  characterIsBought = character => {
+    if (character === 'Black-widow') {
+      this.setState({
+        'Black-widow' : true
+      })
+    }
+    if (character === 'Thor') {
+      this.setState({
+        'Thor' : true
+      })
+    }
+    if (character === 'Spider-man') {
+      this.setState({
+        'Spider-man' : true
+      })
+    }
+    if (character === 'Hulk') {
+      this.setState({
+        'Hulk' : true
+      })
+    }
+    if (character === 'Ms Marvel') {
+      this.setState({
+        'Ms Marvel' : true
+      })
+    }
+  }
+
+  removeHealth = () => {
+    if (this.state.health > 0) {
+      this.setState({
+        health: this.state.health - 1
+      });
+    }
+  };
+
+  toggleIsStoreOpen = () => {
+    this.setState({
+      isStoreOpen: !this.state.isStoreOpen
+    });
+  };
+
+  decrementTimer = () => {
+    if (this.state.timer > 0) {
+      this.setState({ timer: this.state.timer - 1 });
+    }
+  };
+
+  setTimer = () => {
+    this.gameTimer = setInterval(this.decrementTimer, 1000);
+  };
+
+  pauseGame = () => {
+   clearInterval(this.gameTimer);
+   const pauseDiv = document.getElementById('gamePausedDiv');
+   pauseDiv.style.display= 'block';
+ }  
+ 
+ continueGame = () => {
+   this.gameTimer = setInterval(this.decrementTimer, 1000);
+   const pauseDiv = document.getElementById('gamePausedDiv');
+   pauseDiv.style.display= 'none';
+ }
+
+  resetGame = () => {
+    clearInterval(this.gameTimer);
+    this.setState({
+      ...this.state,
+      isGameOver: false,
+      level: 1,
+      health: this.state.villains[0].damages,
+      healthDivisor: this.state.villains[0].healthDivisor,
+      villainImg: this.state.villains[0].image,
+      coins: 0,
+      timer: 30
+    });
+    document.getElementById(
+      "game"
+    ).style.backgroundImage = `url(${this.state.villains[0].bgSrc})`;
+    this.setTimer();
+  };
+
+  handleDataResponse = res => {
+    const characters = res[0].data;
+    const skins = res[1].data;
+    const villains = res[2].data;
+    this.setState({
+      store: {
+        ...this.state.store,
+        characters,
+        skins
+      },
+      villains,
+      level: villains[0].idLevel,
+      health: villains[0].damages,
+      healthDivisor: villains[0].healthDivisor,
+      villainImg: villains[0].image
+    });
+    document.getElementById(
+      "game"
+    ).style.backgroundImage = `url(${villains[0].bgSrc})`;
+  };
+
+  fetchGameData = url => {
+    const urlCharacters = `${url}/store/characters`;
+    const urlSkins = `${url}/store/skins`;
+    const urlVillains = `${url}/villains`;
+    Promise.all([
+      axios.get(urlCharacters),
+      axios.get(urlSkins),
+      axios.get(urlVillains)
+    ])
+      .then(res => {
+        this.handleDataResponse(res);
+      })
+      .catch(error => console.log(error));
+  };
+
+  checkIfStart = () => {
+    if (this.state.startTimer === 0 && this.state.health > 0) {
+      clearInterval(this.gameTimer);
+      this.setState({
+        isGameOver: true,
+        timer: null
+      });
+    }
+  };
+
+  checkIfGameOver = () => {
+    if (this.state.timer === 0 && this.state.health > 0) {
+      clearInterval(this.gameTimer);
+      this.setState({
+        isGameOver: true,
+        timer: null
+      });
+    }
+  };
+
+  checkIfWin = () => {
+    if (this.state.health === 0 && this.state.level !== 0) {
+      this.setState({
+        ...this.state,
+        level: this.state.level + 1,
+        health: this.state.villains[this.state.level].damages,
+        healthDivisor: this.state.villains[this.state.level].healthDivisor,
+        villainImg: this.state.villains[this.state.level].image,
+        timer: 30
+      });
+      this.addCoins(this.state.villains[this.state.level].coinAward);
+      document.getElementById("game").style.backgroundImage = `url(${
+        this.state.villains[this.state.level].bgSrc
+      })`;
+    }
+  };
+
+  // Mettre IP à la place de LOCALHOST
+  componentDidMount = () => {
+    this.fetchGameData(IP);
+    this.startTimer = setInterval(this.tick, 1000);
+    setTimeout(() => {
+      this.setTimer();
+    }, 4000);
+  };
+
+  componentDidUpdate = () => {
+    this.checkIfGameOver();
+    this.checkIfWin();
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.gameTimer);
+  };
+
+  //startTimer
+
+  tick = () => {
+    if (this.state.seconds < 3) {
+      this.setState({ seconds: this.state.seconds + 1 });
+    } else {
+      clearInterval(this.startTimer);
+      this.setState({ seconds: "Fight !" });
+      // window.location.reload();
+      const fight = document.getElementById("fight");
+      setTimeout(() => {
+        fight.style.display = "none";
+      }, 1000);
+    }
   };
 
   render() {
+    console.log(this.state.store);
     return (
-      
       <div id="game">
-          <HealthBar health={this.props.health}/>
-          <BtnRestart />
-          <Coins coins={this.props.coins} addCoins={this.props.addCoins}/>
-          
-          <NavBar />
-          <Hero removeHealth={this.props.removeHealth} addCoins={this.props.addCoins}/>
-          <Villain />
-          {this.state.storeCharaters ? <Characters showStoreCharacters={this.showStoreCharacters}/> : <></>}
-          {this.state.storeSkins ? <Skins showStoreSkins={this.showStoreSkins}/> : <></>}
-          {this.state.storSkills ? <Skills showStoreSkills={this.showStoreSkills}/> : <></>}
-          <StoreBar showStoreCharacters={this.showStoreCharacters} showStoreSkins={this.showStoreSkins} showStoreSkills={this.showStoreSkills}/>
-            
-          {/* <Router>
-                      <Route path='/store/characters' component={Characters}/>
-                      <Route path='/store/skins' component={Skins}/>
-                      <Route path='/store/skills' component={Skills}/>
-                    
-                    </Router>       */}
-      </div>
+        {this.state.level === 0 ? <Loading /> : <></>}
+
+        <Header
+          health={this.state.health}
+          healthDivisor={this.state.healthDivisor}
+          timer={this.state.timer}
+          level={this.state.level}
+          coins={this.state.coins}
+          addCoins={this.addCoins}
+          resetGame={this.resetGame}
+          pauseGame={this.pauseGame}
+          continueGame={this.continueGame}
+        />
+        <Fighters
+          removeHealth={this.removeHealth}
+          addCoins={this.addCoins}
+          villainImg={this.state.villainImg}
+          level={this.state.level}
+        />
+         <div className="start-game" style={{ width: "100%", textAlign: "center" }}>
+        <h1 id="fight">{this.state.seconds} </h1>
+        </div>
+        
+        {this.state.isGameOver ? <GameOver /> : <></>}
       
+        <StoreBar handleClick={this.toggleIsStoreOpen} />
+        <Route
+          path="/game/store/:section"
+          render={props => (
+            <Store
+              section={props.match.params.section}
+              store={this.state.store}
+              coins={this.state.coins}
+              handleExitStore={this.toggleIsStoreOpen}
+              handleClick={this.handleClickStoreBtn}
+            />
+          )}
+        />
+      </div>
     );
   }
 }
