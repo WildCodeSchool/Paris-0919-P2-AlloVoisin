@@ -29,7 +29,7 @@ export default class Homepage extends Component {
         ) : null}
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
-          playing={this.state.playing}
+          playing={true}
           width="0"
           height="0"
         />
