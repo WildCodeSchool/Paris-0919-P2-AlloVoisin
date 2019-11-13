@@ -32,6 +32,7 @@ export default class Game extends Component {
     'Spider-man': false,
     'Hulk': false,
     'Ms Marvel': false,
+    gamePaused: false
   };
 
   addCoins = nbCoins => {
@@ -97,6 +98,18 @@ export default class Game extends Component {
   setTimer = () => {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
+
+  pauseGame = () => {
+    clearInterval(this.gameTimer);
+    const pauseDiv = document.getElementById('gamePausedDiv');
+    pauseDiv.style.display= 'block';
+  }
+
+  continueGame = () => {
+    this.gameTimer = setInterval(this.decrementTimer, 1000);
+    const pauseDiv = document.getElementById('gamePausedDiv');
+    pauseDiv.style.display= 'none';
+  }
 
   resetGame = () => {
     clearInterval(this.gameTimer);
@@ -207,6 +220,8 @@ export default class Game extends Component {
           coins={this.state.coins}
           addCoins={this.addCoins}
           resetGame={this.resetGame}
+          pauseGame={this.pauseGame}
+          continueGame={this.continueGame}
         />
         <Fighters
           removeHealth={this.removeHealth}
