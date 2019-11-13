@@ -1,6 +1,7 @@
 import React from "react";
 import Characters from './Characters';
 
+<<<<<<< HEAD
 class Item extends React.Component {
    state = {
     isBought: false,
@@ -61,5 +62,32 @@ class Item extends React.Component {
     );
   }
 }
+=======
+const Item = ({
+  id,
+  name,
+  type,
+  imgSrc,
+  isBought,
+  isAvailable,
+  handleClick
+}) => {
+  const handleClickBtn = () => {
+    handleClick(id);
+  };
+
+  return (
+    <li className="item-container">
+      <div className={`background-${type}`}>
+        <img src={imgSrc} alt={name} />
+      </div>
+      <p>{name}</p>
+      <button className="Store-button" onClick={handleClickBtn}>
+        {isBought ? "Bought" : "Hire"}
+      </button>
+    </li>
+  );
+};
+>>>>>>> 4fc61909d09087802ec06d841a87176951020f24
 
 export default Item;

@@ -4,7 +4,7 @@ import "./Characters.css";
 import Item from "./Item";
 import ExitCross from "../../common/ExitCross";
 
-const Characters = ({ coins, showStoreCharacters, characters }) => {
+const Characters = ({ showStoreCharacters, characters }) => {
   return (
     characters && (
       <div className="items-container">
@@ -14,12 +14,10 @@ const Characters = ({ coins, showStoreCharacters, characters }) => {
           {characters.map(character => {
             return (
               <Item
-                coins={coins}
                 key={character._id}
                 type="character"
                 name={character.name}
                 imgSrc={character.imgSrc}
-                price={100}
               />
             );
           })}

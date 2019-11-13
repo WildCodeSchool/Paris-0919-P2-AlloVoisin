@@ -10,6 +10,17 @@ const Character = mongoose.model("Character", {
     type: String,
     required: true,
     trim: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    default: 100
+  },
+  isBought: {
+    type: Boolean
+  },
+  isAvailable: {
+    type: Boolean
   }
 });
 
