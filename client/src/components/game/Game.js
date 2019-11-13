@@ -194,10 +194,6 @@ export default class Game extends Component {
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
-        {this.state.isGameOver ? <GameOver /> : <></>}
-        <div style={{ width: "100%", textAlign: "center" }}>
-        <h1 id="fight">{this.state.seconds}</h1>
-      </div>
 
         <Header
           health={this.state.health}
@@ -214,6 +210,12 @@ export default class Game extends Component {
           villainImg={this.state.villainImg}
           level={this.state.level}
         />
+         <div className="start-game" style={{ width: "100%", textAlign: "center" }}>
+        <h1 id="fight">{this.state.seconds} </h1>
+        </div>
+        
+        {this.state.isGameOver ? <GameOver /> : <></>}
+      
         <StoreBar handleClick={this.toggleIsStoreOpen} />
         <Route
           path="/game/store/:section"
