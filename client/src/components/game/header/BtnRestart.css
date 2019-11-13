@@ -2,6 +2,7 @@
   position: absolute;
   right: 0;
   top: 5vh;
+   z-index: 999;
 }
 
 .btn {
@@ -13,4 +14,5 @@
   margin-right: 2vw;
   height: 32px;
   border: 1px solid white;
+ 
 }

@@ -88,7 +88,7 @@
     /* font-family: 'Faster One', cursive; */
     font-size: 1.5em;;
     list-style: none;
-   
+     z-index: 999;
 }
 
 .menu-link {
