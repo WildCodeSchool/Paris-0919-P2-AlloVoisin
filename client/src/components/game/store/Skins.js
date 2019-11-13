@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-const Skins = ({ showStoreSkins, skins }) => {
+const Skins = ({ coins, showStoreSkins, skins }) => {
   return (
     skins && (
       <div className="items-container">
@@ -20,7 +20,6 @@ const Skins = ({ showStoreSkins, skins }) => {
                 type="skin"
                 name={skin.name}
                 imgSrc={skin.imgSrc}
-                price={100}
               />
             );
           })}

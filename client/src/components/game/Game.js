@@ -25,22 +25,133 @@ export default class Game extends Component {
     store: {
       characters: null,
       skins: null,
+      inventory: null
     },
     villains: null,
     timer: 30,
-    'Black-widow': false,
-    'Thor': false,
-    'Spider-man': false,
-    'Hulk': false,
-    'Ms Marvel': false,
     gamePaused: false,
     seconds: 1 //this.props.seconds
+  };
+
+  handleBuyItem = (id, items) => {
+    const newItems = items.map(item => {
+      if (item._id === id && !item.isBought && item.isAvailable) {
+        return {
+          ...item,
+          isBought: true,
+          isAvailable: false
+        };
+      } else {
+        return item;
+      }
+    });
+    return newItems;
+  };
+
+  changeToInventoryItems = items => {
+    return items.map(item => {
+      return {
+        ...item,
+        isUsed: false
+      };
+    });
+  };
+
+  getBoughtItems = items => {
+    let boughtItems = items.filter(item => item.isBought);
+    boughtItems = this.changeToInventoryItems(boughtItems);
+    return boughtItems.length > 0 ? boughtItems : [];
+  };
+
+  updateInventory = () => {
+    const boughtCharacters = this.getBoughtItems(this.state.store.characters);
+    const boughtSkins = this.getBoughtItems(this.state.store.skins);
+    const allBoughtItems = [...boughtCharacters, ...boughtSkins];
+    this.setState({
+      store: {
+        ...this.state.store,
+        inventory: allBoughtItems
+      }
+    });
+  };
+
+  refreshStore = id => {
+    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
+    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+
+    this.setState(
+      {
+        store: {
+          skins: newSkins,
+          characters: newCharacters
+        }
+      },
+      () => this.updateInventory()
+    );
+  };
+
+  handleClickStoreBtn = (id, type) => {
+    if (type !== "inventory") {
+      this.refreshStore(id);
+    } else {
+      const newInventory = this.state.store.inventory.map(item => {
+        if (item._id === id && !item.isUsed) {
+          return {
+            ...item,
+            isUsed: true
+          };
+        }
+        return item;
+      });
+      this.setState({
+        store: {
+          ...this.state.store,
+          inventory: newInventory
+        }
+      });
+    }
+  };
+
+  checkIfAvailableItems = items => {
+    const newItems = items.map(item => {
+      if (this.state.coins >= item.price && !item.isBought) {
+        return {
+          ...item,
+          isAvailable: true
+        };
+      } else {
+        return item;
+      }
+    });
+    return newItems;
+  };
+
+  updateIsAvailable = () => {
+    const updatedCharacters = this.checkIfAvailableItems(
+      this.state.store.characters
+    );
+    const updatedSkins = this.checkIfAvailableItems(this.state.store.skins);
+    this.setState({
+      store: {
+        ...this.state.store,
+        skins: updatedSkins,
+        characters: updatedCharacters
+      }
+    });
   };
 
   addCoins = nbCoins => {
     this.setState({
       coins: this.state.coins + nbCoins
     });
+    this.updateIsAvailable();
+  };
+
+  removeCoins = price => {
+    this.setState({
+      coins: this.state.coins - price
+    });
+    this.updateIsAvailable();
   };
 
   removeCoins = nbCoins => {
@@ -97,9 +208,10 @@ export default class Game extends Component {
     }
   };
 
- setTimer = () => {
+  setTimer = () => {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
+
 
   pauseGame = () => {
     clearInterval(this.gameTimer);
@@ -198,15 +310,15 @@ export default class Game extends Component {
         timer: 30
       });
       this.addCoins(this.state.villains[this.state.level].coinAward);
-      document.getElementById(
-        "game"
-      ).style.backgroundImage = `url(${this.state.villains[this.state.level].bgSrc})`;
+      document.getElementById("game").style.backgroundImage = `url(${
+        this.state.villains[this.state.level].bgSrc
+      })`;
     }
   };
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(IP);
+    this.fetchGameData(LOCALHOST);
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();
@@ -222,9 +334,7 @@ export default class Game extends Component {
     clearInterval(this.gameTimer);
   };
 
-
   //startTimer
-
 
   tick = () => {
     if (this.state.seconds < 3) {
@@ -240,15 +350,14 @@ export default class Game extends Component {
     }
   };
 
-
   render() {
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
         {this.state.isGameOver ? <GameOver /> : <></>}
         <div style={{ width: "100%", textAlign: "center" }}>
-        <h1 id="fight">{this.state.seconds}</h1>
-      </div>
+          <h1 id="fight">{this.state.seconds}</h1>
+        </div>
 
         <Header
           health={this.state.health}
@@ -276,13 +385,9 @@ export default class Game extends Component {
               store={this.state.store}
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
+              handleClick={this.handleClickStoreBtn}
               removeCoins={this.removeCoins}
               characterIsBought={this.characterIsBought}
-              blackWidow={this.state["Black-widow"]}
-              thor={this.state["Thor"]}
-              spiderMan={this.state["Spider-man"]}
-              hulk={this.state["Hulk"]}
-              msMarvel={this.state["Ms Marvel"]}
             />
           )}
         />

@@ -3,7 +3,7 @@ import "./GameOver.css";
 
 const GameOver = () => {
   return (
-    <div>
+    <div id="game-over">
       <p className="game-over">Game Over</p>
     </div>
   );
