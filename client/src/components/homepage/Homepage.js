@@ -27,6 +27,7 @@ export default class Homepage extends Component {
         {this.state.showPopup ? (
           <Rules text="Rules of the game" closePopup={this.togglePopup} />
         ) : null}
+       
         <ReactPlayer
           url="https://www.youtube.com/embed/4vfGifZY85M"
           playing={this.state.playing}
