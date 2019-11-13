@@ -24,7 +24,8 @@ export default class Game extends Component {
     villainImg: "",
     store: {
       characters: null,
-      skins: null
+      skins: null,
+      inventory: null
     },
     villains: null,
     timer: 30,
@@ -46,20 +47,41 @@ export default class Game extends Component {
     return newItems;
   };
 
-  handleClickStoreBtn = id => {
-    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
-    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+  getBoughtItems = items => {
+    const boughtItems = items.filter(item => item.isBought);
+    return boughtItems.length > 0 ? boughtItems : [];
+  };
+
+  updateInventory = () => {
+    const boughtCharacters = this.getBoughtItems(this.state.store.characters);
+    const boughtSkins = this.getBoughtItems(this.state.store.skins);
+    const allBoughtItems = [...boughtCharacters, ...boughtSkins];
     this.setState({
       store: {
-        skins: newSkins,
-        characters: newCharacters
+        ...this.state.store,
+        inventory: allBoughtItems
       }
     });
   };
 
+  handleClickStoreBtn = id => {
+    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
+    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+
+    this.setState(
+      {
+        store: {
+          skins: newSkins,
+          characters: newCharacters
+        }
+      },
+      () => this.updateInventory()
+    );
+  };
+
   checkIfAvailableItems = items => {
     const newItems = items.map(item => {
-      if (this.state.coins >= item.price) {
+      if (this.state.coins >= item.price && !item.isBought) {
         return {
           ...item,
           isAvailable: true
@@ -78,6 +100,7 @@ export default class Game extends Component {
     const updatedSkins = this.checkIfAvailableItems(this.state.store.skins);
     this.setState({
       store: {
+        ...this.state.store,
         skins: updatedSkins,
         characters: updatedCharacters
       }
@@ -87,6 +110,13 @@ export default class Game extends Component {
   addCoins = nbCoins => {
     this.setState({
       coins: this.state.coins + nbCoins
+    });
+    this.updateIsAvailable();
+  };
+
+  removeCoins = price => {
+    this.setState({
+      coins: this.state.coins - price
     });
     this.updateIsAvailable();
   };
@@ -208,7 +238,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(IP);
+    this.fetchGameData(LOCALHOST);
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();

@@ -35,13 +35,13 @@ const StoreBar = ({ handleClick }) => {
           className="nav-link"
           id="img-skills"
           onClick={handleClick}
-          to="/game/store/skins"
+          to="/game/store/inventory"
         >
           <img
             src="https://image.noelshack.com/fichiers/2019/43/4/1571922941-skills.png"
             alt="skill"
           />
-          <p>Skills</p>
+          <p>Inventory</p>
         </NavLink>
       </ul>
     </div>

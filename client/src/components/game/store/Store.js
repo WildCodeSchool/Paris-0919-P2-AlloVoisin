@@ -2,6 +2,7 @@ import React from "react";
 import "./Store.css";
 import ExitCross from "../../common/ExitCross";
 import Item from "./Item";
+import Inventory from "./Inventory";
 
 const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
   return (
@@ -10,21 +11,25 @@ const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
         <h2>Store</h2>
         <ExitCross exitStore={handleExitStore} />
         <ul className="items-list-container">
-          {store[section].map(item => {
-            return (
-              <Item
-                coins={coins}
-                key={item._id}
-                id={item._id}
-                type={section}
-                name={item.name}
-                imgSrc={item.imgSrc}
-                isAvailable={item.isAvailable}
-                isBought={item.isBought}
-                handleClick={handleClick}
-              />
-            );
-          })}
+          {store[section] ? (
+            store[section].map(item => {
+              return (
+                <Item
+                  coins={coins}
+                  key={item._id}
+                  id={item._id}
+                  type={section}
+                  name={item.name}
+                  imgSrc={item.imgSrc}
+                  isAvailable={item.isAvailable}
+                  isBought={item.isBought}
+                  handleClick={handleClick}
+                />
+              );
+            })
+          ) : (
+            <Inventory />
+          )}
         </ul>
       </div>
     )
