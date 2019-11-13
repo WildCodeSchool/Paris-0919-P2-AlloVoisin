@@ -2,10 +2,8 @@ import React from "react";
 import "./Store.css";
 import ExitCross from "../../common/ExitCross";
 import Item from "./Item";
-import Inventory from "./Inventory";
 
 const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
-
   return (
     store && (
       <div className="items-container">
