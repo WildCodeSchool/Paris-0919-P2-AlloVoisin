@@ -16,6 +16,7 @@ export default class Game extends Component {
   state = {
     isGameOver: false,
     isStoreOpen: false,
+    isStart: true,
     coins: 0,
     health: 0,
     healthDivisor: 0,
@@ -26,7 +27,8 @@ export default class Game extends Component {
       skins: null
     },
     villains: null,
-    timer: 30
+    timer: 30,
+    seconds: 1 //this.props.seconds
   };
 
   addCoins = nbCoins => {
@@ -55,9 +57,10 @@ export default class Game extends Component {
     }
   };
 
-  setTimer = () => {
+ setTimer = () => {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
+
 
   resetGame = () => {
     clearInterval(this.gameTimer);
@@ -113,6 +116,16 @@ export default class Game extends Component {
       .catch(error => console.log(error));
   };
 
+  checkIfStart = () => {
+    if (this.state.startTimer === 0 && this.state.health > 0) {
+      clearInterval(this.gameTimer);
+      this.setState({
+        isGameOver: true,
+        timer: null
+      });
+    }
+  };
+
   checkIfGameOver = () => {
     if (this.state.timer === 0 && this.state.health > 0) {
       clearInterval(this.gameTimer);
@@ -143,7 +156,10 @@ export default class Game extends Component {
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
     this.fetchGameData(IP);
-    this.setTimer();
+    this.startTimer = setInterval(this.tick, 1000);
+    setTimeout(() => {
+      this.setTimer();
+    }, 4000);
   };
 
   componentDidUpdate = () => {
@@ -155,11 +171,34 @@ export default class Game extends Component {
     clearInterval(this.gameTimer);
   };
 
+
+  //startTimer
+
+
+  tick = () => {
+    if (this.state.seconds < 3) {
+      this.setState({ seconds: this.state.seconds + 1 });
+    } else {
+      clearInterval(this.startTimer);
+      this.setState({ seconds: "Fight !" });
+      // window.location.reload();
+      const fight = document.getElementById("fight");
+      setTimeout(() => {
+        fight.style.display = "none";
+      }, 1000);
+    }
+  };
+
+
   render() {
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
         {this.state.isGameOver ? <GameOver /> : <></>}
+        <div style={{ width: "100%", textAlign: "center" }}>
+        <h1 id="fight">{this.state.seconds}</h1>
+      </div>
+
         <Header
           health={this.state.health}
           healthDivisor={this.state.healthDivisor}
