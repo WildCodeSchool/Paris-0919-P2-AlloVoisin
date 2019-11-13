@@ -1,3 +1,8 @@
+#game-over {
+  display: flex;
+  justify-content: center;
+}
+
 .game-over {
   position: absolute;
   top: 50;
