@@ -29,47 +29,64 @@ export default class Game extends Component {
     timer: 30
   };
 
-  handleBuyItem = id => {
-    const item = this.state.store.characters.filter(
-      character => character._id === id
-    );
-    if (item && item[0].isAvailable) {
-      item[0].isBought = true;
-      item[0].isAvailable = false;
-      this.setState({
-        store: {
-          ...this.state.store,
-          characters: [...this.state.store.characters]
-        }
-      });
-    }
+  handleBuyItem = (id, items) => {
+    const newItems = items.map(item => {
+      if (item._id === id && !item.isBought && item.isAvailable) {
+        return {
+          ...item,
+          isBought: true,
+          isAvailable: false
+        };
+      } else {
+        return item;
+      }
+    });
+    return newItems;
   };
 
-  checkIfAvailable = () => {
-    const charactersAvailable = this.state.store.characters.filter(
-      character => this.state.coins >= character.price
-    );
-    if (charactersAvailable.length > 0) {
-      const newCharacter = charactersAvailable.map(character => {
+  handleClickStoreBtn = id => {
+    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
+    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+    this.setState({
+      store: {
+        skins: newSkins,
+        characters: newCharacters
+      }
+    });
+  };
+
+  checkIfAvailableItems = items => {
+    const newItems = items.map(item => {
+      if (this.state.coins >= item.price) {
         return {
-          ...character,
+          ...item,
           isAvailable: true
         };
-      });
-      this.setState({
-        store: {
-          ...this.state.store,
-          characters: newCharacter
-        }
-      });
-    }
+      } else {
+        return item;
+      }
+    });
+    return newItems;
+  };
+
+  updateIsAvailable = () => {
+    const updatedCharacters = this.checkIfAvailableItems(
+      this.state.store.characters
+    );
+    const updatedSkins = this.checkIfAvailableItems(this.state.store.skins);
+    this.setState({
+      store: {
+        skins: updatedSkins,
+        characters: updatedCharacters
+      }
+    });
   };
 
   addCoins = nbCoins => {
     this.setState({
       coins: this.state.coins + nbCoins
     });
-    this.checkIfAvailable();
+    this.updateIsAvailable();
   };
 
   removeHealth = () => {
@@ -171,9 +188,9 @@ export default class Game extends Component {
         timer: 30
       });
       this.addCoins(this.state.villains[this.state.level].coinAward);
-      document.getElementById(
-        "game"
-      ).style.backgroundImage = `url(${this.state.villains[this.state.level].bgSrc})`;
+      document.getElementById("game").style.backgroundImage = `url(${
+        this.state.villains[this.state.level].bgSrc
+      })`;
     }
   };
 
@@ -222,7 +239,7 @@ export default class Game extends Component {
               store={this.state.store}
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
-              handleClick={this.handleBuyItem}
+              handleClick={this.handleClickStoreBtn}
             />
           )}
         />
