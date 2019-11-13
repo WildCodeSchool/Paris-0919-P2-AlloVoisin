@@ -8,7 +8,7 @@ const Item = ({ id, name, type, imgSrc, isBought, isUsed, handleClick }) => {
   return (
     <li className="item-container">
       <div className={`background-${type}`}>
-        <img src={imgSrc} alt={name} />
+        <img  className="store-images" src={imgSrc} alt={name} />
       </div>
       <p>{name}</p>
       <button className="Store-button" onClick={handleClickBtn}>
