@@ -208,10 +208,16 @@ export default class Game extends Component {
     }
   };
 
-  toggleIsStoreOpen = () => {
-    this.setState({
+  toggleIsStoreOpen = async () => {
+    await this.setState({
       isStoreOpen: !this.state.isStoreOpen
     });
+    console.log(this.state.isStoreOpen);
+    if (this.state.isStoreOpen) {
+      clearInterval(this.gameTimer);
+    } else {
+      this.setTimer();
+    }
   };
 
   decrementTimer = () => {
@@ -362,7 +368,6 @@ export default class Game extends Component {
   };
 
   render() {
-    console.log(this.state.store);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
