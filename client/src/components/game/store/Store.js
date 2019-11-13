@@ -8,10 +8,10 @@ const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
   return (
     store && (
       <div className="items-container">
-        <h2>Store</h2>
+        <h2>{section}</h2>
         <ExitCross exitStore={handleExitStore} />
         <ul className="items-list-container">
-          {store[section] ? (
+          {store[section] &&
             store[section].map(item => {
               return (
                 <Item
@@ -23,13 +23,11 @@ const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
                   imgSrc={item.imgSrc}
                   isAvailable={item.isAvailable}
                   isBought={item.isBought}
+                  isUsed={item.isUsed}
                   handleClick={handleClick}
                 />
               );
-            })
-          ) : (
-            <Inventory />
-          )}
+            })}
         </ul>
       </div>
     )

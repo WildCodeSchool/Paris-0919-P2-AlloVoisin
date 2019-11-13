@@ -47,8 +47,18 @@ export default class Game extends Component {
     return newItems;
   };
 
+  changeToInventoryItems = items => {
+    return items.map(item => {
+      return {
+        ...item,
+        isUsed: false
+      };
+    });
+  };
+
   getBoughtItems = items => {
-    const boughtItems = items.filter(item => item.isBought);
+    let boughtItems = items.filter(item => item.isBought);
+    boughtItems = this.changeToInventoryItems(boughtItems);
     return boughtItems.length > 0 ? boughtItems : [];
   };
 

@@ -1,14 +1,6 @@
 import React from "react";
 
-const Item = ({
-  id,
-  name,
-  type,
-  imgSrc,
-  isBought,
-  isAvailable,
-  handleClick
-}) => {
+const Item = ({ id, name, type, imgSrc, isBought, isUsed, handleClick }) => {
   const handleClickBtn = () => {
     handleClick(id);
   };
@@ -20,7 +12,13 @@ const Item = ({
       </div>
       <p>{name}</p>
       <button className="Store-button" onClick={handleClickBtn}>
-        {isBought ? "Bought" : "Hire"}
+        {type !== "inventory"
+          ? isBought
+            ? "Bought"
+            : "Hire"
+          : isUsed
+          ? "Using"
+          : "Not used"}
       </button>
     </li>
   );
