@@ -5,6 +5,7 @@ import Item from "./Item";
 import Inventory from "./Inventory";
 
 const Store = ({ store, coins, section, handleExitStore, handleClick }) => {
+
   return (
     store && (
       <div className="items-container">

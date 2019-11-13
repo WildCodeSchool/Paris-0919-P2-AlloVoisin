@@ -29,6 +29,7 @@ export default class Game extends Component {
     },
     villains: null,
     timer: 30,
+    gamePaused: false,
     seconds: 1 //this.props.seconds
   };
 
@@ -165,6 +166,40 @@ export default class Game extends Component {
     this.updateIsAvailable();
   };
 
+  removeCoins = nbCoins => {
+    this.setState({
+      coins: this.state.coins - nbCoins
+    });
+  }
+
+  characterIsBought = character => {
+    if (character === 'Black-widow') {
+      this.setState({
+        'Black-widow' : true
+      })
+    }
+    if (character === 'Thor') {
+      this.setState({
+        'Thor' : true
+      })
+    }
+    if (character === 'Spider-man') {
+      this.setState({
+        'Spider-man' : true
+      })
+    }
+    if (character === 'Hulk') {
+      this.setState({
+        'Hulk' : true
+      })
+    }
+    if (character === 'Ms Marvel') {
+      this.setState({
+        'Ms Marvel' : true
+      })
+    }
+  }
+
   removeHealth = () => {
     if (this.state.health > 0) {
       this.setState({
@@ -188,6 +223,19 @@ export default class Game extends Component {
   setTimer = () => {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
+
+
+  pauseGame = () => {
+    clearInterval(this.gameTimer);
+    const pauseDiv = document.getElementById('gamePausedDiv');
+    pauseDiv.style.display= 'block';
+  }
+
+  continueGame = () => {
+    this.gameTimer = setInterval(this.decrementTimer, 1000);
+    const pauseDiv = document.getElementById('gamePausedDiv');
+    pauseDiv.style.display= 'none';
+  }
 
   resetGame = () => {
     clearInterval(this.gameTimer);
@@ -332,6 +380,8 @@ export default class Game extends Component {
           coins={this.state.coins}
           addCoins={this.addCoins}
           resetGame={this.resetGame}
+          pauseGame={this.pauseGame}
+          continueGame={this.continueGame}
         />
         <Fighters
           removeHealth={this.removeHealth}
@@ -349,6 +399,8 @@ export default class Game extends Component {
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
               handleClick={this.handleClickStoreBtn}
+              removeCoins={this.removeCoins}
+              characterIsBought={this.characterIsBought}
             />
           )}
         />
