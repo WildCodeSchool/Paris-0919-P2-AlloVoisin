@@ -17,7 +17,7 @@ export default class Hero extends Component {
     hero.className = "hero-animation hero";
     setTimeout(() => {
       hero.className = "hero";
-    }, 200);
+    }, 200); 
 
     const laser = document.querySelector(".laser");
     laser.className = "laser-animation1 laser";
