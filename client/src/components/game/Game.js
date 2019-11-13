@@ -25,14 +25,10 @@ export default class Game extends Component {
     store: {
       characters: null,
       skins: null,
+      inventory: null
     },
     villains: null,
     timer: 30,
-    'Black-widow': false,
-    'Thor': false,
-    'Spider-man': false,
-    'Hulk': false,
-    'Ms Marvel': false,
     gamePaused: false,
     seconds: 1 //this.props.seconds
   };
@@ -40,6 +36,7 @@ export default class Game extends Component {
   handleBuyItem = (id, items) => {
     const newItems = items.map(item => {
       if (item._id === id && !item.isBought && item.isAvailable) {
+        this.removeCoins(item.price);
         return {
           ...item,
           isBought: true,
@@ -52,26 +49,90 @@ export default class Game extends Component {
     return newItems;
   };
 
-  handleClickStoreBtn = id => {
-    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
-    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+  changeToInventoryItems = items => {
+    return items.map(item => {
+      return {
+        ...item,
+        isUsed: false
+      };
+    });
+  };
+
+  getBoughtItems = items => {
+    let boughtItems = items.filter(item => item.isBought);
+    boughtItems = this.changeToInventoryItems(boughtItems);
+    return boughtItems.length > 0 ? boughtItems : [];
+  };
+
+  updateInventory = () => {
+    const boughtCharacters = this.getBoughtItems(this.state.store.characters);
+    const boughtSkins = this.getBoughtItems(this.state.store.skins);
+    const allBoughtItems = [...boughtCharacters, ...boughtSkins];
     this.setState({
       store: {
-        skins: newSkins,
-        characters: newCharacters
+        ...this.state.store,
+        inventory: allBoughtItems
       }
     });
   };
 
+  refreshStore = id => {
+    const newCharacters = this.handleBuyItem(id, this.state.store.characters);
+    const newSkins = this.handleBuyItem(id, this.state.store.skins);
+
+    this.setState(
+      {
+        store: {
+          ...this.state.store,
+          skins: newSkins,
+          characters: newCharacters
+        }
+      },
+      async () => {
+        await this.updateIsAvailable();
+        await this.updateInventory();
+      }
+    );
+  };
+
+  handleUseItem = id => {
+    const newInventory = this.state.store.inventory.map(item => {
+      if (item._id === id && !item.isUsed) {
+        return {
+          ...item,
+          isUsed: true
+        };
+      }
+      return item;
+    });
+    this.setState({
+      store: {
+        ...this.state.store,
+        inventory: newInventory
+      }
+    });
+  };
+
+  handleClickStoreBtn = (id, type) => {
+    if (type !== "inventory") {
+      this.refreshStore(id);
+    } else {
+      this.handleUseItem(id);
+    }
+  };
+
   checkIfAvailableItems = items => {
     const newItems = items.map(item => {
-      if (this.state.coins >= item.price) {
+      if (this.state.coins >= item.price && !item.isBought) {
         return {
           ...item,
           isAvailable: true
         };
       } else {
-        return item;
+        return {
+          ...item,
+          isAvailable: false
+        };
       }
     });
     return newItems;
@@ -84,6 +145,7 @@ export default class Game extends Component {
     const updatedSkins = this.checkIfAvailableItems(this.state.store.skins);
     this.setState({
       store: {
+        ...this.state.store,
         skins: updatedSkins,
         characters: updatedCharacters
       }
@@ -97,39 +159,46 @@ export default class Game extends Component {
     this.updateIsAvailable();
   };
 
+  removeCoins = price => {
+    this.setState({
+      coins: this.state.coins - price
+    });
+    this.updateIsAvailable();
+  };
+
   removeCoins = nbCoins => {
     this.setState({
       coins: this.state.coins - nbCoins
     });
-  }
+  };
 
   characterIsBought = character => {
-    if (character === 'Black-widow') {
+    if (character === "Black-widow") {
       this.setState({
-        'Black-widow' : true
-      })
+        "Black-widow": true
+      });
     }
-    if (character === 'Thor') {
+    if (character === "Thor") {
       this.setState({
-        'Thor' : true
-      })
+        Thor: true
+      });
     }
-    if (character === 'Spider-man') {
+    if (character === "Spider-man") {
       this.setState({
-        'Spider-man' : true
-      })
+        "Spider-man": true
+      });
     }
-    if (character === 'Hulk') {
+    if (character === "Hulk") {
       this.setState({
-        'Hulk' : true
-      })
+        Hulk: true
+      });
     }
-    if (character === 'Ms Marvel') {
+    if (character === "Ms Marvel") {
       this.setState({
-        'Ms Marvel' : true
-      })
+        "Ms Marvel": true
+      });
     }
-  }
+  };
 
   removeHealth = () => {
     if (this.state.health > 0) {
@@ -139,10 +208,16 @@ export default class Game extends Component {
     }
   };
 
-  toggleIsStoreOpen = () => {
-    this.setState({
+  toggleIsStoreOpen = async () => {
+    await this.setState({
       isStoreOpen: !this.state.isStoreOpen
     });
+    console.log(this.state.isStoreOpen);
+    if (this.state.isStoreOpen) {
+      clearInterval(this.gameTimer);
+    } else {
+      this.setTimer();
+    }
   };
 
   decrementTimer = () => {
@@ -156,16 +231,16 @@ export default class Game extends Component {
   };
 
   pauseGame = () => {
-   clearInterval(this.gameTimer);
-   const pauseDiv = document.getElementById('gamePausedDiv');
-   pauseDiv.style.display= 'block';
- }  
- 
- continueGame = () => {
-   this.gameTimer = setInterval(this.decrementTimer, 1000);
-   const pauseDiv = document.getElementById('gamePausedDiv');
-   pauseDiv.style.display= 'none';
- }
+    clearInterval(this.gameTimer);
+    const pauseDiv = document.getElementById("gamePausedDiv");
+    pauseDiv.style.display = "block";
+  };
+
+  continueGame = () => {
+    this.gameTimer = setInterval(this.decrementTimer, 1000);
+    const pauseDiv = document.getElementById("gamePausedDiv");
+    pauseDiv.style.display = "none";
+  };
 
   resetGame = () => {
     clearInterval(this.gameTimer);
@@ -260,7 +335,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(IP);
+    this.fetchGameData(LOCALHOST);
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();
@@ -293,7 +368,6 @@ export default class Game extends Component {
   };
 
   render() {
-    console.log(this.state.store);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
@@ -331,6 +405,8 @@ export default class Game extends Component {
               coins={this.state.coins}
               handleExitStore={this.toggleIsStoreOpen}
               handleClick={this.handleClickStoreBtn}
+              removeCoins={this.removeCoins}
+              characterIsBought={this.characterIsBought}
             />
           )}
         />
