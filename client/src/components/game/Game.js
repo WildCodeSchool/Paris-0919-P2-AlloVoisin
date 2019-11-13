@@ -35,6 +35,7 @@ export default class Game extends Component {
   handleBuyItem = (id, items) => {
     const newItems = items.map(item => {
       if (item._id === id && !item.isBought && item.isAvailable) {
+        this.removeCoins(item.price);
         return {
           ...item,
           isBought: true,
@@ -81,33 +82,41 @@ export default class Game extends Component {
     this.setState(
       {
         store: {
+          ...this.state.store,
           skins: newSkins,
           characters: newCharacters
         }
       },
-      () => this.updateInventory()
+      async () => {
+        await this.updateIsAvailable();
+        await this.updateInventory();
+      }
     );
+  };
+
+  handleUseItem = id => {
+    const newInventory = this.state.store.inventory.map(item => {
+      if (item._id === id && !item.isUsed) {
+        return {
+          ...item,
+          isUsed: true
+        };
+      }
+      return item;
+    });
+    this.setState({
+      store: {
+        ...this.state.store,
+        inventory: newInventory
+      }
+    });
   };
 
   handleClickStoreBtn = (id, type) => {
     if (type !== "inventory") {
       this.refreshStore(id);
     } else {
-      const newInventory = this.state.store.inventory.map(item => {
-        if (item._id === id && !item.isUsed) {
-          return {
-            ...item,
-            isUsed: true
-          };
-        }
-        return item;
-      });
-      this.setState({
-        store: {
-          ...this.state.store,
-          inventory: newInventory
-        }
-      });
+      this.handleUseItem(id);
     }
   };
 
@@ -119,7 +128,10 @@ export default class Game extends Component {
           isAvailable: true
         };
       } else {
-        return item;
+        return {
+          ...item,
+          isAvailable: false
+        };
       }
     });
     return newItems;
@@ -303,6 +315,7 @@ export default class Game extends Component {
   };
 
   render() {
+    console.log(this.state.store);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
