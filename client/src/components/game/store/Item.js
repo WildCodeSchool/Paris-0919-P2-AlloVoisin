@@ -1,5 +1,5 @@
 import React from "react";
-import Characters from './Characters';
+import  './Item.css';
 
 const Item = ({
   id,
@@ -17,7 +17,7 @@ const Item = ({
   return (
     <li className="item-container">
       <div className={`background-${type}`}>
-        <img src={imgSrc} alt={name} />
+        <img  className="store-images" src={imgSrc} alt={name} />
       </div>
       <p>{name}</p>
       <button className="Store-button" onClick={handleClickBtn}>
