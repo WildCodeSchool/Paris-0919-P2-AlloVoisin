@@ -2,7 +2,7 @@ import React from "react";
 
 const Item = ({ id, name, type, imgSrc, isBought, isUsed, handleClick }) => {
   const handleClickBtn = () => {
-    handleClick(id);
+    handleClick(id, type);
   };
 
   return (

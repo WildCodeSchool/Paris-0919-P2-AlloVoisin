@@ -74,7 +74,7 @@ export default class Game extends Component {
     });
   };
 
-  handleClickStoreBtn = id => {
+  refreshStore = id => {
     const newCharacters = this.handleBuyItem(id, this.state.store.characters);
     const newSkins = this.handleBuyItem(id, this.state.store.skins);
 
@@ -87,6 +87,28 @@ export default class Game extends Component {
       },
       () => this.updateInventory()
     );
+  };
+
+  handleClickStoreBtn = (id, type) => {
+    if (type !== "inventory") {
+      this.refreshStore(id);
+    } else {
+      const newInventory = this.state.store.inventory.map(item => {
+        if (item._id === id && !item.isUsed) {
+          return {
+            ...item,
+            isUsed: true
+          };
+        }
+        return item;
+      });
+      this.setState({
+        store: {
+          ...this.state.store,
+          inventory: newInventory
+        }
+      });
+    }
   };
 
   checkIfAvailableItems = items => {
@@ -281,7 +303,6 @@ export default class Game extends Component {
   };
 
   render() {
-    console.log(this.state.store);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
