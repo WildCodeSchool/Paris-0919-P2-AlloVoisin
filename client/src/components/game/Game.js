@@ -170,35 +170,35 @@ export default class Game extends Component {
     this.setState({
       coins: this.state.coins - nbCoins
     });
-  }
+  };
 
   characterIsBought = character => {
-    if (character === 'Black-widow') {
+    if (character === "Black-widow") {
       this.setState({
-        'Black-widow' : true
-      })
+        "Black-widow": true
+      });
     }
-    if (character === 'Thor') {
+    if (character === "Thor") {
       this.setState({
-        'Thor' : true
-      })
+        Thor: true
+      });
     }
-    if (character === 'Spider-man') {
+    if (character === "Spider-man") {
       this.setState({
-        'Spider-man' : true
-      })
+        "Spider-man": true
+      });
     }
-    if (character === 'Hulk') {
+    if (character === "Hulk") {
       this.setState({
-        'Hulk' : true
-      })
+        Hulk: true
+      });
     }
-    if (character === 'Ms Marvel') {
+    if (character === "Ms Marvel") {
       this.setState({
-        'Ms Marvel' : true
-      })
+        "Ms Marvel": true
+      });
     }
-  }
+  };
 
   removeHealth = () => {
     if (this.state.health > 0) {
@@ -224,18 +224,17 @@ export default class Game extends Component {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
 
-
   pauseGame = () => {
     clearInterval(this.gameTimer);
-    const pauseDiv = document.getElementById('gamePausedDiv');
-    pauseDiv.style.display= 'block';
-  }
+    const pauseDiv = document.getElementById("gamePausedDiv");
+    pauseDiv.style.display = "block";
+  };
 
   continueGame = () => {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
-    const pauseDiv = document.getElementById('gamePausedDiv');
-    pauseDiv.style.display= 'none';
-  }
+    const pauseDiv = document.getElementById("gamePausedDiv");
+    pauseDiv.style.display = "none";
+  };
 
   resetGame = () => {
     clearInterval(this.gameTimer);

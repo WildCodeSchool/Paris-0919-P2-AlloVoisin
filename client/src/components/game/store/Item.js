@@ -1,5 +1,4 @@
 import React from "react";
-import Characters from './Characters';
 
 const Item = ({ id, name, type, imgSrc, isBought, isUsed, handleClick }) => {
   const handleClickBtn = () => {
