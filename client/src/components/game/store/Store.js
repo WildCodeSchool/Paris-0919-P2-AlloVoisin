@@ -3,7 +3,7 @@ import "./Store.css";
 import ExitCross from "../../common/ExitCross";
 import Item from "./Item";
 
-const Store = ({ store, coins, section, handleExitStore }) => {
+const Store = ({ store, coins, section, handleExitStore, removeCoins, characterIsBought, blackWidow, thor, spiderMan, hulk, msMarvel }) => {
   console.log(store[section]);
   return (
     store && (
@@ -20,6 +20,13 @@ const Store = ({ store, coins, section, handleExitStore }) => {
                 name={item.name}
                 imgSrc={item.imgSrc}
                 price={100}
+                removeCoins={removeCoins}
+                characterIsBought={characterIsBought}
+                blackWidow={blackWidow}
+                thor={thor}
+                spiderMan={spiderMan}
+                hulk={hulk}
+                msMarvel={msMarvel}
               />
             );
           })}

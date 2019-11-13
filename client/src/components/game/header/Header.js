@@ -3,6 +3,7 @@ import HealthBar from "./HealthBar";
 import Coins from "./Coins";
 import BtnRestart from "./BtnRestart";
 import NavBar from "../../common/NavBar";
+import Pause from "./Pause";
 
 const Header = ({
   health,
@@ -11,7 +12,9 @@ const Header = ({
   level,
   coins,
   addCoins,
-  resetGame
+  resetGame,
+  pauseGame,
+  continueGame
 }) => {
   return (
     <div>
@@ -23,6 +26,7 @@ const Header = ({
       />
       <Coins coins={coins} addCoins={addCoins} />
       <BtnRestart resetGame={resetGame} />
+      <Pause pauseGame={pauseGame} continueGame={continueGame}/>
       <NavBar />
     </div>
   );

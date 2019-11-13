@@ -1,6 +1,6 @@
 import React from "react";
 import SocialNetwork from "../common/SocialNetwork";
-// import logoMarvelFight from "../../img/logoMarvelFight.png";
+import logoMarvelFight from "../../img/logoMarvelFight.jpg";
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         alt="Logo Iron Company"
         id="ironCompany"
       />
-      {/* <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" /> */}
+      <img src={logoMarvelFight} alt="Logo Marvel Fight" id="marvelFight" /> 
       <SocialNetwork />
     </div>
   );
