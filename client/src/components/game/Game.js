@@ -155,6 +155,18 @@ export default class Game extends Component {
     this.gameTimer = setInterval(this.decrementTimer, 1000);
   };
 
+  pauseGame = () => {
+   clearInterval(this.gameTimer);
+   const pauseDiv = document.getElementById('gamePausedDiv');
+   pauseDiv.style.display= 'block';
+ }  
+ 
+ continueGame = () => {
+   this.gameTimer = setInterval(this.decrementTimer, 1000);
+   const pauseDiv = document.getElementById('gamePausedDiv');
+   pauseDiv.style.display= 'none';
+ }
+
   resetGame = () => {
     clearInterval(this.gameTimer);
     this.setState({
