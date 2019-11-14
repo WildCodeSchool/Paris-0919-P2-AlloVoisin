@@ -8,6 +8,7 @@ import Store from "./store/Store";
 import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
 import SoundFinishHim from "../soundEffects/vo_anno_finish_him06.mp3";
 import SoundCountdown from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
+import ReactPlayer from "react-player";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import "./Game.css";
@@ -452,6 +453,13 @@ export default class Game extends Component {
             />
           )}
         />
+         <ReactPlayer
+            url="https://www.youtube.com/watch?v=KnslNk8HIaI"
+            playing={true}
+            width="0"
+            height="0"
+            volume="0.3"
+          />
       </div>
     );
   }
