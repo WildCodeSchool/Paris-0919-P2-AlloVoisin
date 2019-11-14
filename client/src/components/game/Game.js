@@ -98,9 +98,27 @@ export default class Game extends Component {
   handleUseItem = id => {
     const newInventory = this.state.store.inventory.map(item => {
       if (item._id === id && !item.isUsed) {
+        const hero = document.getElementById('hero');
+        switch (id) {
+          case '5dc02c9c838c5a6413530f09' :
+            hero.className = 'hero spiderMan';
+            break;
+          case '5dc02ce4838c5a6413530f0b'  :
+              hero.className = 'hero hulk';
+              break;
+          case '5dc02a004ed38263faba066f'  :
+              hero.className = 'hero blackWidow';
+              break;
+        }
         return {
           ...item,
           isUsed: true
+        };
+      }
+      if (item._id !== id && item.isUsed) {
+        return {
+          ...item,
+          isUsed: false
         };
       }
       return item;
@@ -111,6 +129,7 @@ export default class Game extends Component {
         inventory: newInventory
       }
     });
+
   };
 
   handleClickStoreBtn = (id, type) => {
@@ -119,6 +138,7 @@ export default class Game extends Component {
     } else {
       this.handleUseItem(id);
     }
+
   };
 
   checkIfAvailableItems = items => {
