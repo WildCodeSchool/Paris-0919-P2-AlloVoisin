@@ -1,6 +1,3 @@
 .display {
-  position: absolute;
-  right: 0;
-  top: 5vh;
   z-index: 999;
 }

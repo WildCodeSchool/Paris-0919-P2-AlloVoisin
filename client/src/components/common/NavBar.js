@@ -17,7 +17,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="navBar-container">
         <div className="menu-button" onClick={this.handleMenuButtonClick}>
           <img
             className="icon"

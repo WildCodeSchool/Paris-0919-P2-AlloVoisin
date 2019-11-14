@@ -1,9 +1,3 @@
-.pauseDiv {
-  position: absolute;
-  right: 0;
-  top: 12vh;
-}
-
 .pauseDiv button {
   background: #000;
   border-radius: 5px;

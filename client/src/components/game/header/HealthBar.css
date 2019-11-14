@@ -1,39 +1,38 @@
 .health-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .health-container {
-    height: 20px;
-    width: 50%;
-    border: 1px solid black;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    margin: 0 auto;
-
+  height: 20px;
+  width: 80%;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 0 auto;
 }
 
 .style {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size:2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vw;
 }
 
 #health {
-    border-radius: 10px;
-    display: flex;
-    align-self: center;
-    width: 100%;
-    height: 20px;
-    background-color: rgb(253, 187, 6);
-    /* animation: decrease 5s linear infinite; */
+  border-radius: 10px;
+  display: flex;
+  align-self: center;
+  width: 100%;
+  height: 20px;
+  background-color: rgb(253, 187, 6);
+  /* animation: decrease 5s linear infinite; */
 }
 
-.damage{
-    overflow:hidden;
-    max-width:100%;
+.damage {
+  overflow: hidden;
+  max-width: 100%;
 }
 /* @keyframes decrease {
     0% {width: 100%}

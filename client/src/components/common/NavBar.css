@@ -1,25 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Faster+One&display=swap");
 
-.container {
-  position: absolute;
-  text-align: left;
+.navBar-container {
   width: 12vw;
   top: 0;
   z-index: 999;
 }
 
+.navBar-container li {
+  margin: 6px 0;
+}
+
 .nav {
-  width: 50vw;
-  box-shadow: 1px 1px rgb(0, 0, 0);
   position: absolute;
-  top: 0;
   left: -52vw;
-  top: 40vh;
 }
 
 .show {
   left: 0vw;
-  position: initial;
+  position: absolute;
 }
 
 .nav a {
@@ -41,7 +39,7 @@
 
 .icon {
   size: initial;
-  padding: 6px;
+  padding: 20px;
   margin: 0;
   width: 100%;
   border-radius: 50%;
@@ -71,7 +69,7 @@
 .menu-items {
   height: 0px;
   width: 150px;
-  padding: 0px;
+  padding: 20px;
   margin: 0px;
 }
 
@@ -86,12 +84,12 @@
   text-decoration: none;
   color: rgb(255, 255, 255);
   display: flex;
-  padding: 10px 16px;
+  padding: 10px;
   border: 1px solid #555;
 }
 
 @media screen and (min-width: 900px) {
-  .container {
+  .navBar-container {
     width: 9vw;
   }
 }
