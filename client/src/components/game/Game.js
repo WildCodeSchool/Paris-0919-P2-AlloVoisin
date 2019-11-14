@@ -360,6 +360,8 @@ export default class Game extends Component {
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
     this.fetchGameData(IP);
+    this.audio = new Audio(SoundCountdown)
+    this.audio.play()
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();
@@ -380,8 +382,6 @@ export default class Game extends Component {
 
   tick = () => {
     if (this.state.seconds > 1) {
-      this.audio = new Audio(SoundCountdown)
-      this.audio.play()
       this.setState({ seconds: this.state.seconds - 1 });
     } else {
       clearInterval(this.startTimer);
@@ -391,9 +391,8 @@ export default class Game extends Component {
       setTimeout(() => {
         fight.style.display = "none";
       }, 1000);
+
     }
-
-
   };
 
   finishHim = () => {
