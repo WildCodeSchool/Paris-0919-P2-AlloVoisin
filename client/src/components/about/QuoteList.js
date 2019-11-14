@@ -16,7 +16,7 @@ const quotes = [
       'https://static1.srcdn.com/wordpress/wp-content/uploads/2019/09/Heimdall-Death-in-Marvel-Comic.jpg',
   },
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    quote: "Rrrrrr ! ",
     character: 'Audrey aka Black Panther',
     image:
       'https://www.actualitte.com/images/actualites/images/comics/black%20panther%20comics%20premier%20dessin%20jack%20kirby.jpg',
