@@ -232,7 +232,6 @@ export default class Game extends Component {
     await this.setState({
       isStoreOpen: !this.state.isStoreOpen
     });
-    console.log(this.state.isStoreOpen);
     if (this.state.isStoreOpen) {
       clearInterval(this.gameTimer);
     } else {
@@ -409,12 +408,15 @@ export default class Game extends Component {
           villainImg={this.state.villainImg}
           level={this.state.level}
         />
-         <div className="start-game" style={{ width: "100%", textAlign: "center" }}>
-        <h1 id="fight">{this.state.seconds} </h1>
+        <div
+          className="start-game"
+          style={{ width: "100%", textAlign: "center" }}
+        >
+          <h1 id="fight">{this.state.seconds} </h1>
         </div>
-        
+
         {this.state.isGameOver ? <GameOver /> : <></>}
-      
+
         <StoreBar handleClick={this.toggleIsStoreOpen} />
         <Route
           path="/game/store/:section"

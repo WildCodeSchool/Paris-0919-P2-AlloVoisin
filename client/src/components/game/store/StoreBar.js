@@ -7,6 +7,7 @@ const StoreBar = ({ handleClick }) => {
     <div className="store-bar-container">
       <ul className="img-container">
         <NavLink
+          activeClassName="active"
           className="nav-link"
           id="img-skins"
           onClick={handleClick}
@@ -19,6 +20,7 @@ const StoreBar = ({ handleClick }) => {
           <p>Skins</p>
         </NavLink>
         <NavLink
+          activeClassName="active"
           className="nav-link"
           id="img-characters"
           onClick={handleClick}
@@ -31,6 +33,7 @@ const StoreBar = ({ handleClick }) => {
           <p>Characters</p>
         </NavLink>
         <NavLink
+          activeClassName="active"
           className="nav-link"
           id="img-skills"
           onClick={handleClick}
