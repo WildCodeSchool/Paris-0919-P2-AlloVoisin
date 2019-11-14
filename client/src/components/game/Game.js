@@ -5,9 +5,9 @@ import StoreBar from "./store/StoreBar";
 import GameOver from "./GameOver";
 import Loading from "../common/Loading";
 import Store from "./store/Store";
-import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
-import SoundFinishHim from "../soundEffects/Mortal Kombat  FINISH HIM.mp3";
-import SoundCountdown from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
+import GameOverSound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
+import FinishHimSound from "../soundEffects/Mortal Kombat  FINISH HIM.mp3";
+import CountdownSound from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import "./Game.css";
@@ -307,7 +307,7 @@ export default class Game extends Component {
         isGameOver: true,
         timer: null
       });
-      this.audio = new Audio(Sound);
+      this.audio = new Audio(GameOverSound);
       this.audio.play();
     }
   };
@@ -332,7 +332,7 @@ export default class Game extends Component {
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
     this.fetchGameData(IP);
-    this.audio = new Audio(SoundCountdown)
+    this.audio = new Audio(CountdownSound)
     this.audio.play()
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
@@ -368,7 +368,7 @@ export default class Game extends Component {
 
   finishHim = () => {
     if (this.state.health === 10) {
-      this.audio = new Audio(SoundFinishHim);
+      this.audio = new Audio(FinishHimSound);
       this.audio.play();
       setTimeout(() => {
         this.audio.pause()

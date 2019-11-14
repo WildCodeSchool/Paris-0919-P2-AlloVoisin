@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import SoundPunch from "../../soundEffects/pm_ag_1_2_abstract_guns_281.mp3";
+import IronmanSound from "../../soundEffects/pm_ag_1_2_abstract_guns_281.mp3";
+import SpidermanSound from "../../soundEffects/316942__boxerdave92__spiderman-thwip.wav";
 import "./Hero.css";
 
 export default class Hero extends Component {
@@ -20,6 +21,8 @@ export default class Hero extends Component {
       setTimeout(() => {
         hero.classList.remove('spiderMan-animation')
       }, 200);
+      this.audio = new Audio(SpidermanSound)
+      this.audio.play()
     }
     else if (hero.classList.contains('hulk')) {
       hero.classList.add('hulk-animation');
@@ -36,7 +39,7 @@ export default class Hero extends Component {
     setTimeout(() => {
       hero.classList.remove('hero-animation')
     }, 200);
-    this.audio = new Audio(SoundPunch)
+    this.audio = new Audio(IronmanSound)
     this.audio.play()
     this.audio.volume = 0.3;
   }
