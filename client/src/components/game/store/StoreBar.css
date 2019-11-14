@@ -11,10 +11,14 @@ ul {
   align-items: center;
   list-style-type: none;
   width: 100%;
-  padding: 2px 0;
+  padding: 0.2em;
   text-decoration: none;
   color: initial;
   justify-content: space-around;
+}
+
+.active {
+  background-color: red;
 }
 
 .store-bar-container {
@@ -25,7 +29,11 @@ ul {
   background-color: rgba(0, 0, 0, 0.36);
 }
 
-.img-container p{
+.img-container {
+  margin: 0;
+}
+
+.img-container p {
   color: white;
 }
 
