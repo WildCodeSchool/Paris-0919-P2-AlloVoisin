@@ -20,6 +20,13 @@
     0 -220px no-repeat;
   height: 200px;
 }
+
+.blackSpiderMan {
+    background: url("https://www.spriters-resource.com/resources/sheets/48/50661.png")
+      0 -220px no-repeat;
+      height: 180px;
+  }
+
 .spiderMan-animation {
   background-position: -150px -220px;
 }

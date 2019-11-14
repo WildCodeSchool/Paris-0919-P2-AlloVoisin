@@ -112,6 +112,8 @@ export default class Game extends Component {
           case "5dc02a004ed38263faba066f":
             hero.className = "hero blackWidow";
             break;
+          case "5dc0336882efa7678d2ed4ce":
+            hero.className = "hero spiderMan blackSpiderMan";
         }
         return {
           ...item,
