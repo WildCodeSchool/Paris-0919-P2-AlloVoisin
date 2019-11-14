@@ -100,17 +100,17 @@ export default class Game extends Component {
   handleUseItem = id => {
     const newInventory = this.state.store.inventory.map(item => {
       if (item._id === id && !item.isUsed) {
-        const hero = document.getElementById('hero');
+        const hero = document.getElementById("hero");
         switch (id) {
-          case '5dc02c9c838c5a6413530f09' :
-            hero.className = 'hero spiderMan';
+          case "5dc02c9c838c5a6413530f09":
+            hero.className = "hero spiderMan";
             break;
-          case '5dc02ce4838c5a6413530f0b'  :
-              hero.className = 'hero hulk';
-              break;
-          case '5dc02a004ed38263faba066f'  :
-              hero.className = 'hero blackWidow';
-              break;
+          case "5dc02ce4838c5a6413530f0b":
+            hero.className = "hero hulk";
+            break;
+          case "5dc02a004ed38263faba066f":
+            hero.className = "hero blackWidow";
+            break;
         }
         return {
           ...item,
@@ -131,7 +131,6 @@ export default class Game extends Component {
         inventory: newInventory
       }
     });
-
   };
 
   handleClickStoreBtn = (id, type) => {
@@ -140,7 +139,6 @@ export default class Game extends Component {
     } else {
       this.handleUseItem(id);
     }
-
   };
 
   checkIfAvailableItems = items => {
@@ -194,34 +192,6 @@ export default class Game extends Component {
     });
   };
 
-  characterIsBought = character => {
-    if (character === "Black-widow") {
-      this.setState({
-        "Black-widow": true
-      });
-    }
-    if (character === "Thor") {
-      this.setState({
-        Thor: true
-      });
-    }
-    if (character === "Spider-man") {
-      this.setState({
-        "Spider-man": true
-      });
-    }
-    if (character === "Hulk") {
-      this.setState({
-        Hulk: true
-      });
-    }
-    if (character === "Ms Marvel") {
-      this.setState({
-        "Ms Marvel": true
-      });
-    }
-  };
-
   removeHealth = () => {
     if (this.state.health > 0) {
       this.setState({
@@ -230,15 +200,18 @@ export default class Game extends Component {
     }
   };
 
-  toggleIsStoreOpen = async () => {
-    await this.setState({
-      isStoreOpen: !this.state.isStoreOpen
+  openStore = () => {
+    this.setState({
+      isStoreOpen: true
     });
-    if (this.state.isStoreOpen) {
-      clearInterval(this.gameTimer);
-    } else {
-      this.setTimer();
-    }
+    clearInterval(this.gameTimer);
+  };
+
+  exitStore = () => {
+    this.setState({
+      isStoreOpen: false
+    });
+    this.setTimer();
   };
 
   decrementTimer = () => {
@@ -334,10 +307,9 @@ export default class Game extends Component {
         isGameOver: true,
         timer: null
       });
-      this.audio = new Audio(Sound)
-      this.audio.play()
+      this.audio = new Audio(Sound);
+      this.audio.play();
     }
-
   };
 
   checkIfWin = () => {
@@ -372,7 +344,7 @@ export default class Game extends Component {
     this.checkIfGameOver();
     this.checkIfWin();
     this.finishHim();
-    };
+  };
 
   componentWillUnmount = () => {
     clearInterval(this.gameTimer);
@@ -391,19 +363,18 @@ export default class Game extends Component {
       setTimeout(() => {
         fight.style.display = "none";
       }, 1000);
-
     }
   };
 
   finishHim = () => {
     if (this.state.health === 10) {
-      this.audio = new Audio(SoundFinishHim)
-      this.audio.play()
+      this.audio = new Audio(SoundFinishHim);
+      this.audio.play();
       setTimeout(() => {
         this.audio.pause()
       }, 2000)
     }
-  }
+  };
 
   render() {
     return (
@@ -436,7 +407,7 @@ export default class Game extends Component {
 
         {this.state.isGameOver ? <GameOver /> : <></>}
 
-        <StoreBar handleClick={this.toggleIsStoreOpen} />
+        <StoreBar handleClick={this.openStore} />
         <Route
           path="/game/store/:section"
           render={props => (
@@ -444,7 +415,7 @@ export default class Game extends Component {
               section={props.match.params.section}
               store={this.state.store}
               coins={this.state.coins}
-              handleExitStore={this.toggleIsStoreOpen}
+              handleExitStore={this.exitStore}
               handleClick={this.handleClickStoreBtn}
               removeCoins={this.removeCoins}
               characterIsBought={this.characterIsBought}
