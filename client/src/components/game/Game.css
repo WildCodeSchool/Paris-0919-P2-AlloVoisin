@@ -1,4 +1,6 @@
 #game {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   background: url("https://trello-attachments.s3.amazonaws.com/5da71c47d0e1d66400a19fb5/768x480/519fe61dab4e461f4293a69d8a9dd566/Marvel-vs.-Capcom-Clash-of-Super-Heroes-Video-Game-1998-Capcom-Blue-Area-of-the-Moon-Stage-Background-Animated-Sprites.gif")
@@ -10,7 +12,8 @@
 
 /*-----------------------------------------------------store------------------------------------------------*/
 
-.background-skins, .background-characters {
+.background-skins,
+.background-characters {
   width: 30vw;
 }
 
@@ -19,21 +22,20 @@ li {
 }
 
 .items-container {
-  position: fixed;
-  z-index: 1;
-  width: 100vw;
-  height: 85vh;
+  position: absolute;
+  bottom: 39px;
+  width: 100%;
+  height: calc(100% - 39px);
   overflow-y: auto;
-  bottom: 68px;
   z-index: 999;
-  background-color:#01427bc4;
+  background-color: #01427bc4;
 }
 
 .item-container {
   border: 1px solid white;
   border-radius: 20px;
-  background-color:black;
-  margin-bottom:20px;
+  background-color: black;
+  margin-bottom: 20px;
 }
 
 .items-list-container {
@@ -46,8 +48,8 @@ li {
 
 .items-list-container::after {
   content: "";
-  display:flex;
-  width:30%;
+  display: flex;
+  width: 30%;
 }
 
 .cross {
@@ -56,7 +58,6 @@ li {
   top: 0;
   right: 0;
 }
-
 
 .loading {
   width: 100vw;
@@ -123,12 +124,14 @@ li {
 
 @media screen and (min-width: 768px) {
   .items-container {
-    bottom: 94px;
+    bottom: 64px;
+    height: calc(100% - 64px);
   }
 }
 
 @media screen and (min-width: 1023px) {
   .items-container {
-    bottom: 119px;
+    bottom: 89px;
+    height: calc(100% - 89px);
   }
 }

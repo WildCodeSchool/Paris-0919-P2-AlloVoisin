@@ -2,10 +2,13 @@
 
 } */
 #homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: url("https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F53%2F2d%2F03%2F532d0341186be12412c6a4362cc08710.jpg")
     50% 0 no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
 }
 #top-icons {
   display: flex;
@@ -18,13 +21,14 @@
   padding: 1px;
 }
 
-#ironCompany {
+/* #ironCompany {
   width: 20vw;
   border-radius: 50px;
-}
+} */
 
 #marvelFight {
   width: 20vw;
+  margin-left: 40%;
 }
 
 .social-container a {
@@ -61,4 +65,8 @@
   #marvelFight {
     width: 20vw;
   }
+}
+
+.footer-container {
+  position: relative;
 }

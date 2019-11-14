@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "./Hero";
 import Villain from "./Villain";
+import "./Fighters.css";
 
 const Fighters = ({ removeHealth, addCoins, villainImg, level }) => {
   return (
