@@ -1,81 +1,81 @@
 .hero {
-    width: 150px;
-    height:320px;
-    background: url('https://www.spriters-resource.com/download/54426/') 0 0 no-repeat;
-    position: absolute;
-    top: 250px;
-    left:10%;
-    z-index:1;
+  width: 150px;
+  height: 320px;
+  background: url("https://www.spriters-resource.com/download/54426/") 0 0
+    no-repeat;
+  position: absolute;
+  top: 150px;
+  left: 10%;
+  z-index: 1;
 }
 
-.hero-animation{
-    background-position: -730px -320px;
-    width: 250px;
-    height: 300px;
+.hero-animation {
+  background-position: -730px -320px;
+  width: 250px;
+  height: 300px;
 }
 
 .laser {
-    background: url('https://www.spriters-resource.com/download/54426/') 0px -625px no-repeat;
-    width: 0px;
-    height: 60px;
-    position: absolute;
-    top: 20px;
-    left: 70%;
+  background: url("https://www.spriters-resource.com/download/54426/") 0px -625px
+    no-repeat;
+  width: 0px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  left: 70%;
 }
 
 .laser-animation1 {
-    width:50px;
+  width: 50px;
 }
 
 .laser-animation2 {
-    width:180px;
-    height: 100px;
-    background-position-x: -90px;
+  width: 180px;
+  height: 100px;
+  background-position-x: -90px;
 }
 .laser-animation3 {
-    width:200px;
-    height: 90px;
-    /* left:100%; */
-    background-position-x: -290px;
+  width: 200px;
+  height: 90px;
+  /* left:100%; */
+  background-position-x: -290px;
 }
 .laser-animation4 {
-    width:200px;
-    height: 50px;
-    left:100%;
-    background-position-x: -532px;
+  width: 200px;
+  height: 50px;
+  left: 100%;
+  background-position-x: -532px;
 }
 .laser-animation5 {
-    width:30px;
-    height: 30px;
-    left:100%;
-    background-position-x: -742px;
+  width: 30px;
+  height: 30px;
+  left: 100%;
+  background-position-x: -742px;
 }
 
-
-@media screen and (min-width:500px) {
-    .hero {
-        left:20%;
-    }
-}
-@media screen and (min-width:700px) {
-    .hero {
-        left:25%;
-    }
-}
-@media screen and (min-width:800px) {
-    .hero {
-        left: 30%;
-    }
-}
-@media screen and (min-width:1420px) {
-    .hero {
-        left:38%;
-    }
-}
-
-
-@media screen and (max-height:590px) {
-    .hero {
-      top: 100px;
-    }
+@media screen and (min-width: 500px) {
+  .hero {
+    left: 20%;
   }
+}
+@media screen and (min-width: 700px) {
+  .hero {
+    left: 25%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .hero {
+    left: 30%;
+  }
+}
+@media screen and (min-width: 1420px) {
+  .hero {
+    left: 38%;
+  }
+}
+
+@media screen and (max-height: 590px) {
+  .hero {
+    top: 100px;
+  }
+}
