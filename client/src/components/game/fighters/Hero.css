@@ -26,31 +26,27 @@
 
 .hulk {
   background: url("https://www.spriters-resource.com/resources/sheets/45/48226.png")
-    0 0px no-repeat;
+    0 -13px no-repeat;
   height: 249px;
   width: 256px;
-  top: 220px;
 }
 .hulk-animation {
   background-position: -1604px -13px;
   height: 330px;
   width: 240px;
-  top: 200px;
+  top: 15px;
 }
 
 .blackWidow {
     background: url("https://www.spriters-resource.com/resources/sheets/45/48218.png")
-      0 0px no-repeat;
+      0 -30px no-repeat;
     height: 240px;
     width: 235px;
-    top: 220px;
   }
 
   .blackWidow-animation {
     background-position: -643px -223px;
     width:190px;
-    top: 200px;
-
   }
 
 
@@ -156,5 +152,8 @@
 @media screen and (max-height: 590px) {
   .hero {
     top: 15px;
+  }
+  .blackwidow {
+      top: 20px;
   }
 }
