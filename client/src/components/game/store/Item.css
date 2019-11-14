@@ -9,3 +9,7 @@
   background-color:#980024;
 border: 2px solid white;
 }
+
+.Store-button:hover {
+  background-color:#acacac;
+}
