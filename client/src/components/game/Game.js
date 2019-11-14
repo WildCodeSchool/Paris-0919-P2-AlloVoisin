@@ -6,7 +6,7 @@ import GameOver from "./GameOver";
 import Loading from "../common/Loading";
 import Store from "./store/Store";
 import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
-import SoundFinishHim from "../soundEffects/vo_anno_finish_him06.mp3";
+import SoundFinishHim from "../soundEffects/Mortal Kombat  FINISH HIM.mp3";
 import SoundCountdown from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
@@ -383,7 +383,7 @@ export default class Game extends Component {
       this.audio.play()
       setTimeout(() => {
         this.audio.pause()
-      }, 1000)
+      }, 2000)
     }
   }
 
