@@ -20,16 +20,20 @@ const Header = ({
 }) => {
   return (
     <div className="header-container">
-      <HealthBar
-        health={health}
-        healthDivisor={healthDivisor}
-        timer={timer}
-        level={level}
-      />
-      <Coins coins={coins} addCoins={addCoins} />
-      <BtnRestart resetGame={resetGame} />
-      <Pause pauseGame={pauseGame} continueGame={continueGame} />
       <NavBar />
+      <div className="userInfo-homepage-container">
+        <HealthBar
+          health={health}
+          healthDivisor={healthDivisor}
+          timer={timer}
+          level={level}
+        />
+        <Coins coins={coins} addCoins={addCoins} />
+      </div>
+      <div className="btn-homepage-container">
+        <BtnRestart resetGame={resetGame} />
+        <Pause pauseGame={pauseGame} continueGame={continueGame} />
+      </div>
     </div>
   );
 };

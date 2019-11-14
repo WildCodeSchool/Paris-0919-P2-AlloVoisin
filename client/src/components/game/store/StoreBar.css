@@ -65,7 +65,7 @@ ul {
     width: 75px;
   }
 
-  li {
+  .store-bar-container li {
     padding: 6px 0;
   }
 }
