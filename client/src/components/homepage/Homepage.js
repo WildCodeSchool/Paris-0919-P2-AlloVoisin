@@ -34,7 +34,7 @@ export default class Homepage extends Component {
             playing={true}
             width="0"
             height="0"
-          />
+          /> 
         </footer>
       </div>
     );
