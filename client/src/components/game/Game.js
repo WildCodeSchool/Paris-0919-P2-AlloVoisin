@@ -194,33 +194,6 @@ export default class Game extends Component {
     });
   };
 
-  characterIsBought = character => {
-    if (character === "Black-widow") {
-      this.setState({
-        "Black-widow": true
-      });
-    }
-    if (character === "Thor") {
-      this.setState({
-        Thor: true
-      });
-    }
-    if (character === "Spider-man") {
-      this.setState({
-        "Spider-man": true
-      });
-    }
-    if (character === "Hulk") {
-      this.setState({
-        Hulk: true
-      });
-    }
-    if (character === "Ms Marvel") {
-      this.setState({
-        "Ms Marvel": true
-      });
-    }
-  };
 
   removeHealth = () => {
     if (this.state.health > 0) {
