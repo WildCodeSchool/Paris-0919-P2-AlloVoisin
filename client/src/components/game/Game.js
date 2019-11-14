@@ -422,6 +422,13 @@ export default class Game extends Component {
             />
           )}
         />
+         <ReactPlayer
+            url="https://www.youtube.com/watch?v=KnslNk8HIaI"
+            playing={true}
+            width="0"
+            height="0"
+            volume="0.3"
+          />
       </div>
     );
   }

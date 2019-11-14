@@ -1,6 +1,11 @@
 /* #homepage {
 
 } */
+@font-face {
+  font-family: "avengers";
+  src: url("../../fonts/AVENGEANCE-HEROIC-AVENGER.ttf") format("truetype");
+}
+
 #homepage {
   display: flex;
   flex-direction: column;
@@ -42,7 +47,8 @@
   position: absolute;
   bottom: 0;
   right: 5vh;
-  font-size: 2vh;
+  font-size: 4vh;
+  letter-spacing: 4px;
 }
 
 .HomepageRules:hover {

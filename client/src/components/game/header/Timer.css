@@ -1,4 +1,8 @@
 .timer {
-    font-size: 2vw;
-    margin-left: 20px;
+  font-size: 2vw;
+  margin-left: 20px;
+}
+
+.money-time {
+  color: red;
 }

@@ -88,10 +88,26 @@
   display: flex;
   padding: 10px 16px;
   border: 1px solid #555;
+  font-family: "avengers";
 }
 
-@media screen and (min-width: 900px) {
-  .container {
-    width: 9vw;
-  }
+@media screen and (min-width: 900px){
+    .container {
+        width: 9vw;
+    }
 }
+
+.popup{
+    z-index: 3;
+}
+
+
+  #rules-title {
+      font-size: 7vh;
+      color: #4180da;
+  }
+
+  .rules-game {
+      font-size: 4vh;
+      color: black;
+  }
