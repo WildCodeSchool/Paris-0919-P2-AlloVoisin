@@ -335,7 +335,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(LOCALHOST);
+    this.fetchGameData(IP);
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();
@@ -343,7 +343,7 @@ export default class Game extends Component {
   };
 
   componentDidUpdate = () => {
-    this.checkIfGameOver();
+    // this.checkIfGameOver();
     this.checkIfWin();
   };
 

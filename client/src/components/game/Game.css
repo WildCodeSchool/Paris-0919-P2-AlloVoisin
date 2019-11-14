@@ -10,19 +10,30 @@
 
 /*-----------------------------------------------------store------------------------------------------------*/
 
-
-.background-skins {
-  height: 60vh;
-width: 55vw;
+.background-skins, .background-characters {
+  width: 30vw;
 }
 
+li {
+  list-style: none;
+}
 
 .items-container {
   position: fixed;
   z-index: 1;
-  background-color: rgba(80, 80, 80, 0.746);
   width: 100vw;
-  height: 65vh;
+  height: 85vh;
+  overflow-y: auto;
+  bottom: 68px;
+  z-index: 999;
+  background-color:#01427bc4;
+}
+
+.item-container {
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color:black;
+  margin-bottom:20px;
 }
 
 .items-list-container {
@@ -30,8 +41,13 @@ width: 55vw;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  overflow-y: auto;
   height: 60vh;
+}
+
+.items-list-container::after {
+  content: "";
+  display:flex;
+  width:30%;
 }
 
 .cross {
@@ -103,4 +119,16 @@ width: 55vw;
 
 #fight {
   color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .items-container {
+    bottom: 94px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .items-container {
+    bottom: 119px;
+  }
 }
