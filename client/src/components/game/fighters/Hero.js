@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Sound from "../../soundEffects/pm_ag_1_2_abstract_guns_281.mp3";
+import SoundPunch from "../../soundEffects/pm_ag_1_2_abstract_guns_281.mp3";
 import "./Hero.css";
 
 export default class Hero extends Component {
@@ -36,8 +36,9 @@ export default class Hero extends Component {
     setTimeout(() => {
       hero.classList.remove('hero-animation')
     }, 200);
-    this.audio = new Audio(Sound)
+    this.audio = new Audio(SoundPunch)
     this.audio.play()
+    this.audio.volume = 0.3;
   }
 
     const laser = document.querySelector(".laser");
