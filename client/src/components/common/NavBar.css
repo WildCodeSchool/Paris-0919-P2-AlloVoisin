@@ -93,6 +93,8 @@
   .navBar-container {
     width: 9vw;
   }
+}
+
 .popup{
     z-index: 3;
 }
