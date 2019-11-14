@@ -18,8 +18,8 @@ const Item = ({ id, name, type, imgSrc, isBought, isUsed, handleClick }) => {
             ? "Bought"
             : "Hire"
           : isUsed
-          ? "Using"
-          : "Not used"}
+          ? "Selected"
+          : "select"}
       </button>
     </li>
   );
