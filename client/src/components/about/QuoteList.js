@@ -54,7 +54,7 @@ const quotes = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
     character: 'Vanessa aka Tornade',
     image:
-      'https://media.melty.fr/article-2838125-facebook-f1440664326/super-story-tornade-x-men-storm-ororo-munroe.jpg',
+      'https://image.noelshack.com/fichiers/2019/46/4/1573719611-tornade.jpg',
   },
 ];
 
