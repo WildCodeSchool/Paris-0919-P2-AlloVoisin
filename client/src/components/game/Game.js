@@ -5,10 +5,12 @@ import StoreBar from "./store/StoreBar";
 import GameOver from "./GameOver";
 import Loading from "../common/Loading";
 import Store from "./store/Store";
-import "./Game.css";
-
+import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
+import SoundFinishHim from "../soundEffects/vo_anno_finish_him06.mp3";
+import SoundCountdown from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
+import "./Game.css";
 
 const LOCALHOST = "http://localhost:5000";
 const IP = "http://192.168.1.223:5000";
@@ -30,7 +32,7 @@ export default class Game extends Component {
     villains: null,
     timer: 30,
     gamePaused: false,
-    seconds: 1 //this.props.seconds
+    seconds: 3 //this.props.seconds
   };
 
   handleBuyItem = (id, items) => {
@@ -98,9 +100,27 @@ export default class Game extends Component {
   handleUseItem = id => {
     const newInventory = this.state.store.inventory.map(item => {
       if (item._id === id && !item.isUsed) {
+        const hero = document.getElementById('hero');
+        switch (id) {
+          case '5dc02c9c838c5a6413530f09' :
+            hero.className = 'hero spiderMan';
+            break;
+          case '5dc02ce4838c5a6413530f0b'  :
+              hero.className = 'hero hulk';
+              break;
+          case '5dc02a004ed38263faba066f'  :
+              hero.className = 'hero blackWidow';
+              break;
+        }
         return {
           ...item,
           isUsed: true
+        };
+      }
+      if (item._id !== id && item.isUsed) {
+        return {
+          ...item,
+          isUsed: false
         };
       }
       return item;
@@ -111,6 +131,7 @@ export default class Game extends Component {
         inventory: newInventory
       }
     });
+
   };
 
   handleClickStoreBtn = (id, type) => {
@@ -119,6 +140,7 @@ export default class Game extends Component {
     } else {
       this.handleUseItem(id);
     }
+
   };
 
   checkIfAvailableItems = items => {
@@ -212,7 +234,6 @@ export default class Game extends Component {
     await this.setState({
       isStoreOpen: !this.state.isStoreOpen
     });
-    console.log(this.state.isStoreOpen);
     if (this.state.isStoreOpen) {
       clearInterval(this.gameTimer);
     } else {
@@ -313,7 +334,10 @@ export default class Game extends Component {
         isGameOver: true,
         timer: null
       });
+      this.audio = new Audio(Sound)
+      this.audio.play()
     }
+
   };
 
   checkIfWin = () => {
@@ -343,9 +367,10 @@ export default class Game extends Component {
   };
 
   componentDidUpdate = () => {
-    // this.checkIfGameOver();
+    this.checkIfGameOver();
     this.checkIfWin();
-  };
+    this.finishHim();
+    };
 
   componentWillUnmount = () => {
     clearInterval(this.gameTimer);
@@ -354,8 +379,10 @@ export default class Game extends Component {
   //startTimer
 
   tick = () => {
-    if (this.state.seconds < 3) {
-      this.setState({ seconds: this.state.seconds + 1 });
+    if (this.state.seconds > 1) {
+      this.audio = new Audio(SoundCountdown)
+      this.audio.play()
+      this.setState({ seconds: this.state.seconds - 1 });
     } else {
       clearInterval(this.startTimer);
       this.setState({ seconds: "Fight !" });
@@ -365,7 +392,19 @@ export default class Game extends Component {
         fight.style.display = "none";
       }, 1000);
     }
+
+
   };
+
+  finishHim = () => {
+    if (this.state.health === 10) {
+      this.audio = new Audio(SoundFinishHim)
+      this.audio.play()
+      setTimeout(() => {
+        this.audio.pause()
+      }, 1000)
+    }
+  }
 
   render() {
     return (
@@ -389,12 +428,15 @@ export default class Game extends Component {
           villainImg={this.state.villainImg}
           level={this.state.level}
         />
-         <div className="start-game" style={{ width: "100%", textAlign: "center" }}>
-        <h1 id="fight">{this.state.seconds} </h1>
+        <div
+          className="start-game"
+          style={{ width: "100%", textAlign: "center" }}
+        >
+          <h1 id="fight">{this.state.seconds} </h1>
         </div>
-        
+
         {this.state.isGameOver ? <GameOver /> : <></>}
-      
+
         <StoreBar handleClick={this.toggleIsStoreOpen} />
         <Route
           path="/game/store/:section"
