@@ -38,6 +38,7 @@ export default class Hero extends Component {
     }, 200);
     this.audio = new Audio(Sound)
     this.audio.play()
+    this.audio.volume = 0.3;
   }
 
     const laser = document.querySelector(".laser");
