@@ -5,6 +5,8 @@ import BtnRestart from "./BtnRestart";
 import NavBar from "../../common/NavBar";
 import Pause from "./Pause";
 
+import "./Header.css";
+
 const Header = ({
   health,
   healthDivisor,

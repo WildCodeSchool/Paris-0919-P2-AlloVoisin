@@ -4,7 +4,7 @@ import "./BtnRestart.css";
 const BtnRestart = ({ resetGame }) => {
   return (
     <div className="display">
-      <button id="restartGame" className="btn" onClick={resetGame}>
+      <button id="restartGame" className="btn-homepage" onClick={resetGame}>
         RESTART
       </button>
     </div>
