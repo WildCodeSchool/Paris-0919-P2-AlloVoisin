@@ -361,9 +361,9 @@ export default class Game extends Component {
 
   tick = () => {
     if (this.state.seconds > 1) {
-      this.setState({ seconds: this.state.seconds - 1 });
       this.audio = new Audio(SoundCountdown)
       this.audio.play()
+      this.setState({ seconds: this.state.seconds - 1 });
     } else {
       clearInterval(this.startTimer);
       this.setState({ seconds: "Fight !" });
@@ -381,8 +381,11 @@ export default class Game extends Component {
     if (this.state.health === 10) {
       this.audio = new Audio(SoundFinishHim)
       this.audio.play()
+      setTimeout(() => {
+        this.audio.pause()
+      }, 1000)
     }
-  };
+  }
 
   render() {
     return (
