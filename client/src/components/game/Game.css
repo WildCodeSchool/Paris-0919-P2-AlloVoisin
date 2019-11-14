@@ -26,13 +26,16 @@ li {
   overflow-y: auto;
   bottom: 68px;
   z-index: 999;
-  background-color:#01427bc4;
+  background: url("https://i.pinimg.com/originals/c0/0b/a1/c00ba1ea32d8695fabd24ec12617a7b2.jpg") ;
+ background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .item-container {
   border: 1px solid white;
   border-radius: 20px;
-  background-color:black;
+  background-color:rgba(0, 0, 0, 0.63);
   margin-bottom:20px;
 }
 
@@ -52,8 +55,8 @@ li {
 
 .cross {
   cursor: pointer;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 10px;
   right: 0;
 }
 
