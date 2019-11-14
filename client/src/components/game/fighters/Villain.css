@@ -1,0 +1,39 @@
+.villain {
+  width: 200px;
+  height: 300px;
+  background: url("https://www.spriters-resource.com/resources/sheets/54/57094.png")
+    0 0 no-repeat;
+  transform: scale(-0.9, 0.9);
+  position: absolute;
+  top: 135px;
+  left: 45%;
+}
+
+.villain-animation {
+  animation: animate 0.3s;
+  filter: invert(1);
+}
+
+@keyframes animate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .villain {
+    left: 50%;
+  }
+}
+
+@media screen and (max-height: 590px) {
+  .villain {
+    top: 25px;
+  }
+}

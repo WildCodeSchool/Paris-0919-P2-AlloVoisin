@@ -1,9 +1,8 @@
+
 import React, { Component } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 import Rules from '../rules/Rules'
-//import { is } from '@babel/types';
-//import { isTemplateElement } from '@babel/types';
 
 class NavBar extends Component {
     state = {

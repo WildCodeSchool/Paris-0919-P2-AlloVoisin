@@ -10,6 +10,19 @@ const Skin = mongoose.model("Skin", {
     type: String,
     required: true,
     trim: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    default: 100
+  },
+  isBought: {
+    type: Boolean,
+    default: false
+  },
+  isAvailable: {
+    type: Boolean,
+    default: false
   }
 });
 
