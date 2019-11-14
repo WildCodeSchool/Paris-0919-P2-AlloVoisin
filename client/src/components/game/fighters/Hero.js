@@ -23,6 +23,7 @@ export default class Hero extends Component {
       }, 200);
       this.audio = new Audio(SpidermanSound)
       this.audio.play()
+      this.audio.volume = 1.0;
     }
     else if (hero.classList.contains('hulk')) {
       hero.classList.add('hulk-animation');

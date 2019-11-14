@@ -10,6 +10,7 @@ import FinishHimSound from "../soundEffects/Mortal Kombat  FINISH HIM.mp3";
 import CountdownSound from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
+import ReactPlayer from "react-player";
 import "./Game.css";
 
 const LOCALHOST = "http://localhost:5000";
