@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Pause.css'
 
 const Pause = ({ pauseGame, continueGame }) => {

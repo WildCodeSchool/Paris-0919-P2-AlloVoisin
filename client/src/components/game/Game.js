@@ -6,10 +6,11 @@ import GameOver from "./GameOver";
 import Loading from "../common/Loading";
 import Store from "./store/Store";
 import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
-import "./Game.css";
-
+import SoundFinishHim from "../soundEffects/vo_anno_finish_him06.mp3";
+import SoundCountdown from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
+import "./Game.css";
 
 const LOCALHOST = "http://localhost:5000";
 const IP = "http://192.168.1.223:5000";
@@ -31,7 +32,7 @@ export default class Game extends Component {
     villains: null,
     timer: 30,
     gamePaused: false,
-    seconds: 1 //this.props.seconds
+    seconds: 3 //this.props.seconds
   };
 
   handleBuyItem = (id, items) => {
@@ -347,9 +348,10 @@ export default class Game extends Component {
   };
 
   componentDidUpdate = () => {
-    // this.checkIfGameOver();
+    this.checkIfGameOver();
     this.checkIfWin();
-  };
+    this.finishHim();
+    };
 
   componentWillUnmount = () => {
     clearInterval(this.gameTimer);
@@ -358,8 +360,10 @@ export default class Game extends Component {
   //startTimer
 
   tick = () => {
-    if (this.state.seconds < 3) {
-      this.setState({ seconds: this.state.seconds + 1 });
+    if (this.state.seconds > 1) {
+      this.setState({ seconds: this.state.seconds - 1 });
+      this.audio = new Audio(SoundCountdown)
+      this.audio.play()
     } else {
       clearInterval(this.startTimer);
       this.setState({ seconds: "Fight !" });
@@ -368,6 +372,15 @@ export default class Game extends Component {
       setTimeout(() => {
         fight.style.display = "none";
       }, 1000);
+    }
+
+
+  };
+
+  finishHim = () => {
+    if (this.state.health === 10) {
+      this.audio = new Audio(SoundFinishHim)
+      this.audio.play()
     }
   };
 
