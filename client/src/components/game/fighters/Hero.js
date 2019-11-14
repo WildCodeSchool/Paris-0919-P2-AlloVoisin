@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Sound from "../../soundEffects/pm_ag_1_2_abstract_guns_281.mp3";
 import "./Hero.css";
 
 export default class Hero extends Component {
@@ -17,7 +18,10 @@ export default class Hero extends Component {
     hero.className = "hero-animation hero";
     setTimeout(() => {
       hero.className = "hero";
-    }, 200); 
+    }, 200);
+
+    this.audio = new Audio(Sound)
+    this.audio.play()
 
     const laser = document.querySelector(".laser");
     laser.className = "laser-animation1 laser";
@@ -46,3 +50,4 @@ export default class Hero extends Component {
         )
     }
 }
+

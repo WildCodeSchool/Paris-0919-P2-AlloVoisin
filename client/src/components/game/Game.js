@@ -5,6 +5,7 @@ import StoreBar from "./store/StoreBar";
 import GameOver from "./GameOver";
 import Loading from "../common/Loading";
 import Store from "./store/Store";
+import Sound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
 import "./Game.css";
 
 import axios from "axios";
@@ -120,7 +121,10 @@ export default class Game extends Component {
         isGameOver: true,
         timer: null
       });
+      this.audio = new Audio(Sound)
+      this.audio.play()
     }
+
   };
 
   checkIfWin = () => {
