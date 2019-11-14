@@ -1,5 +1,5 @@
-import React from "react";
-import "./Pause.css";
+import React from 'react'
+import './Pause.css'
 
 const Pause = ({ pauseGame, continueGame }) => {
   return (
