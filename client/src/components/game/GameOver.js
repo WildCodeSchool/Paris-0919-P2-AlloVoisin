@@ -3,8 +3,8 @@ import "./GameOver.css";
 
 const GameOver = () => {
   return (
-    <div>
-      <p className="game-over">Game Over</p>
+    <div id="game-over">
+      <p className="game-over">GAME OVER</p>
     </div>
   );
 };
