@@ -22,11 +22,11 @@ li {
 }
 
 .items-container {
-  position: fixed;
-  width: 100vw;
-  height: 80vw;
+  position: absolute;
+  bottom: 39px;
+  width: 100%;
+  height: calc(100% - 39px);
   overflow-y: auto;
-  bottom: 64px;
   z-index: 999;
   background-color: #01427bc4;
 }
@@ -125,11 +125,13 @@ li {
 @media screen and (min-width: 768px) {
   .items-container {
     bottom: 64px;
+    height: calc(100% - 64px);
   }
 }
 
 @media screen and (min-width: 1023px) {
   .items-container {
     bottom: 89px;
+    height: calc(100% - 89px);
   }
 }
