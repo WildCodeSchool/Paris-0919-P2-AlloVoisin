@@ -18,6 +18,7 @@ const IP = "http://192.168.1.223:5000";
 export default class Game extends Component {
   state = {
     isGameOver: false,
+    isGameCompleted: false,
     isStoreOpen: false,
     isStart: true,
     coins: 0,
@@ -303,7 +304,22 @@ export default class Game extends Component {
     }
   };
 
-  checkIfGameOver = () => {
+  checkIfGameCompleted = () => {
+    if (
+      this.state.level === 10 &&
+      this.state.health === 0 &&
+      this.state.timer > 0
+    ) {
+      clearInterval(this.gameTimer);
+      this.setState({
+        isGameOver: true,
+        timer: null,
+        isGameCompleted: true
+      });
+    }
+  };
+
+  checkIfTimeOver = () => {
     if (this.state.timer === 0 && this.state.health > 0) {
       clearInterval(this.gameTimer);
       this.setState({
@@ -315,8 +331,17 @@ export default class Game extends Component {
     }
   };
 
+  checkIfGameOver = () => {
+    this.checkIfGameCompleted();
+    this.checkIfTimeOver();
+  };
+
   checkIfWin = () => {
-    if (this.state.health === 0 && this.state.level !== 0) {
+    if (
+      this.state.health === 0 &&
+      this.state.level !== 0 &&
+      this.state.level < 10
+    ) {
       this.setState({
         ...this.state,
         level: this.state.level + 1,
@@ -335,8 +360,8 @@ export default class Game extends Component {
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
     this.fetchGameData(IP);
-    this.audio = new Audio(CountdownSound)
-    this.audio.play()
+    this.audio = new Audio(CountdownSound);
+    this.audio.play();
     this.startTimer = setInterval(this.tick, 1000);
     setTimeout(() => {
       this.setTimer();
@@ -374,12 +399,13 @@ export default class Game extends Component {
       this.audio = new Audio(FinishHimSound);
       this.audio.play();
       setTimeout(() => {
-        this.audio.pause()
-      }, 2000)
+        this.audio.pause();
+      }, 2000);
     }
   };
 
   render() {
+    console.log(this.state.level);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
@@ -408,7 +434,11 @@ export default class Game extends Component {
           <h1 id="fight">{this.state.seconds} </h1>
         </div>
 
-        {this.state.isGameOver ? <GameOver /> : <></>}
+        {this.state.isGameOver ? (
+          <GameOver isGameCompleted={this.state.isGameCompleted} />
+        ) : (
+          <></>
+        )}
 
         <StoreBar handleClick={this.openStore} />
         <Route
@@ -425,13 +455,13 @@ export default class Game extends Component {
             />
           )}
         />
-         <ReactPlayer
-            url="https://www.youtube.com/watch?v=KnslNk8HIaI"
-            playing={true}
-            width="0"
-            height="0"
-            volume="0.3"
-          />
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=KnslNk8HIaI"
+          playing={true}
+          width="0"
+          height="0"
+          volume="0.3"
+        />
       </div>
     );
   }
