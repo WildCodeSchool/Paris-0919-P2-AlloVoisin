@@ -6,10 +6,13 @@
     background-position: center;
     background-size: cover;
     font-family: 'avengers';
-
 }
 
 .title-card {
     font-size: 7vh;
     color: #f3c630;
+}
+
+.about .navBar-container {
+    position:fixed;
 }

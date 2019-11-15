@@ -344,7 +344,7 @@ export default class Game extends Component {
   };
 
   componentDidUpdate = () => {
-    // this.checkIfGameOver();
+    this.checkIfGameOver();
     this.checkIfWin();
     this.finishHim();
   };
