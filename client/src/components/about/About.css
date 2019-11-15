@@ -6,6 +6,8 @@
     background-position: center;
     background-size: cover;
     font-family: 'avengers';
+    height:100vh;
+    overflow:scroll;
 }
 
 .title-card {
