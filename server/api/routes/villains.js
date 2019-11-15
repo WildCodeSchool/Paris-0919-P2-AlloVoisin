@@ -53,13 +53,14 @@ router.patch("/:id", async (req, res) => {
     });
   }
   try {
-    const villain = await Villain.findOneAndUpdate(req.params.id, req.body, {
+    const villain = await Villain.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     });
     if (!villain) {
       res.status(404).send();
     }
+    res.status(201).send(villain);
   } catch (error) {
     res.status(404).send(error);
   }

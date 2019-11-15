@@ -10,7 +10,8 @@
     color: #eee;
     flex-direction: column;
     font-family: 'avengers';
-    
+    justify-content: flex-start;
+    height: max-content;
   }
 
   cite {
@@ -21,13 +22,17 @@
   .QuoteCard img {
     display: flex;
   width: 100%;
-  height: 100%;
+  height: 40vh;
   }
   
   .QuoteCard blockquote {
     margin: 0 0 1rem 0;
   }
-  
+
+  .QuoteCard figcaption {
+    min-height:20vh;
+  }
+
   .QuoteCard figcaption p {
     margin: 0.125rem 0 0 0;
    
