@@ -2,12 +2,11 @@
     /*background-image: url("https://www.wired.com/geekmom/wp-content/uploads/2012/02/JL-courtesy-of-DC-Comics.jpg");*/
     background-image: url("https://cdn.collider.com/wp-content/uploads/2019/04/avengers-endgame-thanos-ship.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     font-family: 'avengers';
     height:100vh;
-    overflow:scroll;
+    overflow-y:scroll;
 }
 
 .title-card {
