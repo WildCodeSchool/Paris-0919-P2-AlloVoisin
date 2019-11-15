@@ -37,7 +37,7 @@ const quotes = [
   },
   {
     quote:
-      "🕸Hero of the web 🕸",
+      "🕸Web designer🕸",
     character: 'Paul-Arnaud aka Spider Man',
     image:
       'https://blog.comic-con-paris.com/wp-content/uploads/2019/08/spiderman-marvel-comics-min.jpg',
