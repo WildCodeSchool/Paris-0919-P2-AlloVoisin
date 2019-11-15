@@ -8,6 +8,7 @@ import Store from "./store/Store";
 import GameOverSound from "../soundEffects/zapsplat_human_male_voice_says_game_over_004_15729.mp3";
 import FinishHimSound from "../soundEffects/Mortal Kombat  FINISH HIM.mp3";
 import CountdownSound from "../soundEffects/472853__nakamurasensei__countdown-to-fight.mp3";
+import YouWinSound from "../soundEffects/you-win-voice-sound-effect-hd.mp3";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -316,6 +317,8 @@ export default class Game extends Component {
         timer: null,
         isGameCompleted: true
       });
+      this.audio = new Audio(YouWinSound)
+      this.audio.play()
     }
   };
 
@@ -372,6 +375,7 @@ export default class Game extends Component {
     this.checkIfGameOver();
     this.checkIfWin();
     this.finishHim();
+    this.checkIfGameCompleted();
   };
 
   componentWillUnmount = () => {

@@ -4,7 +4,7 @@ import "./GameOver.css";
 const GameOver = ({ isGameCompleted }) => {
   return (
     <div id="game-over">
-      <p className="game-over">{isGameCompleted ? "SUCCESS" : "GAME OVER"}</p>
+      <p className="game-over">{isGameCompleted ? "YOU WIN" : "GAME OVER"}</p>
     </div>
   );
 };
