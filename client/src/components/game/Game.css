@@ -28,7 +28,7 @@ li {
   height: calc(100% - 39px);
   overflow-y: auto;
   z-index: 999;
-  background: url("https://i.pinimg.com/originals/c0/0b/a1/c00ba1ea32d8695fabd24ec12617a7b2.jpg") ;
+  background: url("https://i.pinimg.com/originals/c0/0b/a1/c00ba1ea32d8695fabd24ec12617a7b2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,8 +37,9 @@ li {
 .item-container {
   border: 1px solid white;
   border-radius: 20px;
-  background-color:rgba(0, 0, 0, 0.63);
-  margin-bottom:20px;
+  background-color: rgba(0, 0, 0, 0.63);
+  margin-bottom: 20px;
+  padding: 2em 0;
 }
 
 .items-list-container {
