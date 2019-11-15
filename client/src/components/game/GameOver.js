@@ -1,11 +1,13 @@
 import React from "react";
 import "./GameOver.css";
 
-const GameOver = () => {
-
+const GameOver = ({ timer, health }) => {
   return (
     <div id="game-over">
-      <p className="game-over">GAME OVER</p>
+      <p className="game-over">
+        {/* {timer > 0 && health > 0 ? "SUCCESS" : "GAME OVER"} */}
+        GAME OVER
+      </p>
     </div>
   );
 };
