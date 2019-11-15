@@ -4,8 +4,8 @@ import QuoteCard from './QuoteCard';
 const quotes = [
     
   {quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    character: 'Adama aka Kitty Pride',
+      "Combatre avec perceverance et courage, car rien n'est facile alors il se avec motivation et perceverance",
+      character: 'Adama aka Kitty Pride',
     image:
       'https://static3.srcdn.com/wordpress/wp-content/uploads/2019/10/X-Men-Kitty-Pryde-Mutant-Leader.jpg',
   },
