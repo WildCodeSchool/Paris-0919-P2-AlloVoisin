@@ -10,8 +10,8 @@ const quotes = [
       'https://static3.srcdn.com/wordpress/wp-content/uploads/2019/10/X-Men-Kitty-Pryde-Mutant-Leader.jpg',
   },
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    character: 'Amine aka Heimdall',
+    quote: "I see you...",
+    character: 'Amine aka Heimdall !',
     image:
       'https://static1.srcdn.com/wordpress/wp-content/uploads/2019/09/Heimdall-Death-in-Marvel-Comic.jpg',
   },
