@@ -15,16 +15,36 @@ ul {
   text-decoration: none;
   color: initial;
   justify-content: space-around;
+  transition: background-color 0.3s ease-in;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 0, 0, 0.561);
+}
+
+/* Animation for active bg-color */
+
+@keyframes bg-btn-store-bar {
+  0% {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+
+  50% {
+    background-color: rgba(255, 0, 0, 0.561);
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
 }
 
 .active {
-  background-color:  rgba(255, 0, 0, 0.561);
+  animation: bg-btn-store-bar 2s ease-out infinite;
 }
 
 .store-bar-container {
   width: 100%;
   border-top: solid 8px rgba(255, 0, 0, 0.561);
-  background-color:#000000e7;
+  background-color: #000000e7;
 }
 
 .img-container {
