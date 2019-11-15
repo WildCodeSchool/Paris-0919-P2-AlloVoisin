@@ -18,6 +18,7 @@ const IP = "http://192.168.1.223:5000";
 export default class Game extends Component {
   state = {
     isGameOver: false,
+    isGameCompleted: false,
     isStoreOpen: false,
     isStart: true,
     coins: 0,
@@ -303,7 +304,7 @@ export default class Game extends Component {
     }
   };
 
-  checkIfGameOver = () => {
+  checkIfGameCompleted = () => {
     if (
       this.state.level === 10 &&
       this.state.health === 0 &&
@@ -312,9 +313,13 @@ export default class Game extends Component {
       clearInterval(this.gameTimer);
       this.setState({
         isGameOver: true,
-        timer: null
+        timer: null,
+        isGameCompleted: true
       });
     }
+  };
+
+  checkIfTimeOver = () => {
     if (this.state.timer === 0 && this.state.health > 0) {
       clearInterval(this.gameTimer);
       this.setState({
@@ -324,6 +329,11 @@ export default class Game extends Component {
       this.audio = new Audio(GameOverSound);
       this.audio.play();
     }
+  };
+
+  checkIfGameOver = () => {
+    this.checkIfGameCompleted();
+    this.checkIfTimeOver();
   };
 
   checkIfWin = () => {
@@ -424,7 +434,11 @@ export default class Game extends Component {
           <h1 id="fight">{this.state.seconds} </h1>
         </div>
 
-        {this.state.isGameOver ? <GameOver /> : <></>}
+        {this.state.isGameOver ? (
+          <GameOver isGameCompleted={this.state.isGameCompleted} />
+        ) : (
+          <></>
+        )}
 
         <StoreBar handleClick={this.openStore} />
         <Route
