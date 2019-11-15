@@ -44,7 +44,7 @@ const quotes = [
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Un grand pouvoir entraine de grandes irresponsabilites",
     character: 'Sebastien aka Dead Pool',
     image:
       'https://static0.srcdn.com/wordpress/wp-content/uploads/2019/07/Deadpool-Liefeld-Comic-Cover.jpg',
