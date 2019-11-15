@@ -37,7 +37,7 @@ const quotes = [
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "🕸Hero of the web 🕸",
     character: 'Paul-Arnaud aka Spider Man',
     image:
       'https://blog.comic-con-paris.com/wp-content/uploads/2019/08/spiderman-marvel-comics-min.jpg',
