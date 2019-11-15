@@ -1,0 +1,30 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userInfo-homepage-container {
+  flex-basis: 60%;
+}
+
+.btn-homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.btn-homepage {
+  background: #000;
+  border-radius: 5px;
+  color: #fff;
+  padding: 12px 15px 12px 10px;
+  font-size: 0.8em;
+  margin-right: 2vw;
+  height: 32px;
+  border: 1px solid white;
+  transition: background-color 0.3s ease-out;
+}
+
+.btn-homepage:hover {
+  background-color: #e51400;
+}

@@ -1,0 +1,166 @@
+.hero {
+  width: 150px;
+  height: 320px;
+  background: url("https://www.spriters-resource.com/download/54426/") 0 0
+    no-repeat;
+  position: absolute;
+  top: 145px;
+  left: 10%;
+  z-index: 1;
+}
+
+.hero-animation {
+    background-position: -730px -320px;
+    width: 250px;
+    height: 300px;
+  }
+
+.spiderMan {
+  background: url("https://www.spriters-resource.com/resources/sheets/46/48874.png")
+    0 -220px no-repeat;
+  height: 200px;
+}
+
+.blackSpiderMan {
+    background: url("https://www.spriters-resource.com/resources/sheets/48/50661.png")
+      0 -220px no-repeat;
+      height: 180px;
+  }
+
+.spiderMan-animation {
+  background-position: -150px -220px;
+}
+
+.hulk {
+  background: url("https://www.spriters-resource.com/resources/sheets/45/48226.png")
+    0 -13px no-repeat;
+  height: 249px;
+  width: 256px;
+}
+.hulk-animation {
+  background-position: -1604px -13px;
+  height: 330px;
+  width: 240px;
+  top: 15px;
+}
+
+.blackWidow {
+    background: url("https://www.spriters-resource.com/resources/sheets/45/48218.png")
+      0 -30px no-repeat;
+    height: 240px;
+    width: 235px;
+  }
+
+  .blackWidow-animation {
+    background-position: -643px -223px;
+    width:190px;
+  }
+
+
+
+.laser {
+  background: url("https://www.spriters-resource.com/download/54426/") 0px -625px
+    no-repeat;
+  width: 0px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  left: 70%;
+}
+
+.laser-animation1 {
+  width: 50px;
+}
+
+.laser-animation2 {
+  width: 180px;
+  height: 100px;
+  background-position-x: -90px;
+}
+.laser-animation3 {
+  width: 200px;
+  height: 90px;
+  /* left:100%; */
+  background-position-x: -290px;
+}
+.laser-animation4 {
+  width: 200px;
+  height: 50px;
+  left: 100%;
+  background-position-x: -532px;
+}
+.laser-animation5 {
+  width: 30px;
+  height: 30px;
+  left: 100%;
+  background-position-x: -742px;
+}
+
+.web {
+  background: url("https://www.spriters-resource.com/resources/sheets/46/48874.png") -1216px -700px
+    no-repeat;
+  width: 90px;
+  height: 50px;
+  position: absolute;
+  top: 45px;
+  left: 70%;
+}
+
+.web-animation1 {
+  width: 90px;
+}
+
+.web-animation2 {
+  width: 100px;
+  height: 30px;
+  background-position-y: -754px;
+}
+.web-animation3 {
+  width: 260px;
+  height: 30px;
+  /* left:100%; */
+  background-position-y: -800px;
+}
+.web-animation4 {
+  width: 260px;
+  height: 30px;
+  left: 100%;
+  background-position-y: -860px;
+}
+.web-animation5 {
+  width: 260px;
+  height: 30px;
+  left: 100%;
+  background-position-x: -900px;
+}
+
+
+@media screen and (min-width: 500px) {
+  .hero {
+    left: 20%;
+  }
+}
+@media screen and (min-width: 700px) {
+  .hero {
+    left: 25%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .hero {
+    left: 30%;
+  }
+}
+@media screen and (min-width: 1420px) {
+  .hero {
+    left: 38%;
+  }
+}
+
+@media screen and (max-height: 590px) {
+  .hero {
+    top: 15px;
+  }
+  .blackwidow {
+      top: 20px;
+  }
+}

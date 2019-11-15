@@ -26,3 +26,10 @@
   color: #09d3ac;
 }
 
+button {
+  letter-spacing: 2px;
+}
+
+button:hover {
+  cursor: pointer;
+}

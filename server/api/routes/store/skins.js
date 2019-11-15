@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
 const Skin = require("../../models/skin");
 
@@ -38,7 +37,7 @@ router.post("/", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["name", "imgSrc"];
+  const allowedUpdates = ["name", "imgSrc", "isBought", "isAvailable"];
   const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)
   );
@@ -48,7 +47,7 @@ router.patch("/:id", async (req, res) => {
     });
   }
   try {
-    const skin = await Skin.findOneAndUpdate(req.params.id, req.body, {
+    const skin = await Skin.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     });

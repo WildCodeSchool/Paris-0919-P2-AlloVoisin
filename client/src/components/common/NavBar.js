@@ -1,42 +1,53 @@
-import React, { Component } from 'react';
-import './NavBar.css';
+import React, { Component } from "react";
+import "./NavBar.css";
+import { Link } from "react-router-dom";
 //import { is } from '@babel/types';
 //import { isTemplateElement } from '@babel/types';
 
 class NavBar extends Component {
-    state = {
-            isSidebarOpen: false
-        }
-    
-    handleMenuButtonClick = () => {
-        this.setState({ 
-            isSidebarOpen: !this.state.isSidebarOpen 
-        });
-    }
+  state = {
+    isSidebarOpen: false
+  };
 
-    render() {
-        return(
-            <div className="container">
-                <div className="menu-button" onClick={this.handleMenuButtonClick}>
-                    <img className="icon" src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png" alt="ironman"/>
-                </div>
+  handleMenuButtonClick = () => {
+    this.setState({
+      isSidebarOpen: !this.state.isSidebarOpen
+    });
+  };
 
-                   <nav  className={this.state.isSidebarOpen ? 'nav show' : 'nav'}>
-                            <ul className="menu-items">
-                                    <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">Game</a>
-                                    </li>
-                                    <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">Rules</a>
-                                    </li>
-                                    <li className="menu-list">
-                                        <a className="menu-link" href="https://google.com">About</a>
-                                    </li>
-                            </ul>
-                     </nav>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="navBar-container">
+        <div className="menu-button" onClick={this.handleMenuButtonClick}>
+          <img
+            className="icon"
+            src="https://image.noelshack.com/fichiers/2019/44/2/1572343624-logo.png"
+            alt="ironman"
+          />
+        </div>
+
+        <nav className={this.state.isSidebarOpen ? "nav show" : "nav"}>
+          <ul className="menu-items">
+            <Link to="/">
+              <li className="menu-list">
+                <span className="menu-link">Homepage</span>
+              </li>
+            </Link>
+            <Link to="/game">
+              <li className="menu-list">
+                <span className="menu-link">Game</span>
+              </li>
+            </Link>
+            <Link to="/about">
+              <li className="menu-list">
+                <span className="menu-link">About</span>
+              </li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
+    );
+  }
 }
 
 export default NavBar;
