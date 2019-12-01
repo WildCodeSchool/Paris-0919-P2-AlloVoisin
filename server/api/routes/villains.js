@@ -42,7 +42,8 @@ router.patch("/:id", async (req, res) => {
     "image",
     "damages",
     "healthDivisor",
-    "coinAward"
+    "coinAward",
+    "bgSrc"
   ];
   const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)

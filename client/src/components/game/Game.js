@@ -14,8 +14,7 @@ import { Route } from "react-router-dom";
 import ReactPlayer from "react-player";
 import "./Game.css";
 
-const LOCALHOST = "http://localhost:5000";
-const IP = "http://192.168.1.223:5000";
+const HEROKU_API = "https://marvel-fight-api-wcc.herokuapp.com";
 export default class Game extends Component {
   state = {
     isGameOver: false,
@@ -275,6 +274,7 @@ export default class Game extends Component {
       healthDivisor: villains[0].healthDivisor,
       villainImg: villains[0].image
     });
+    console.log(villains[0]);
     document.getElementById(
       "game"
     ).style.backgroundImage = `url(${villains[0].bgSrc})`;
@@ -284,6 +284,7 @@ export default class Game extends Component {
     const urlCharacters = `${url}/store/characters`;
     const urlSkins = `${url}/store/skins`;
     const urlVillains = `${url}/villains`;
+    console.log(urlCharacters);
     Promise.all([
       axios.get(urlCharacters),
       axios.get(urlSkins),
@@ -317,8 +318,8 @@ export default class Game extends Component {
         timer: null,
         isGameCompleted: true
       });
-      this.audio = new Audio(YouWinSound)
-      this.audio.play()
+      this.audio = new Audio(YouWinSound);
+      this.audio.play();
     }
   };
 
@@ -362,7 +363,7 @@ export default class Game extends Component {
 
   // Mettre IP à la place de LOCALHOST
   componentDidMount = () => {
-    this.fetchGameData(IP);
+    this.fetchGameData(HEROKU_API);
     this.audio = new Audio(CountdownSound);
     this.audio.play();
     this.startTimer = setInterval(this.tick, 1000);
@@ -381,8 +382,6 @@ export default class Game extends Component {
   componentWillUnmount = () => {
     clearInterval(this.gameTimer);
   };
-
-  //startTimer
 
   tick = () => {
     if (this.state.seconds > 1) {
@@ -409,7 +408,6 @@ export default class Game extends Component {
   };
 
   render() {
-    console.log(this.state.level);
     return (
       <div id="game">
         {this.state.level === 0 ? <Loading /> : <></>}
